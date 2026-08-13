@@ -153,6 +153,9 @@ AUTH_PASSWORD_VALIDATORS = [
 CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:8000",
     "http://localhost:8000",
+    "https://hunkora.onrender.com",
+    "https://hunkora.com",
+    "https://www.hunkora.com",
 ]
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
