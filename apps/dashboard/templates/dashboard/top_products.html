@@ -1,0 +1,88 @@
+{% load static %}
+
+<div class="dashboard-box">
+
+    <div class="box-header">
+
+        <h2>
+            <i class="fa-solid fa-fire"></i>
+            Top Selling Products
+        </h2>
+
+        <a href="#">
+            View All
+        </a>
+
+    </div>
+
+    <div class="product-list">
+
+        {% for item in top_selling_products %}
+
+        <div class="product-item">
+
+            <!-- Product Image -->
+
+            <div class="product-image">
+
+                {% if item.image %}
+
+                    <img src="{{ item.image.url }}" alt="{{ item.name }}">
+
+                {% else %}
+
+                    <div class="product-placeholder">
+
+                        <i class="fa-solid fa-box-open"></i>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+            <!-- Product Info -->
+
+            <div class="product-info">
+
+                <h4>
+
+                    {{ item.name }}
+
+                </h4>
+
+                <span class="sold-badge">
+
+                    {{ item.total_sold|default:"0" }} Sold
+
+                </span>
+
+            </div>
+
+            <!-- Price -->
+
+            <div class="product-price">
+
+                ৳{{ item.price }}
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="empty-state">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            <h4>No Products Found</h4>
+
+            <p>No sales have been recorded yet.</p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>

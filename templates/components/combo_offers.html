@@ -1,0 +1,204 @@
+{% load static %}
+
+<section class="combo-section" id="combo-offers">
+
+    <div class="container">
+
+        <!-- ========================= -->
+        <!-- SECTION HEADER -->
+        <!-- ========================= -->
+
+        <div class="combo-header">
+
+            <span class="combo-subtitle">
+                EXCLUSIVE COMBO OFFERS
+            </span>
+
+            <h2>
+                Choose The Perfect Combo For Every Moment
+            </h2>
+
+            <p>
+                Enjoy fresh crispy Hunkora Banana Chips with exclusive combo
+                offers. Save more, enjoy more and experience premium quality
+                snacks made with love.
+            </p>
+
+        </div>
+
+        <!-- ========================= -->
+        <!-- COMBO GRID -->
+        <!-- ========================= -->
+
+        <div class="combo-grid">
+
+            {% for combo in combos %}
+
+            <div class="combo-card">
+
+                {% if combo.badge %}
+                <div class="combo-badge">
+                    {{ combo.badge }}
+                </div>
+                {% endif %}
+
+                <div class="combo-image">
+
+                    <img src="{{ combo.image.url }}"
+                         alt="{{ combo.name }}">
+
+                </div>
+
+                <div class="combo-content">
+
+                    <h3 class="combo-title">
+                        {{ combo.name }}
+                    </h3>
+
+                    {% if combo.description %}
+                    <p class="combo-description">
+                        {{ combo.description }}
+                    </p>
+                    {% endif %}
+
+                    <!-- Weight -->
+
+                    <div class="combo-weight-box">
+
+                        <div class="weight-icon">
+                            <i class="fa-solid fa-weight-hanging"></i>
+                        </div>
+
+                        <div class="weight-content">
+
+                            <span>TOTAL WEIGHT</span>
+
+                            <h4>{{ combo.weight }}g</h4>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ========================= -->
+                    <!-- FEATURES -->
+                    <!-- ========================= -->
+
+                    <ul class="combo-features">
+
+                        {% for feature in combo.feature_list %}
+
+                        <li>
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            <span>
+
+                                {{ feature }}
+
+                            </span>
+
+                        </li>
+
+                        {% empty %}
+
+                        <li>
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            <span>
+
+                                Premium Banana Chips
+
+                            </span>
+
+                        </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                    <!-- Price -->
+
+                    <div class="combo-price">
+
+                        <div class="price-left">
+
+                            <span class="new-price">
+
+                                ৳{{ combo.price|floatformat:0 }}
+
+                            </span>
+
+                            {% if combo.old_price %}
+
+                            <span class="old-price">
+
+                                ৳{{ combo.old_price|floatformat:0 }}
+
+                            </span>
+
+                            {% endif %}
+
+                        </div>
+
+                        {% if combo.old_price %}
+
+                        <div class="discount-badge">
+
+                            Save ৳{{ combo.save_amount }}
+
+                        </div>
+
+                        {% endif %}
+
+                    </div>
+
+                    <!-- Button -->
+
+                    <a href="{% url 'cart:add_combo' combo.id %}"
+
+                       class="combo-btn">
+
+                        <span>
+
+                            {{ combo.button_text }}
+
+                        </span>
+
+                        <i class="fa-solid fa-arrow-right-long"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="no-combo">
+
+                <img src="{% static 'images/no-data.png' %}"
+
+                     alt="No Combo">
+
+                <h3>
+
+                    No Combo Available
+
+                </h3>
+
+                <p>
+
+                    New combo offers will be available very soon.
+
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>

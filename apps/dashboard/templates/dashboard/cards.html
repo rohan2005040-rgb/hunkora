@@ -1,0 +1,85 @@
+{% load static %}
+
+<div class="dashboard-cards">
+
+    <!-- Total Products -->
+    <div class="stat-card">
+        <div class="stat-content">
+            <span class="stat-title">Total Products</span>
+
+            <h2 class="stat-number">
+                {{ total_products|default:"0" }}
+            </h2>
+
+            <span class="stat-info success">
+                <i class="fa-solid fa-box"></i>
+                All Items
+            </span>
+        </div>
+
+        <div class="stat-icon blue">
+            <i class="fa-solid fa-boxes-stacked"></i>
+        </div>
+    </div>
+
+    <!-- Total Orders -->
+    <div class="stat-card">
+        <div class="stat-content">
+            <span class="stat-title">Total Orders</span>
+
+            <h2 class="stat-number">
+                {{ total_orders|default:"0" }}
+            </h2>
+
+            <span class="stat-info info">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                Lifetime Orders
+            </span>
+        </div>
+
+        <div class="stat-icon green">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+    </div>
+
+    <!-- Total Revenue -->
+    <div class="stat-card">
+        <div class="stat-content">
+            <span class="stat-title">Total Revenue</span>
+
+            <h2 class="stat-number">
+                ৳{{ total_sales|default:"0" }}
+            </h2>
+
+            <span class="stat-info success">
+                <i class="fa-solid fa-arrow-trend-up"></i>
+                Net Earnings
+            </span>
+        </div>
+
+        <div class="stat-icon purple">
+            <i class="fa-solid fa-bangladeshi-taka-sign"></i>
+        </div>
+    </div>
+
+    <!-- Low Stock -->
+    <div class="stat-card">
+        <div class="stat-content">
+            <span class="stat-title">Low Stock</span>
+
+            <h2 class="stat-number">
+                {{ low_stock_count|default:"0" }}
+            </h2>
+
+            <span class="stat-info danger">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                Need Refill
+            </span>
+        </div>
+
+        <div class="stat-icon red">
+            <i class="fa-solid fa-boxes-packing"></i>
+        </div>
+    </div>
+
+</div>

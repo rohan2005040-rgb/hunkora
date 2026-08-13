@@ -1,0 +1,1826 @@
+/*==========================================================
+ HUNKORA BANANA CHIPS
+ Professional CSS Framework
+ Version : 2.0
+==========================================================*/
+
+
+/*==========================================================
+ ROOT VARIABLES
+==========================================================*/
+
+:root{
+
+    --primary:#FDB813;
+    --primary-dark:#f59e0b;
+    --secondary:#111111;
+    --text:#555555;
+    --white:#ffffff;
+    --light:#f8f9fa;
+    --border:#ececec;
+
+    --success:#28a745;
+    --danger:#ff4d4f;
+
+    --shadow-xs:0 4px 10px rgba(0,0,0,.05);
+    --shadow-sm:0 8px 20px rgba(0,0,0,.08);
+    --shadow-md:0 15px 35px rgba(0,0,0,.12);
+    --shadow-lg:0 25px 60px rgba(0,0,0,.18);
+
+    --radius-sm:10px;
+    --radius-md:18px;
+    --radius-lg:30px;
+    --radius-xl:50px;
+
+    --transition:.35s ease;
+
+}
+
+
+
+/*==========================================================
+ RESET
+==========================================================*/
+
+*,
+*::before,
+*::after{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+
+
+/*==========================================================
+ HTML
+==========================================================*/
+
+html{
+
+    scroll-behavior:smooth;
+    font-size:16px;
+
+}
+
+
+
+/*==========================================================
+ BODY
+==========================================================*/
+
+body{
+
+    background:var(--white);
+    color:var(--secondary);
+    overflow-x:hidden;
+
+    font-family:
+    "Poppins",
+    sans-serif;
+
+    line-height:1.7;
+
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+
+}
+
+
+
+/*==========================================================
+ LINKS
+==========================================================*/
+
+a{
+
+    color:inherit;
+    text-decoration:none;
+    transition:var(--transition);
+
+}
+
+
+
+/*==========================================================
+ IMAGES
+==========================================================*/
+
+img{
+
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+    object-fit:cover;
+
+}
+
+
+
+/*==========================================================
+ BUTTON
+==========================================================*/
+
+button{
+
+    border:none;
+
+    outline:none;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+}
+
+
+
+/*==========================================================
+ LIST
+==========================================================*/
+
+ul,
+ol{
+
+    list-style:none;
+
+}
+
+
+
+/*==========================================================
+ CONTAINER
+==========================================================*/
+
+.container{
+
+    width:min(1320px,92%);
+
+    margin:auto;
+
+}
+
+
+
+/*==========================================================
+ MAIN
+==========================================================*/
+
+main{
+
+    overflow:hidden;
+
+}
+
+
+
+/*==========================================================
+ SECTION
+==========================================================*/
+
+section{
+
+    position:relative;
+
+    z-index:1;
+
+}
+
+
+
+/*==========================================================
+ COMMON SECTION TITLE
+==========================================================*/
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:70px;
+
+}
+
+.section-title span{
+
+    display:inline-block;
+
+    color:var(--primary);
+
+    font-size:14px;
+
+    font-weight:700;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+}
+
+.section-title h2{
+
+    font-size:48px;
+
+    font-weight:800;
+
+    color:var(--secondary);
+
+    margin:18px 0;
+
+    line-height:1.2;
+
+}
+
+.section-title p{
+
+    max-width:700px;
+
+    margin:auto;
+
+    color:var(--text);
+
+    font-size:17px;
+
+}
+
+
+
+/*==========================================================
+ PREMIUM BUTTON
+==========================================================*/
+
+.btn{
+
+    display:inline-flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:15px 35px;
+
+    border-radius:50px;
+
+    background:linear-gradient(
+        135deg,
+        #FDB813,
+        #ff7a00
+    );
+
+    color:#fff;
+
+    font-weight:700;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:var(--transition);
+
+}
+
+.btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+
+
+/*==========================================================
+ RESPONSIVE
+==========================================================*/
+
+@media(max-width:1200px){
+
+    .container{
+
+        width:95%;
+
+    }
+
+}
+
+@media(max-width:992px){
+
+    .section-title h2{
+
+        font-size:38px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .section-title{
+
+        margin-bottom:50px;
+
+    }
+
+    .section-title h2{
+
+        font-size:32px;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .section-title h2{
+
+        font-size:28px;
+
+    }
+
+    .section-title p{
+
+        font-size:15px;
+
+    }
+
+}
+/*==========================================================
+HEADER
+==========================================================*/
+
+header{
+
+    position:sticky;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    background:#ffffff;
+
+    z-index:9999;
+
+    box-shadow:0 4px 20px rgba(0,0,0,.06);
+
+    transition:.35s;
+
+}
+
+/*==========================================================
+NAVBAR
+==========================================================*/
+
+.navbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    min-height:90px;
+
+}
+
+/*==========================================================
+LOGO
+==========================================================*/
+
+.logo img{
+
+    width:170px;
+
+    transition:.35s;
+
+}
+
+.logo img:hover{
+
+    transform:scale(1.05);
+
+}
+
+/*==========================================================
+NAVIGATION MENU
+==========================================================*/
+
+.nav-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:38px;
+
+}
+
+.nav-links li{
+
+    list-style:none;
+
+}
+
+.nav-links a{
+
+    position:relative;
+
+    color:#222;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.nav-links a:hover{
+
+    color:var(--primary);
+
+}
+
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:3px;
+
+    border-radius:20px;
+
+    background:linear-gradient(90deg,#FDB813,#ff7a00);
+
+    transition:.35s;
+
+}
+
+.nav-links a:hover::after{
+
+    width:100%;
+
+}
+
+/*==========================================================
+RIGHT SIDE
+==========================================================*/
+
+.nav-icons{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+/*==========================================================
+ICON BUTTON
+==========================================================*/
+
+.icon-btn{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#fff;
+
+    color:#222;
+
+    font-size:19px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.icon-btn:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+    transform:translateY(-3px);
+
+}
+
+/*==========================================================
+SEARCH
+==========================================================*/
+
+.search-wrapper{
+
+    position:relative;
+
+}
+
+.search-box{
+
+    position:absolute;
+
+    top:70px;
+
+    right:0;
+
+    width:360px;
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:12px;
+
+    display:none;
+
+    align-items:center;
+
+    box-shadow:0 18px 40px rgba(0,0,0,.12);
+
+}
+
+.search-box.active{
+
+    display:flex;
+
+}
+
+.search-box input{
+
+    flex:1;
+
+    border:none;
+
+    outline:none;
+
+    font-size:15px;
+
+    padding:12px;
+
+}
+
+.search-box button{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:14px;
+
+    background:linear-gradient(135deg,#FDB813,#ff7a00);
+
+    color:#fff;
+
+}
+
+/*==========================================================
+AUTH BUTTONS
+==========================================================*/
+
+.auth-buttons{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.login-btn{
+
+    padding:12px 26px;
+
+    border-radius:50px;
+
+    border:2px solid var(--primary);
+
+    font-weight:700;
+
+    transition:.35s;
+
+}
+
+.login-btn:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+.register-btn{
+
+    padding:12px 28px;
+
+    border-radius:50px;
+
+    background:linear-gradient(135deg,#FDB813,#ff7a00);
+
+    color:#fff;
+
+    font-weight:700;
+
+    box-shadow:0 10px 25px rgba(255,170,0,.35);
+
+}
+
+.register-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 18px 35px rgba(255,170,0,.45);
+
+}
+
+/*==========================================================
+PROFILE
+==========================================================*/
+
+.profile-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-weight:700;
+
+}
+
+.profile-btn img{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+/*==========================================================
+LOGOUT
+==========================================================*/
+
+.logout-btn{
+
+    padding:10px 22px;
+
+    border-radius:50px;
+
+    background:#ff4d4d;
+
+    color:#fff;
+
+    font-weight:700;
+
+}
+
+.logout-btn:hover{
+
+    background:#d63031;
+
+}
+
+/*==========================================================
+MOBILE
+==========================================================*/
+
+@media(max-width:991px){
+
+    .nav-links{
+
+        display:none;
+
+    }
+
+    .search-box{
+
+        width:300px;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .logo img{
+
+        width:135px;
+
+    }
+
+    .icon-btn{
+
+        width:42px;
+
+        height:42px;
+
+        font-size:17px;
+
+    }
+
+    .search-box{
+
+        width:260px;
+
+        right:-30px;
+
+    }
+
+}
+/*==========================================================
+ HERO SECTION
+==========================================================*/
+
+.hero{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:120px 0;
+
+    background:
+    linear-gradient(
+        135deg,
+        #fff9ef 0%,
+        #ffffff 55%,
+        #fff5df 100%
+    );
+
+}
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:600px;
+
+    height:600px;
+
+    border-radius:50%;
+
+    background:rgba(253,184,19,.08);
+
+    top:-250px;
+
+    right:-200px;
+
+    filter:blur(20px);
+
+}
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:420px;
+
+    height:420px;
+
+    border-radius:50%;
+
+    background:rgba(255,122,0,.06);
+
+    bottom:-150px;
+
+    left:-120px;
+
+}
+
+.hero-container{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    align-items:center;
+
+    gap:70px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.hero-content h5{
+
+    display:inline-block;
+
+    padding:10px 18px;
+
+    border-radius:50px;
+
+    background:#fff;
+
+    color:#ff9800;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.hero-content h1{
+
+    font-size:68px;
+
+    line-height:1.1;
+
+    font-weight:900;
+
+    color:#ffffff;
+
+    margin:25px 0;
+
+}
+
+.hero-content h1 span{
+
+    color:#ff9800;
+
+}
+
+.hero-content p{
+
+    font-size:18px;
+
+    color:#ffffff;
+
+    line-height:1.8;
+
+    margin-bottom:40px;
+
+    max-width:620px;
+
+}
+
+/*==========================================================
+ HERO BUTTONS
+==========================================================*/
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.hero-btn{
+
+    display:inline-flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:18px 40px;
+
+    border-radius:50px;
+
+    background:linear-gradient(135deg,#FDB813,#ff7a00);
+
+    color:#fff;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    box-shadow:0 18px 40px rgba(255,145,0,.35);
+
+    transition:.35s;
+
+}
+
+.hero-btn:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 30px 50px rgba(255,145,0,.45);
+
+}
+
+.hero-btn-outline{
+
+    display:inline-flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:18px 40px;
+
+    border-radius:50px;
+
+    border:2px solid #FDB813;
+
+    color:#111;
+
+    font-weight:700;
+
+    transition:.35s;
+
+}
+
+.hero-btn-outline:hover{
+
+    background:#FDB813;
+
+    color:#fff;
+
+}
+
+/*==========================================================
+ HERO IMAGE
+==========================================================*/
+
+.hero-image{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.hero-image img{
+
+    width:100%;
+
+    max-width:520px;
+
+    animation:floatImage 4s ease-in-out infinite;
+
+    filter:drop-shadow(0 40px 60px rgba(0,0,0,.18));
+
+}
+
+/*==========================================================
+ FLOATING CARD
+==========================================================*/
+
+.hero-badge{
+
+    position:absolute;
+
+    background:#fff;
+
+    padding:18px 22px;
+
+    border-radius:20px;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.12);
+
+}
+
+.hero-badge h4{
+
+    font-size:24px;
+
+    color:#ff9800;
+
+}
+
+.hero-badge p{
+
+    font-size:14px;
+
+    color:#666;
+
+}
+
+.badge-top{
+
+    top:10%;
+
+    left:-30px;
+
+}
+
+.badge-bottom{
+
+    bottom:10%;
+
+    right:-20px;
+
+}
+
+/*==========================================================
+ ANIMATION
+==========================================================*/
+
+@keyframes floatImage{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-18px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*==========================================================
+ RESPONSIVE
+==========================================================*/
+
+@media(max-width:991px){
+
+.hero-container{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+.hero-content p{
+
+margin:auto auto 40px;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+.hero-image{
+
+margin-top:40px;
+
+}
+
+.hero-content h1{
+
+font-size:52px;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.hero{
+
+padding:80px 0;
+
+}
+
+.hero-content h1{
+
+font-size:38px;
+
+}
+
+.hero-content p{
+
+font-size:16px;
+
+}
+
+.hero-btn,
+
+.hero-btn-outline{
+
+width:100%;
+
+}
+
+.hero-badge{
+
+display:none;
+
+}
+
+}
+/*==========================================================
+ BEST SELLING PRODUCTS
+ Premium E-commerce Design
+==========================================================*/
+
+.best-selling{
+
+    padding:110px 0;
+
+    background:#fafafa;
+
+}
+
+.products-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:35px;
+
+    margin-top:60px;
+
+}
+
+/*==========================================================
+ PRODUCT CARD
+==========================================================*/
+
+.product-card{
+
+    position:relative;
+
+    background:#ffffff;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    padding:28px;
+
+    border:1px solid #f0f0f0;
+
+    box-shadow:0 15px 45px rgba(0,0,0,.08);
+
+    transition:.4s;
+
+}
+
+.product-card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:0 35px 70px rgba(0,0,0,.16);
+
+}
+
+/*==========================================================
+ SALE BADGE
+==========================================================*/
+
+.sale-badge{
+
+    position:absolute;
+
+    top:22px;
+
+    left:22px;
+
+    padding:8px 16px;
+
+    border-radius:40px;
+
+    background:linear-gradient(135deg,#ff4d4d,#ff884d);
+
+    color:#fff;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    z-index:5;
+
+}
+
+/*==========================================================
+ ICONS
+==========================================================*/
+
+.product-icons{
+
+    position:absolute;
+
+    top:22px;
+
+    right:22px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    z-index:5;
+
+}
+
+.product-icons a{
+
+    width:42px;
+
+    height:42px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    color:#222;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.10);
+
+    transition:.35s;
+
+}
+
+.product-icons a:hover{
+
+    background:#FDB813;
+
+    color:#fff;
+
+    transform:scale(1.1);
+
+}
+
+/*==========================================================
+ PRODUCT IMAGE
+==========================================================*/
+
+.product-image{
+
+    width:100%;
+
+    height:330px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#fff;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+}
+
+.product-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+    transition:.45s;
+
+}
+
+.product-card:hover .product-image img{
+
+    transform:scale(1.08);
+
+}
+
+/*==========================================================
+ PRODUCT TITLE
+==========================================================*/
+
+.product-card h3{
+
+    text-align:center;
+
+    margin-top:25px;
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#222;
+
+}
+
+/*==========================================================
+ STAR RATING
+==========================================================*/
+
+.rating{
+
+    text-align:center;
+
+    margin:15px 0;
+
+    font-size:22px;
+
+    color:#ffb400;
+
+}
+
+/*==========================================================
+ PRICE
+==========================================================*/
+
+.price{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+}
+
+.new-price{
+
+    font-size:38px;
+
+    font-weight:800;
+
+    color:#ff7a00;
+
+}
+
+.old-price{
+
+    margin-left:12px;
+
+    color:#999;
+
+    font-size:18px;
+
+    text-decoration:line-through;
+
+}
+
+/*==========================================================
+ BUTTON
+==========================================================*/
+
+.add-cart-btn{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:100%;
+
+    height:58px;
+
+    border-radius:50px;
+
+    background:linear-gradient(135deg,#FDB813,#ff7a00);
+
+    color:#fff;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    transition:.35s;
+
+    box-shadow:0 12px 30px rgba(255,140,0,.35);
+
+}
+
+.add-cart-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 22px 45px rgba(255,140,0,.45);
+
+}
+
+/*==========================================================
+ RESPONSIVE
+==========================================================*/
+
+@media(max-width:992px){
+
+.products-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.products-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.product-image{
+
+height:280px;
+
+}
+
+.product-card h3{
+
+font-size:24px;
+
+}
+
+.new-price{
+
+font-size:32px;
+
+}
+
+}
+/* =========================================
+   HUNKORA INSTAGRAM GALLERY
+========================================= */
+
+.instagram-section {
+    width: 100%;
+    padding: 90px 0;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+
+/* =========================================
+   SECTION TITLE
+========================================= */
+
+.instagram-section .section-title {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 45px;
+    padding: 0 20px;
+}
+
+.instagram-section .section-title span {
+    display: inline-block;
+    margin-bottom: 10px;
+
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    color: #f4a51c;
+}
+
+.instagram-section .section-title h2 {
+    margin: 0 0 12px;
+
+    font-size: 38px;
+    line-height: 1.2;
+    font-weight: 800;
+
+    color: #183f2a;
+}
+
+.instagram-section .section-title p {
+    margin: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    color: #777;
+}
+
+
+/* =========================================
+   SLIDER
+========================================= */
+
+.instagram-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+
+/* =========================================
+   TRACK
+========================================= */
+
+.instagram-track {
+    display: flex;
+    width: max-content;
+    gap: 22px;
+
+    animation: hunkoraInstagramScroll 35s linear infinite;
+}
+
+
+/* Pause when mouse over */
+
+.instagram-slider:hover .instagram-track {
+    animation-play-state: paused;
+}
+
+
+/* =========================================
+   INSTAGRAM CARD
+========================================= */
+
+.insta-card {
+    position: relative;
+
+    display: block;
+
+    width: 320px;
+    height: 320px;
+
+    flex: 0 0 320px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background: #f3f3f3;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.insta-card img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    transition:
+        transform 0.6s ease,
+        filter 0.6s ease;
+}
+
+
+/* =========================================
+   HOVER IMAGE
+========================================= */
+
+.insta-card:hover img {
+    transform: scale(1.08);
+
+    filter: brightness(0.65);
+}
+
+
+/* =========================================
+   OVERLAY
+========================================= */
+
+.insta-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #ffffff;
+
+    background: rgba(20, 63, 42, 0.45);
+
+    opacity: 0;
+
+    transition: opacity 0.4s ease;
+}
+
+
+/* Show overlay */
+
+.insta-card:hover .insta-overlay {
+    opacity: 1;
+}
+
+
+/* =========================================
+   INSTAGRAM ICON
+========================================= */
+
+.instagram-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid #ffffff;
+
+    border-radius: 50%;
+
+    font-size: 30px;
+    font-weight: 400;
+
+    backdrop-filter: blur(5px);
+}
+
+
+/* View Post text */
+
+.insta-overlay span:last-child {
+    font-size: 15px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================================
+   SLIDER ANIMATION
+========================================= */
+
+@keyframes hunkoraInstagramScroll {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-50% - 11px));
+    }
+
+}
+
+
+/* =========================================
+   FOLLOW BUTTON
+========================================= */
+
+.instagram-section .follow-btn {
+
+    display: flex;
+
+    width: fit-content;
+
+    margin: 45px auto 0;
+
+    padding: 14px 28px;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50px;
+
+    background: #183f2a;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* Button hover */
+
+.instagram-section .follow-btn:hover {
+
+    background: #f4a51c;
+
+    color: #183f2a;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(244, 165, 28, 0.25);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 992px) {
+
+    .insta-card {
+        width: 280px;
+        height: 280px;
+        flex-basis: 280px;
+    }
+
+    .instagram-track {
+        gap: 18px;
+    }
+
+    .instagram-section .section-title h2 {
+        font-size: 32px;
+    }
+
+}
+
+
+@media (max-width: 576px) {
+
+    .instagram-section {
+        padding: 65px 0;
+    }
+
+    .instagram-section .section-title {
+        margin-bottom: 30px;
+    }
+
+    .instagram-section .section-title h2 {
+        font-size: 28px;
+    }
+
+    .instagram-section .section-title p {
+        font-size: 14px;
+    }
+
+    .insta-card {
+        width: 240px;
+        height: 240px;
+        flex-basis: 240px;
+
+        border-radius: 16px;
+    }
+
+    .instagram-track {
+        gap: 14px;
+    }
+
+    .instagram-section .follow-btn {
+        margin-top: 35px;
+        padding: 12px 23px;
+        font-size: 14px;
+    }
+
+}

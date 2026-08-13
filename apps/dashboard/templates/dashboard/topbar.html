@@ -1,0 +1,106 @@
+{% load static %}
+
+<div class="topbar">
+
+    <!-- Left Side -->
+    <div class="topbar-left">
+
+        <form action="{% url 'dashboard:search' %}" method="GET" class="search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                name="q"
+                value="{{ request.GET.q|default:'' }}"
+                placeholder="Search products, orders, customers..."
+            >
+
+        </form>
+
+    </div>
+
+    <!-- Right Side -->
+    <div class="topbar-right">
+
+        <!-- Notification -->
+
+        <a href="#" class="top-icon" title="Notifications">
+
+            <i class="fa-regular fa-bell"></i>
+
+            {% if unread_notifications_count %}
+
+                <span class="notification-badge">
+
+                    {{ unread_notifications_count }}
+
+                </span>
+
+            {% endif %}
+
+        </a>
+
+        <!-- Message -->
+
+        <a href="#" class="top-icon" title="Messages">
+
+            <i class="fa-regular fa-envelope"></i>
+
+            {% if unread_messages_count %}
+
+                <span class="message-badge">
+
+                    {{ unread_messages_count }}
+
+                </span>
+
+            {% endif %}
+
+        </a>
+
+        <!-- Divider -->
+
+        <div class="top-divider"></div>
+
+        <!-- User -->
+
+        <a href="{% url 'dashboard:profile' %}" class="user-box">
+
+            <div class="user-avatar">
+
+                {% if request.user.profile_image %}
+
+                    <img src="{{ request.user.profile_image.url }}" alt="Profile">
+
+                {% else %}
+
+                    <img src="https://ui-avatars.com/api/?name={{ request.user.get_full_name|default:request.user.username|urlencode }}&background=2563eb&color=ffffff" alt="Profile">
+
+                {% endif %}
+
+            </div>
+
+            <div class="user-info">
+
+                <h4>
+
+                    {{ request.user.get_full_name|default:request.user.username }}
+
+                </h4>
+
+                <span>
+
+                    Super Admin
+
+                </span>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-down"></i>
+
+        </a>
+
+    </div>
+
+</div>

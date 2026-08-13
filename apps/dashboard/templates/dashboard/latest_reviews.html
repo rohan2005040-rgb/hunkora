@@ -1,0 +1,111 @@
+{% load static %}
+
+<div class="dashboard-box">
+
+    <div class="box-header">
+
+        <h2>
+            <i class="fa-solid fa-star"></i>
+            Latest Reviews
+        </h2>
+
+        <a href="#">
+            View All
+        </a>
+
+    </div>
+
+    <div class="review-list">
+
+        {% for review in latest_reviews %}
+
+        <div class="review-item">
+
+            <!-- Reviewer Image -->
+            <div class="review-avatar">
+
+                {% if review.user.profile_image %}
+
+                    <img src="{{ review.user.profile_image.url }}" alt="{{ review.user.username }}">
+
+                {% else %}
+
+                    <img src="https://ui-avatars.com/api/?name={{ review.user_name|default:review.user.get_full_name|default:'User'|urlencode }}&background=2563eb&color=ffffff" alt="Reviewer">
+
+                {% endif %}
+
+            </div>
+
+            <!-- Review Details -->
+
+            <div class="review-info">
+
+                <div class="review-header">
+
+                    <h4>
+
+                        {{ review.user_name|default:review.user.get_full_name|default:"Customer" }}
+
+                    </h4>
+
+                    {% if review.created_at %}
+
+                        <span class="review-time">
+
+                            {{ review.created_at|timesince }} ago
+
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+                <!-- Rating -->
+
+                <div class="stars">
+
+                    {% for i in "12345" %}
+
+                        {% if forloop.counter <= review.rating %}
+
+                            <i class="fa-solid fa-star"></i>
+
+                        {% else %}
+
+                            <i class="fa-regular fa-star star-empty"></i>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                </div>
+
+                <!-- Review -->
+
+                <p class="review-text">
+
+                    {{ review.comment|truncatewords:18 }}
+
+                </p>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="empty-state">
+
+            <i class="fa-regular fa-comment-dots"></i>
+
+            <h4>No Reviews Yet</h4>
+
+            <p>No customer reviews have been received.</p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>

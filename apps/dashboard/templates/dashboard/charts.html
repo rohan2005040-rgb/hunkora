@@ -1,0 +1,48 @@
+{% load static %}
+
+<div class="chart-card">
+
+    <!-- Chart Header -->
+    <div class="chart-header">
+
+        <div class="chart-title">
+
+            <h2>
+                <i class="fa-solid fa-chart-line"></i>
+                Sales & Revenue Overview
+            </h2>
+
+            <p>
+                Monitor your business performance and revenue growth
+            </p>
+
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="chart-actions">
+
+            <button class="filter-btn active" onclick="updateChart('weekly')">
+                Weekly
+            </button>
+
+            <button class="filter-btn" onclick="updateChart('monthly')">
+                Monthly
+            </button>
+
+            <button class="filter-btn" onclick="updateChart('yearly')">
+                Yearly
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Chart -->
+
+    <div class="chart-body">
+
+        <canvas id="dashboardMainChart"></canvas>
+
+    </div>
+
+</div>

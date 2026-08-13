@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- custom css import -->
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<!-- Font Awesome CDN for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<section class="login-section">
+    <div class="login-container">
+        
+        <!-- LEFT SIDE BANNER -->
+        <div class="login-left">
+            <div>
+                <span class="login-tag">Join HUNKORA 🚀</span>
+                <h1>Create Your <span>HUNKORA</span> Account</h1>
+                <p>Register today to enjoy fast checkout, exclusive offers, reward points, and order tracking.</p>
+            </div>
+            <div>
+                <img src="{% static 'images/register-illustration.png' %}" alt="Register Illustration" onerror="this.style.display='none'">
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE FORM -->
+        <div class="login-right">
+            <h2>Create Account</h2>
+
+            <!-- Django Alert Messages -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="form-error" style="{% if message.tags == 'success' %}background:#D1FAE5; color:#065F46;{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="POST" action="{% url 'accounts:register' %}">
+                {% csrf_token %}
+
+                <div class="input-box">
+                    <label for="full_name">Full Name</label>
+                    <input type="text" id="full_name" name="full_name" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Choose a username" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="phone_number">Phone Number</label>
+                    <input type="text" id="phone_number" name="phone_number" placeholder="017XXXXXXXX">
+                </div>
+
+                <div class="input-box">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter password" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm password" required>
+                </div>
+
+                <button type="submit" class="login-btn">Create Account</button>
+
+                <div class="register-link">
+                    Already have an account? <a href="{% url 'accounts:login' %}">Login</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

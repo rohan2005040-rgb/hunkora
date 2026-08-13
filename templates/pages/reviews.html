@@ -1,0 +1,570 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/reviews.css' %}">
+{% endblock %}
+
+{% block title %}
+Customer Reviews | HUNKORA
+{% endblock %}
+
+{% block content %}
+
+<!--====================================
+REVIEWS HERO
+=====================================-->
+
+<section class="reviews-hero">
+
+<div class="container">
+
+<div class="reviews-hero-content">
+
+<span>★★★★★ Trusted By Thousands</span>
+
+<h1>
+What Our Customers
+<br>
+Say About
+<span>HUNKORA</span>
+</h1>
+
+<p>
+
+More than 50,000 happy customers love our premium banana chips.
+Every review inspires us to deliver even better quality.
+
+</p>
+
+<div class="hero-rating">
+
+<div class="rating-number">
+
+4.9
+
+</div>
+
+<div>
+
+<div class="stars">
+
+★★★★★
+
+</div>
+
+<p>
+
+Based on 20,500+ Reviews
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+<!--====================================
+RATING SUMMARY
+=====================================-->
+
+<section class="rating-summary">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>Customer Satisfaction</span>
+
+<h2>Overall Rating</h2>
+
+</div>
+
+<div class="rating-grid">
+
+<div class="overall-rating">
+
+<h2>4.9</h2>
+
+<div class="stars">
+
+★★★★★
+
+</div>
+
+<p>
+
+10000+ Verified Reviews
+
+</p>
+
+</div>
+
+<div class="rating-bars">
+
+<div class="bar">
+
+<span>5 Star</span>
+
+<div class="progress">
+
+<div class="fill fill1"></div>
+
+</div>
+
+<b>95%</b>
+
+</div>
+
+<div class="bar">
+
+<span>4 Star</span>
+
+<div class="progress">
+
+<div class="fill fill2"></div>
+
+</div>
+
+<b>4%</b>
+
+</div>
+
+<div class="bar">
+
+<span>3 Star</span>
+
+<div class="progress">
+
+<div class="fill fill3"></div>
+
+</div>
+
+<b>1%</b>
+
+</div>
+
+<div class="bar">
+
+<span>2 Star</span>
+
+<div class="progress">
+
+<div class="fill fill4"></div>
+
+</div>
+
+<b>0%</b>
+
+</div>
+
+<div class="bar">
+
+<span>1 Star</span>
+
+<div class="progress">
+
+<div class="fill fill5"></div>
+
+</div>
+
+<b>0%</b>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+<!--====================================
+CUSTOMER REVIEWS
+=====================================-->
+
+<section class="customer-reviews">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>Testimonials</span>
+
+            <h2>Real Reviews From Customers</h2>
+
+        </div>
+
+        <div class="review-grid">
+
+            {% for review in reviews %}
+
+            <div class="review-card">
+
+                <div class="review-top">
+
+                    <div>
+
+                        <h3>{{ review.name }}</h3>
+
+                        <span>Verified Customer</span>
+
+                    </div>
+
+                </div>
+
+                <div class="stars">
+
+                    {% for i in "12345" %}
+                        {% if forloop.counter <= review.rating %}
+                            ★
+                        {% else %}
+                            ☆
+                        {% endif %}
+                    {% endfor %}
+
+                </div>
+
+                <p>
+
+                    {{ review.review }}
+
+                </p>
+
+            </div>
+
+            {% empty %}
+
+            <div class="review-card">
+
+                <h3>No Reviews Yet</h3>
+
+                <p>
+
+                    Be the first customer to leave a review.
+
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+<!--====================================
+VIDEO REVIEWS
+=====================================-->
+
+<section class="video-review-section">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>VIDEO REVIEWS</span>
+
+            <h2>See What Customers Say</h2>
+
+            <p>
+
+                Watch real customers enjoying HUNKORA Premium Banana Chips.
+
+            </p>
+
+        </div>
+
+        <div class="video-grid">
+
+            <div class="video-card">
+
+                <div class="video-thumbnail">
+
+                    <img src="{% static 'images/reviews/video1.jpg' %}" alt="Video Review">
+
+                    <div class="play-btn">
+
+                        <i class="fa-solid fa-play"></i>
+
+                    </div>
+
+                </div>
+
+                <h3>Customer Taste Test</h3>
+
+            </div>
+
+            <div class="video-card">
+
+                <div class="video-thumbnail">
+
+                    <img src="{% static 'images/reviews/video2.jpg' %}" alt="Video Review">
+
+                    <div class="play-btn">
+
+                        <i class="fa-solid fa-play"></i>
+
+                    </div>
+
+                </div>
+
+                <h3>Premium Unboxing</h3>
+
+            </div>
+
+            <div class="video-card">
+
+                <div class="video-thumbnail">
+
+                    <img src="{% static 'images/reviews/video3.jpg' %}" alt="Video Review">
+
+                    <div class="play-btn">
+
+                        <i class="fa-solid fa-play"></i>
+
+                    </div>
+
+                </div>
+
+                <h3>Family Review</h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!--====================================
+CUSTOMER GALLERY
+=====================================-->
+
+<section class="customer-gallery">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>PHOTO GALLERY</span>
+
+            <h2>Happy Customers</h2>
+
+        </div>
+
+        <div class="gallery-grid">
+
+            <img src="{% static 'images/image copy 4.png' %}" alt="">
+            <img src="{% static 'images/image copy 3.png' %}" alt="">
+            <img src="{% static 'images/image copy 2.png' %}" alt="">
+            <img src="{% static 'images/reviews/gallery4.jpg' %}" alt="">
+            <img src="{% static 'images/reviews/gallery5.jpg' %}" alt="">
+            <img src="{% static 'images/reviews/gallery6.jpg' %}" alt="">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!--====================================
+INSTAGRAM FEED
+=====================================-->
+
+<section class="instagram-feed">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>FOLLOW US</span>
+
+            <h2>@HUNKORA</h2>
+
+        </div>
+
+        <div class="instagram-grid">
+
+            <img src="{% static 'images/reviews/insta1.jpg' %}" alt="">
+            <img src="{% static 'images/reviews/insta2.jpg' %}" alt="">
+            <img src="{% static 'images/reviews/insta3.jpg' %}" alt="">
+            <img src="{% static 'images/reviews/insta4.jpg' %}" alt="">
+
+        </div>
+
+    </div>
+
+</section>
+<!--====================================
+STATISTICS
+=====================================-->
+
+<section class="review-counter">
+
+    <div class="container">
+
+        <div class="counter-grid">
+
+            <div class="counter-box">
+
+                <i class="fa-solid fa-users"></i>
+
+                <h2 class="counter" data-target="50000">0</h2>
+
+                <p>Happy Customers</p>
+
+            </div>
+
+            <div class="counter-box">
+
+                <i class="fa-solid fa-box"></i>
+
+                <h2 class="counter" data-target="100000">0</h2>
+
+                <p>Packs Sold</p>
+
+            </div>
+
+            <div class="counter-box">
+
+                <i class="fa-solid fa-star"></i>
+
+                <h2 class="counter" data-target="99">0</h2>
+
+                <p>Positive Reviews %</p>
+
+            </div>
+
+            <div class="counter-box">
+
+                <i class="fa-solid fa-award"></i>
+
+                <h2 class="counter" data-target="4.9">4.9</h2>
+
+                <p>Average Rating</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!--====================================
+WRITE REVIEW
+=====================================-->
+
+<section class="write-review">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>WRITE A REVIEW</span>
+
+            <h2>Share Your Experience</h2>
+
+        </div>
+
+        <form method="POST"
+              action="{% url 'reviews' %}"
+              class="review-form">
+
+            {% csrf_token %}
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required>
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                required>
+
+            <select
+                name="rating"
+                required>
+
+                <option value="5">★★★★★ Excellent</option>
+
+                <option value="4">★★★★ Very Good</option>
+
+                <option value="3">★★★ Good</option>
+
+                <option value="2">★★ Fair</option>
+
+                <option value="1">★ Poor</option>
+
+            </select>
+
+            <textarea
+                name="review"
+                rows="6"
+                placeholder="Write your review..."
+                required></textarea>
+
+            <button type="submit">
+
+                Submit Review
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+<!--====================================
+CTA
+=====================================-->
+
+<section class="review-cta">
+
+    <div class="container">
+
+        <h2>
+
+            Ready To Taste
+            HUNKORA?
+
+        </h2>
+
+        <p>
+
+            Fresh • Crunchy • Premium Banana Chips
+
+        </p>
+
+        <a href="{% url 'shop' %}" class="hero-btn">
+
+            Shop Now
+
+        </a>
+
+    </div>
+
+</section>
+{% endblock %}

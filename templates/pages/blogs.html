@@ -1,0 +1,205 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+{% endblock %}
+
+{% block title %}
+Blogs | HUNKORA Premium Banana Chips
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================================
+BLOG HERO
+========================================= -->
+
+<section class="blog-hero">
+    <div class="container">
+        <div class="blog-hero-content">
+            <span>HUNKORA BLOG</span>
+            <h1>
+                Stories,
+                <span>Recipes</span>,
+                Tips &
+                Inspiration
+            </h1>
+            <p>
+                Discover healthy banana recipes, premium snack ideas,
+                company stories, manufacturing secrets and everything
+                behind HUNKORA Premium Banana Chips.
+            </p>
+
+            <!-- Working Search Form -->
+            <form action="{% url 'blogs' %}" method="GET" class="blog-search">
+                <input
+                    type="text"
+                    name="q"
+                    value="{{ query|default:'' }}"
+                    placeholder="Search articles..."
+                    required>
+                <button type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================
+FEATURED BLOG
+========================================= -->
+
+<section class="featured-blog">
+    <div class="container">
+        <div class="featured-grid">
+            <div class="featured-image">
+                <img src="{% static 'images/blog image.jpg' %}" alt="Featured Blog">
+            </div>
+
+            <div class="featured-content">
+                <span class="category">Featured Story</span>
+                <h2>Why Premium Banana Chips Are Becoming The Favorite Healthy Snack</h2>
+                <p>
+                    Learn how carefully selected bananas, premium cooking oil and modern production
+                    create a snack that's crunchy, healthy and unforgettable.
+                </p>
+
+                <div class="blog-meta">
+                    <span><i class="fa-regular fa-calendar"></i> July 2026</span>
+                    <span><i class="fa-regular fa-clock"></i> 5 min read</span>
+                </div>
+
+                <a href="#" class="blog-btn">Read Article</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================
+LATEST ARTICLES & BLOG POSTS
+========================================= -->
+
+<section class="blog-posts">
+    <div class="container">
+        <div class="section-title">
+            <span>LATEST ARTICLES</span>
+            <h2>
+                {% if query %}
+                    Search Results for "{{ query }}"
+                {% else %}
+                    Explore Our Blog
+                {% endif %}
+            </h2>
+        </div>
+
+        <div class="blog-grid">
+            {% if blogs %}
+                <!-- ডাটাবেজে পাওয়া গেলে এগুলো দেখাবে -->
+                {% for blog in blogs %}
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            {% if blog.image %}
+                                <img src="{{ blog.image.url }}" alt="{{ blog.title }}">
+                            {% else %}
+                                <img src="{% static 'images/blog/blog1.jpg' %}" alt="Blog">
+                            {% endif %}
+                            <span>{{ blog.category|default:"Food" }}</span>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="fa-regular fa-calendar"></i> {{ blog.created_at|date:"F Y" }}</span>
+                                <span><i class="fa-regular fa-user"></i> {{ blog.author|default:"Admin" }}</span>
+                            </div>
+                            <h3>{{ blog.title }}</h3>
+                            <p>{{ blog.content|truncatewords:20 }}</p>
+                            <a href="{% url 'blog_detail' blog.id %}">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                {% endfor %}
+
+            {% elif query %}
+                <!-- সার্চ রেজাল্ট না মিললে এই মেসেজ আসবে -->
+                <div class="no-results" style="grid-column: 1 / -1; text-align: center; padding: 40px 0;">
+                    <h3>No blogs found matching "{{ query }}"</h3>
+                    <p>Try searching with words like "banana", "chips", or "healthy".</p>
+                </div>
+
+            {% else %}
+                <!-- ডাটাবেজ খালি থাকলে বা সার্চ না করলে এই স্ট্যাটিক কার্ডগুলো দেখাবে -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="{% static 'images/blog/blog1.jpg' %}" alt="Blog">
+                        <span>Food</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="fa-regular fa-calendar"></i> July 2026</span>
+                            <span><i class="fa-regular fa-user"></i> Admin</span>
+                        </div>
+                        <h3>Why Banana Chips Are Healthier Than Regular Potato Chips</h3>
+                        <p>Discover why premium banana chips are becoming one of the healthiest snacks for modern lifestyles.</p>
+                        <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="{% static 'images/blog/blog2.jpg' %}" alt="Blog">
+                        <span>Recipes</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="fa-regular fa-calendar"></i> July 2026</span>
+                            <span><i class="fa-regular fa-user"></i> Admin</span>
+                        </div>
+                        <h3>5 Delicious Ways To Enjoy Banana Chips</h3>
+                        <p>Simple serving ideas that turn banana chips into an unforgettable snack experience.</p>
+                        <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="{% static 'images/blog/blog3.jpg' %}" alt="Blog">
+                        <span>Quality</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="fa-regular fa-calendar"></i> July 2026</span>
+                            <span><i class="fa-regular fa-user"></i> Admin</span>
+                        </div>
+                        <h3>Inside HUNKORA's Premium Quality Process</h3>
+                        <p>Learn how every pack is crafted with strict quality control and premium ingredients.</p>
+                        <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- =========================================
+NEWSLETTER
+========================================= -->
+
+<section class="blog-newsletter">
+    <div class="container">
+        <div class="newsletter-box">
+            <span>NEWSLETTER</span>
+            <h2>Never Miss A New Blog</h2>
+            <p>
+                Subscribe to receive recipes, banana chip tips,
+                company updates and exclusive offers directly
+                in your inbox.
+            </p>
+            <form>
+                <input type="email" placeholder="Enter your email">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

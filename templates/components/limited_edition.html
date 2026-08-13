@@ -1,0 +1,74 @@
+{% load static %}
+
+<section class="limited-offer">
+
+    <div class="container">
+
+        <div class="offer-wrapper">
+
+            <!-- Product Image -->
+            <div class="offer-image">
+
+                {% if offer_product.image %}
+                    <img src="{{ offer_product.image.url }}" alt="{{ offer_product.name }}">
+                {% else %}
+                    <img src="{% static 'images/Picsart_26-05-15_11-12-58-929.png' %}" alt="Limited Offer">
+                {% endif %}
+
+            </div>
+
+            <!-- Product Content -->
+            <div class="offer-content">
+
+                <span class="offer-tag">
+                    LIMITED EDITION
+                </span>
+
+                <h2>
+                    {{ offer_product.name }}
+                </h2>
+
+                <p>
+                    {{ offer_product.short_description }}
+                </p>
+
+                <!-- Price -->
+                <div class="offer-price">
+
+                    <span class="new-price">
+                        ৳{{ offer_product.price }}
+                    </span>
+
+                    {% if offer_product.old_price %}
+                    <span class="old-price">
+                        ৳{{ offer_product.old_price }}
+                    </span>
+                    {% endif %}
+
+                </div>
+
+                <!-- Discount -->
+                <div class="offer-discount">
+
+                    20% OFF On Your First Order
+
+                </div>
+
+                <br>
+
+                <!-- Button -->
+                <a href="{% url 'cart:add_to_cart' offer_product.id %}"
+                   class="offer-btn">
+
+                    Shop Now
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

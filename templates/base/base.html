@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/wishlist.css' %}">
+    <link rel="stylesheet" href="{% static 'css/our_brand_story.css' %}">
+    <link rel="stylesheet" href="{% static 'css/product.css' %}">
+    <link rel="stylesheet" href="{% static 'css/shop.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reviews.css' %}">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new-arrival.css' %}">
+    <link rel="stylesheet" href="{% static 'css/combo-offers.css' %}">
+    <link rel="stylesheet" href="{% static 'css/limited-offer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flavors.css' %}">
+    <link rel="stylesheet" href="{% static 'css/product.css' %}">
+    <link rel="stylesheet" href="{% static 'css/hero.css' %}">
+    <link rel="stylesheet" href="{% static 'css/order-success.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/product.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Hunkora Banana Chips{% endblock %}</title>
+
+    <meta name="description" content="{% block description %}Premium Banana Chips{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}banana chips,hunkora{% endblock %}">
+
+    {% include "base/styles.html" %}
+
+    {% block extra_css %}
+    {% endblock %}
+
+</head>
+<script src="{% static 'js/reviews.js' %}"></script>
+<script src="{% static 'js/auth.js' %}"></script>
+<script src="{% static 'js/reviews.js' %}"></script>
+<script src="{% static 'js/hero.js' %}" defer></script>
+<script src="{% static 'js/hero.js' %}"></script>
+<body>
+
+    {% include "base/announcement.html" %}
+
+    {% include "base/navbar.html" %}
+
+    <main>
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+    {% include "base/footer.html" %}
+
+    {% include "base/scripts.html" %}
+
+    {% block extra_js %}
+    {% endblock %}
+
+</body>
+
+</html>

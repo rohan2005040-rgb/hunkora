@@ -1,0 +1,78 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- custom css import -->
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<!-- Font Awesome CDN for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<section class="login-section">
+    <div class="login-container">
+        
+        <!-- LEFT SIDE BANNER -->
+        <div class="login-left">
+            <div>
+                <span class="login-tag">Welcome Back 🚀</span>
+                <h1>Login To Your <span>HUNKORA</span> Account</h1>
+                <p>Access your orders, wishlist, rewards, exclusive offers, and faster checkout.</p>
+            </div>
+            <!-- Illustration Placeholder / Image -->
+            <div>
+                <img src="{% static 'images/login-illustration.png' %}" alt="Login Illustration" onerror="this.style.display='none'">
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE FORM -->
+        <div class="login-right">
+            <h2>Sign In</h2>
+
+            <!-- Django Global Alert Messages -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="form-error" style="{% if message.tags == 'success' %}background:#D1FAE5; color:#065F46;{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="POST" action="{% url 'accounts:login' %}">
+                {% csrf_token %}
+
+                <div class="input-box">
+                    <label for="username">Username or Email</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username or email" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+
+                <div class="login-options">
+                    <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                        <input type="checkbox" name="remember_me" style="width:auto; cursor:pointer;"> 
+                        Remember Me
+                    </label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="login-btn">Login</button>
+
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+
+                <button type="button" class="google-btn">
+                    <i class="fa-brands fa-google"></i> Continue with Google
+                </button>
+
+                <div class="register-link">
+                    Don't have an account? <a href="{% url 'accounts:register' %}">Create Account</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,135 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+Home | Hunkora Banana Chips
+{% endblock %}
+
+{% block content %}
+
+{% include "components/hero.html" %}
+{% include "components/home_products.html" %}
+{% include "components/flavors.html" %}
+{% include "components/why_choose.html" %}
+{% load static %}
+
+<!-- ========================= -->
+<!-- Best Selling Products -->
+<!-- ========================= -->
+
+<section class="best-selling" id="best-selling">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>BEST SELLING</span>
+
+            <h2>Our Best Selling Products</h2>
+
+            <p>
+                Taste our most loved banana chips prepared with premium ingredients.
+            </p>
+
+        </div>
+
+        <div class="products-grid">
+
+            {% for product in products %}
+
+            <div class="product-card">
+
+                {% if product.discount_price %}
+                <div class="sale-badge">
+                    SALE
+                </div>
+                {% endif %}
+
+                <div class="product-icons">
+
+                    <a href="{% url 'products:toggle_wishlist' product.id %}">
+                        ❤
+                    </a>
+
+                    <a href="{% url 'products:product_detail' product.id %}">
+                        👁
+                    </a>
+
+                </div>
+
+                <!-- Product Image -->
+                <div class="product-image">
+
+                    {% if forloop.counter == 1 %}
+                        <img src="{% static 'images/ChatGPT Image Aug 2, 2026, 07_18_12 PM.png' %}" alt="{{ product.name }}">
+
+                    {% elif forloop.counter == 2 %}
+                        <img src="{% static 'images/ChatGPT Image Aug 3, 2026, 11_56_36 AM.png' %}" alt="{{ product.name }}">
+
+                    {% elif forloop.counter == 3 %}
+                        <img src="{% static 'images/ChatGPT Image Aug 3, 2026, 11_56_36 AM.png' %}" alt="{{ product.name }}">
+
+                    {% else %}
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% endif %}
+
+                </div>
+
+                <h3>{{ product.name }}</h3>
+
+                <div class="rating">
+                    ★★★★★
+                </div>
+
+                <div class="price">
+
+                    {% if product.discount_price %}
+
+                        <span class="new-price">
+                            ৳{{ product.discount_price }}
+                        </span>
+
+                        <span class="old-price">
+                            ৳{{ product.price }}
+                        </span>
+
+                    {% else %}
+
+                        <span class="new-price">
+                            ৳{{ product.price }}
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+                <a href="{% url 'cart:add_to_cart' product.id %}"
+                   class="add-cart-btn">
+
+                    Add To Cart
+
+                </a>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+{% include "components/new_arrival.html" %}
+{% include "components/testimonials.html" %}
+{% include "components/faq.html" %}
+{% include 'components/trusted.html' %}
+{% include "components/brand_story.html" %}
+{% include "components/limited_edition.html" %}
+{% include "components/combo_offers.html" %}
+{% include "components/instagram_gallery.html" %}
+{% include "components/video_section.html" %}
+{% include "components/manufacturing.html" %}
+{% include "components/nutrition.html" %}
+{% include "components/newsletter.html" %}
+{% include "components/footer-section.html" %}
+
+{% endblock %}

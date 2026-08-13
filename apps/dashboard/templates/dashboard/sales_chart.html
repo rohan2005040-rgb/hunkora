@@ -1,0 +1,47 @@
+{% load static %}
+
+<div class="dashboard-box chart-card">
+
+    <!-- Chart Header -->
+    <div class="chart-header">
+
+        <div class="chart-title">
+
+            <h2>
+                <i class="fa-solid fa-chart-line"></i>
+                Sales Overview
+            </h2>
+
+            <p>
+                Track your business performance
+            </p>
+
+        </div>
+
+        <div class="chart-actions">
+
+            <button class="filter-btn active" data-period="7d">
+                7D
+            </button>
+
+            <button class="filter-btn" data-period="30d">
+                30D
+            </button>
+
+            <button class="filter-btn" data-period="12m">
+                12M
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Chart -->
+
+    <div class="chart-body">
+
+        <canvas id="salesChart"></canvas>
+
+    </div>
+
+</div>

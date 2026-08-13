@@ -1,0 +1,63 @@
+.nav-icons{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.auth-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.login-btn,
+.register-btn{
+    padding:10px 20px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.login-btn{
+    background:#111;
+    color:#fff;
+}
+
+.register-btn{
+    background:#FDB813;
+    color:#111;
+}
+
+.user-menu{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.user-profile{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    color:#222;
+    font-weight:600;
+}
+
+.profile-img{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.logout-btn{
+    background:#ff4d4d;
+    color:#fff;
+    padding:9px 16px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.logout-btn:hover{
+    background:#d63031;
+}

@@ -1,0 +1,86 @@
+{% load static %}
+
+<div class="dashboard-box">
+
+    <div class="box-header">
+
+        <h2>
+            <i class="fa-solid fa-users"></i>
+            Recent Customers
+        </h2>
+
+        <a href="#">
+            View All
+        </a>
+
+    </div>
+
+    <div class="customer-list">
+
+        {% for customer in recent_customers %}
+
+        <div class="customer-row">
+
+            <div class="customer-avatar">
+
+                {% if customer.profile_image %}
+
+                    <img src="{{ customer.profile_image.url }}" alt="{{ customer.get_full_name }}">
+
+                {% else %}
+
+                    <img src="https://ui-avatars.com/api/?name={{ customer.get_full_name|default:customer.username|urlencode }}&background=2563eb&color=ffffff" alt="{{ customer.username }}">
+
+                {% endif %}
+
+            </div>
+
+            <div class="customer-info">
+
+                <h4>
+
+                    {{ customer.get_full_name|default:customer.username }}
+
+                </h4>
+
+                <span>
+
+                    {{ customer.address.city|default:customer.city|default:"Bangladesh" }}
+
+                </span>
+
+            </div>
+
+            <div class="customer-date">
+
+                {% if customer.date_joined %}
+
+                    {{ customer.date_joined|date:"d M Y" }}
+
+                {% else %}
+
+                    New Customer
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="empty-state">
+
+            <i class="fa-solid fa-users-slash"></i>
+
+            <h4>No Customers Found</h4>
+
+            <p>No customers have registered yet.</p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>

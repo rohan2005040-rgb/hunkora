@@ -1,0 +1,445 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block title %}Dashboard | HUNKORA Admin{% endblock %}
+
+{% block content %}
+
+<!-- =========================
+Dashboard Cards
+========================= -->
+
+<div class="dashboard-cards">
+
+    <!-- Orders -->
+
+    <div class="dashboard-card">
+
+        <div class="icon orange">
+            <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+
+        <div class="info">
+            <span>Total Orders</span>
+            <h2>{{ total_orders|default:"0" }}</h2>
+            <small>
+                <i class="fa-solid fa-arrow-up"></i>
+                Dynamic
+            </small>
+        </div>
+
+    </div>
+
+    <!-- Products -->
+
+    <div class="dashboard-card">
+
+        <div class="icon green">
+            <i class="fa-solid fa-box"></i>
+        </div>
+
+        <div class="info">
+            <span>Total Products</span>
+            <h2>{{ total_products|default:"0" }}</h2>
+            <small>
+                <i class="fa-solid fa-circle-check"></i>
+                Active
+            </small>
+        </div>
+
+    </div>
+
+    <!-- Revenue -->
+
+    <div class="dashboard-card">
+
+        <div class="icon blue">
+            <i class="fa-solid fa-sack-dollar"></i>
+        </div>
+
+        <div class="info">
+            <span>Total Revenue</span>
+            <h2>৳{{ total_revenue|default:"0" }}</h2>
+            <small>
+                <i class="fa-solid fa-chart-line"></i>
+                Total Income
+            </small>
+        </div>
+
+    </div>
+
+    <!-- Pending -->
+
+    <div class="dashboard-card">
+
+        <div class="icon purple">
+            <i class="fa-solid fa-clock"></i>
+        </div>
+
+        <div class="info">
+            <span>Pending Orders</span>
+            <h2>{{ pending_orders|default:"0" }}</h2>
+            <small>
+                <i class="fa-solid fa-hourglass-half"></i>
+                Waiting
+            </small>
+        </div>
+
+    </div>
+
+    <!-- Low Stock -->
+
+    <div class="dashboard-card">
+
+        <div class="icon red">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+
+        <div class="info">
+            <span>Low Stock</span>
+            <h2>{{ low_stock_products.count|default:"0" }}</h2>
+            <small>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                Need Action
+            </small>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+Dashboard Grid
+========================= -->
+
+<div class="dashboard-grid">
+
+    <!-- Sales Chart -->
+
+    <div class="chart-card">
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>Sales Overview</h2>
+
+                <p>Last 30 Days Performance</p>
+
+            </div>
+
+            <a href="#" class="view-btn">
+                View Report
+            </a>
+
+        </div>
+
+        {% include "dashboard/charts.html" %}
+
+    </div>
+
+</div>
+<!-- =========================================================
+Dashboard Bottom Section
+========================================================= -->
+
+<div class="dashboard-grid-2">
+
+    <!-- ==========================================
+    Top Selling Products
+    =========================================== -->
+
+    <div class="dashboard-section">
+
+        <div class="section-header">
+
+            <h2>
+                <i class="fa-solid fa-fire"></i>
+                Top Selling Products
+            </h2>
+
+            <a href="#">View All</a>
+
+        </div>
+
+        <div class="product-list">
+
+            {% for product in top_products %}
+
+            <div class="product-item">
+
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                {% else %}
+                    <img src="{% static 'dashboard/images/product.png' %}" alt="">
+                {% endif %}
+
+                <div class="product-info">
+
+                    <h4>{{ product.name }}</h4>
+
+                    <span>
+
+                        Sold :
+                        {{ product.total_sold|default:"0" }}
+
+                    </span>
+
+                </div>
+
+                <div class="product-price">
+
+                    ৳{{ product.price }}
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="empty-box">
+
+                <i class="fa-solid fa-box-open"></i>
+
+                <p>No Products Found</p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <!-- ==========================================
+    Low Stock
+    =========================================== -->
+
+    <div class="dashboard-section">
+
+        <div class="section-header">
+
+            <h2>
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                Low Stock
+
+            </h2>
+
+            <a href="#">Inventory</a>
+
+        </div>
+
+        <div class="stock-list">
+
+            {% for item in low_stock_products %}
+
+            <div class="stock-item">
+
+                <div>
+
+                    <h4>
+
+                        {{ item.name }}
+
+                    </h4>
+
+                    <span>
+
+                        {{ item.stock }} Left
+
+                    </span>
+
+                </div>
+
+                <a href="#" class="restock-btn">
+
+                    Restock
+
+                </a>
+
+            </div>
+
+            {% empty %}
+
+            <div class="empty-box">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <p>
+
+                    All Products In Stock
+
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==========================================
+Recent Orders
+========================================== -->
+
+<div class="dashboard-section">
+
+    <div class="section-header">
+
+        <h2>
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            Recent Orders
+
+        </h2>
+
+        <a href="#">View All Orders</a>
+
+    </div>
+
+    <div class="table-wrapper">
+
+        <table class="orders-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Order ID</th>
+
+                    <th>Customer</th>
+
+                    <th>Total</th>
+
+                    <th>Status</th>
+
+                    <th>Date</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for order in recent_orders %}
+
+                <tr>
+
+                    <td>
+
+                        #{{ order.id }}
+
+                    </td>
+
+                    <td>
+
+                        <div class="customer">
+
+                            <img src="{% static 'dashboard/images/avatar.png' %}" alt="">
+
+                            <div>
+
+                                <strong>
+
+                                    {{ order.full_name }}
+
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <td>
+
+                        ৳{{ order.total }}
+
+                    </td>
+
+                    <td>
+
+                        {% if order.status == "Pending" %}
+
+                        <span class="badge pending">
+
+                            Pending
+
+                        </span>
+
+                        {% elif order.status == "Confirmed" %}
+
+                        <span class="badge processing">
+
+                            Confirmed
+
+                        </span>
+
+                        {% elif order.status == "Delivered" %}
+
+                        <span class="badge completed">
+
+                            Delivered
+
+                        </span>
+
+                        {% else %}
+
+                        <span class="badge cancelled">
+
+                            Cancelled
+
+                        </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        {{ order.created_at|date:"d M Y" }}
+
+                    </td>
+
+                    <td>
+
+                        <a href="#" class="action-btn">
+
+                            View
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="6" style="text-align:center; padding:30px;">
+
+                        No Orders Found
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+{% endblock %}

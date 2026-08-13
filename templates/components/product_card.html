@@ -1,0 +1,113 @@
+{% load static %}
+
+{% for product in products %}
+
+<div class="product-card">
+
+    {% if product.discount_price %}
+    <span class="sale-badge">
+        -{{ product.discount_percent }}%
+    </span>
+    {% endif %}
+
+    <a href="{% url 'products:toggle_wishlist' product.id %}"
+       class="wishlist-btn">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </a>
+
+    <div class="product-image">
+
+        <a href="{% url 'products:product_detail' product.id %}">
+
+            {% if product.image %}
+
+            <img src="{{ product.image.url }}"
+                 alt="{{ product.name }}">
+
+            {% else %}
+
+            <img src="{% static 'images/default-product.png' %}">
+
+            {% endif %}
+
+        </a>
+
+    </div>
+
+    <div class="product-content">
+
+        <div class="rating">
+
+            ★★★★★
+
+            <span>(125)</span>
+
+        </div>
+
+        <h3>
+
+            {{ product.name }}
+
+        </h3>
+
+        <p>
+
+            {{ product.short_description|truncatechars:70 }}
+
+        </p>
+
+        <div class="price">
+
+            {% if product.discount_price %}
+
+            <span class="new-price">
+
+                ৳{{ product.discount_price }}
+
+            </span>
+
+            <span class="old-price">
+
+                ৳{{ product.price }}
+
+            </span>
+
+            {% else %}
+
+            <span class="new-price">
+
+                ৳{{ product.price }}
+
+            </span>
+
+            {% endif %}
+
+        </div>
+
+        <div class="product-buttons">
+
+            <a href="{% url 'cart:add_to_cart' product.id %}"
+               class="cart-btn">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                Add To Cart
+
+            </a>
+
+            <a href="{% url 'products:product_detail' product.id %}"
+               class="view-btn">
+
+                View Details
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endfor %}

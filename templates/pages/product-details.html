@@ -1,0 +1,623 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}
+{{ product.name }}
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/product-details.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+
+<section class="product-details-section">
+
+<div class="container">
+
+<!-- =========================
+Breadcrumb
+========================= -->
+
+<div class="breadcrumb">
+
+<a href="/">Home</a>
+
+<span>/</span>
+
+<a href="{% url 'products:product_list' %}">
+
+Products
+
+</a>
+
+<span>/</span>
+
+<span>
+
+{{ product.name }}
+
+</span>
+
+</div>
+
+<div class="product-wrapper">
+
+<!-- =========================
+LEFT SIDE
+========================= -->
+
+<div class="product-gallery">
+
+<div class="thumbnail-list">
+
+<img
+src="{{ product.image.url }}"
+class="thumb active"
+onclick="changeImage(this)"
+alt="{{ product.name }}"
+>
+
+{% if product.image2 %}
+
+<img
+src="{{ product.image2.url }}"
+class="thumb"
+onclick="changeImage(this)"
+alt="{{ product.name }}"
+>
+
+{% endif %}
+
+{% if product.image3 %}
+
+<img
+src="{{ product.image3.url }}"
+class="thumb"
+onclick="changeImage(this)"
+alt="{{ product.name }}"
+>
+
+{% endif %}
+
+{% if product.image4 %}
+
+<img
+src="{{ product.image4.url }}"
+class="thumb"
+onclick="changeImage(this)"
+alt="{{ product.name }}"
+>
+
+{% endif %}
+
+{% if product.video %}
+
+<div
+class="video-thumb"
+onclick="showVideo()"
+>
+
+<i class="fa-solid fa-circle-play"></i>
+
+</div>
+
+{% endif %}
+
+</div>
+
+<div class="main-image">
+
+<img
+id="mainImage"
+src="{{ product.image.url }}"
+alt="{{ product.name }}"
+>
+
+</div>
+
+{% if product.video %}
+
+<div
+id="productVideo"
+class="video-box"
+style="display:none;"
+>
+
+<video controls width="100%">
+
+<source
+src="{{ product.video.url }}"
+type="video/mp4">
+
+</video>
+
+</div>
+
+{% endif %}
+
+</div>
+
+<!-- =========================
+RIGHT SIDE
+========================= -->
+
+<div class="product-info">
+
+<div class="product-top">
+
+<span class="product-category">
+
+Premium Banana Chips
+
+</span>
+
+{% if request.user.is_authenticated %}
+
+<a
+href="{% url 'products:toggle_wishlist' product.id %}"
+class="wishlist-btn"
+>
+
+{% if is_wishlist %}
+
+<i class="fa-solid fa-heart"></i>
+
+{% else %}
+
+<i class="fa-regular fa-heart"></i>
+
+{% endif %}
+
+</a>
+
+{% else %}
+
+
+
+{% endif %}
+
+</div>
+
+<h1 class="product-title">
+
+{{ product.name }}
+
+</h1>
+
+<div class="product-rating">
+
+★★★★★
+
+<span>
+
+(125 Reviews)
+
+</span>
+
+</div>
+
+<div class="product-price">
+
+<span
+id="productPrice"
+class="new-price"
+>
+
+৳{{ product.price }}
+
+</span>
+
+{% if product.old_price %}
+
+<span
+id="oldPrice"
+class="old-price"
+>
+
+৳{{ product.old_price }}
+
+</span>
+
+{% endif %}
+
+</div>
+
+<p class="product-short-description">
+
+{{ product.short_description }}
+
+</p>
+
+{% if product.stock > 0 %}
+
+<div class="stock-status">
+
+<span class="in-stock">
+
+<i class="fa-solid fa-circle-check"></i>
+
+In Stock ({{ product.stock }})
+
+</span>
+
+</div>
+
+{% else %}
+
+<div class="stock-status">
+
+<span class="out-stock">
+
+Out Of Stock
+
+</span>
+
+</div>
+
+{% endif %}
+
+<hr>
+<!-- =========================
+Nutrition Facts
+========================= -->
+
+<div class="nutrition-card">
+
+    <div class="nutrition-header">
+
+        <i class="fa-solid fa-heart-pulse"></i>
+
+        <h3>Nutrition Facts</h3>
+
+    </div>
+
+    <p class="nutrition-subtitle">
+
+        Per 100g Serving
+
+    </p>
+
+    <div class="nutrition-items">
+
+        <div class="nutrition-row">
+            <span>Calories</span>
+            <strong>520 kcal</strong>
+        </div>
+
+        <div class="nutrition-row">
+            <span>Total Fat</span>
+            <strong>32 g</strong>
+        </div>
+
+        <div class="nutrition-row">
+            <span>Carbohydrates</span>
+            <strong>58 g</strong>
+        </div>
+
+        <div class="nutrition-row">
+            <span>Protein</span>
+            <strong>2 g</strong>
+        </div>
+
+        <div class="nutrition-row">
+            <span>Fiber</span>
+            <strong>5 g</strong>
+        </div>
+
+        <div class="nutrition-row">
+            <span>Sodium</span>
+            <strong>280 mg</strong>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+Weight
+========================= -->
+
+<div class="product-weight">
+
+    <h4>Select Weight</h4>
+
+    <div class="weight-buttons">
+
+        <button
+            type="button"
+            class="active-weight"
+            data-weight="50">
+
+            50g
+
+        </button>
+
+        <button
+            type="button"
+            data-weight="100">
+
+            100g
+
+        </button>
+
+        <button
+            type="button"
+            data-weight="200">
+
+            200g
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- =========================
+Quantity
+========================= -->
+
+<div class="quantity-wrapper">
+
+    <h4>Quantity</h4>
+
+    <div class="quantity-box">
+
+        <button
+            id="minusBtn"
+            type="button">
+
+            −
+
+        </button>
+
+        <input
+            id="qtyInput"
+            type="text"
+            value="1"
+            readonly>
+
+        <button
+            id="plusBtn"
+            type="button">
+
+            +
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- =========================
+Buttons
+========================= -->
+
+<div class="product-buttons">
+
+    <a
+        id="addToCartBtn"
+        href="{% url 'cart:add_to_cart' product.id %}?weight=50"
+        class="cart-btn">
+
+        <i class="fa-solid fa-cart-shopping"></i>
+
+        Add To Cart
+
+    </a>
+
+    <a
+        id="buyNowBtn"
+        href="{% url 'cart:add_to_cart' product.id %}?weight=50"
+        class="buy-btn">
+
+        <i class="fa-solid fa-bolt"></i>
+
+        Buy Now
+
+    </a>
+
+</div>
+
+<!-- =========================
+Features
+========================= -->
+
+<div class="product-features">
+
+
+    <div class="feature">
+
+        <i class="fa-solid fa-money-bill-wave"></i>
+
+        <span>
+
+            Cash On Delivery
+
+        </span>
+
+    </div>
+
+    <div class="feature">
+
+        <i class="fa-solid fa-shield-halved"></i>
+
+        <span>
+
+            Secure Payment
+
+        </span>
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+{% block extra_js %}
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    // ==========================
+    // Elements
+    // ==========================
+
+    const basePrice = parseFloat("{{ product.price }}");
+    const oldBasePrice = parseFloat("{{ product.old_price|default:0 }}");
+
+    const price = document.getElementById("productPrice");
+    const oldPrice = document.getElementById("oldPrice");
+
+    const addBtn = document.getElementById("addToCartBtn");
+    const buyBtn = document.getElementById("buyNowBtn");
+
+    const qtyInput = document.getElementById("qtyInput");
+    const plusBtn = document.getElementById("plusBtn");
+    const minusBtn = document.getElementById("minusBtn");
+
+    // ==========================
+    // Quantity
+    // ==========================
+
+    plusBtn.addEventListener("click", function(){
+
+        qtyInput.value = parseInt(qtyInput.value) + 1;
+
+    });
+
+    minusBtn.addEventListener("click", function(){
+
+        let qty = parseInt(qtyInput.value);
+
+        if(qty > 1){
+
+            qtyInput.value = qty - 1;
+
+        }
+
+    });
+
+    // ==========================
+    // Weight Change
+    // ==========================
+
+    document.querySelectorAll(".weight-buttons button").forEach(function(btn){
+
+        btn.addEventListener("click", function(){
+
+            document.querySelectorAll(".weight-buttons button").forEach(function(item){
+
+                item.classList.remove("active-weight");
+
+            });
+
+            this.classList.add("active-weight");
+
+            let weight = parseInt(this.dataset.weight);
+
+            let newPrice = basePrice;
+            let newOldPrice = oldBasePrice;
+
+            if(weight === 50){
+
+                newPrice = 80;
+
+                newOldPrice = 120;
+
+            }
+
+            else if(weight === 100){
+
+                newPrice = basePrice;
+
+                newOldPrice = oldBasePrice;
+
+            }
+
+            else if(weight === 200){
+
+                newPrice = basePrice * 2;
+
+                newOldPrice = oldBasePrice * 2;
+
+            }
+
+            price.innerHTML = "৳" + newPrice;
+
+            if(oldPrice){
+
+                oldPrice.innerHTML = "৳" + newOldPrice;
+
+            }
+
+            addBtn.href = "{% url 'cart:add_to_cart' product.id %}?weight=" + weight;
+
+            buyBtn.href = "{% url 'cart:add_to_cart' product.id %}?weight=" + weight;
+
+        });
+
+    });
+
+});
+
+
+// ==========================
+// Change Image
+// ==========================
+
+function changeImage(img){
+
+    document.getElementById("mainImage").src = img.src;
+
+    document.querySelectorAll(".thumb").forEach(function(item){
+
+        item.classList.remove("active");
+
+    });
+
+    img.classList.add("active");
+
+    let video = document.getElementById("productVideo");
+
+    if(video){
+
+        video.style.display = "none";
+
+    }
+
+    document.querySelector(".main-image").style.display = "flex";
+
+}
+
+
+// ==========================
+// Show Video
+// ==========================
+
+function showVideo(){
+
+    let imageBox = document.querySelector(".main-image");
+
+    let videoBox = document.getElementById("productVideo");
+
+    if(videoBox){
+
+        imageBox.style.display = "none";
+
+        videoBox.style.display = "block";
+
+    }
+
+}
+
+</script>
+{% endblock %}
+{% endblock %}

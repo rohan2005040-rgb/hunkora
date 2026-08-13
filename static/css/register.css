@@ -1,0 +1,191 @@
+@import url("login.css");
+
+.register-section{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:100px 20px;
+
+    background:linear-gradient(135deg,#FFF8EC,#FFF2D9);
+
+}
+
+.register-container{
+
+    width:100%;
+
+    max-width:1300px;
+
+    background:#fff;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    box-shadow:0 30px 80px rgba(0,0,0,.12);
+
+}
+
+.register-left{
+
+    background:linear-gradient(135deg,#FDB813,#F59E0B);
+
+    color:#fff;
+
+    padding:70px;
+
+}
+
+.register-right{
+
+    padding:70px 60px;
+
+}
+
+.register-btn{
+
+    width:100%;
+
+    margin-top:20px;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#FDB813;
+
+    color:#173F2B;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.register-btn:hover{
+
+    background:#173F2B;
+
+    color:#fff;
+
+}
+
+.login-link{
+
+    text-align:center;
+
+    margin-top:30px;
+
+}
+
+.login-link a{
+
+    color:#F59E0B;
+
+    font-weight:700;
+
+    text-decoration:none;
+
+}
+.input-box input{
+
+    width:100%;
+
+    padding:18px;
+
+    border:2px solid #e5e5e5;
+
+    border-radius:14px;
+
+    font-size:16px;
+
+    transition:.3s;
+
+}
+
+.input-box input:focus{
+
+    border-color:#FDB813;
+
+    outline:none;
+
+    box-shadow:0 0 0 4px rgba(253,184,19,.15);
+
+}
+
+.error{
+
+    color:#dc2626;
+
+    font-size:13px;
+
+    display:block;
+
+    margin-top:8px;
+
+}
+
+.form-error{
+
+    background:#FEE2E2;
+
+    color:#991B1B;
+
+    padding:14px;
+
+    border-radius:10px;
+
+    margin-bottom:20px;
+
+}
+.password-box{
+
+    position:relative;
+
+}
+
+.password-box input{
+
+    width:100%;
+
+    padding-right:55px;
+
+}
+
+.password-box button{
+
+    position:absolute;
+
+    top:50%;
+
+    right:15px;
+
+    transform:translateY(-50%);
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    color:#777;
+
+}

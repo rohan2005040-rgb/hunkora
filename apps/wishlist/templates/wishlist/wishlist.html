@@ -1,0 +1,117 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}
+My Wishlist | HUNKORA
+{% endblock %}
+
+{% block content %}
+
+<section class="wishlist-hero">
+    <div class="container">
+        <div class="wishlist-top">
+            <div>
+                <span class="wishlist-subtitle">
+                    ❤️ MY FAVORITES
+                </span>
+                <h1>
+                    My Wishlist
+                </h1>
+                <p>
+                    All your favorite Hunkora Banana Chips are saved here.
+                    Add them to your cart anytime with one click.
+                </p>
+            </div>
+
+            <div class="wishlist-count-box">
+                <h2>
+                    {{ items|length }}
+                </h2>
+                <span>
+                    Saved Products
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="wishlist-section">
+    <div class="container">
+        {% if items %}
+            <div class="wishlist-grid">
+                {% for item in items %}
+                    <div class="wishlist-card">
+                        <div class="wishlist-image">
+                            <!-- ✅ slug এর জায়গায় id বসানো হয়েছে -->
+                            <a href="{% url 'products:product_detail' item.product.id %}">
+                                {% if item.product.image %}
+                                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                {% else %}
+                                    <img src="{% static 'images/placeholder.png' %}" alt="{{ item.product.name }}">
+                                {% endif %}
+                            </a>
+                            <div class="wishlist-remove">
+                                <a href="{% url 'wishlist:remove' item.product.id %}">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="wishlist-content">
+                            <span class="wishlist-category">
+                                {{ item.product.category.name|default:"Banana Chips" }}
+                            </span>
+                            <h3>
+                                <!-- ✅ slug এর জায়গায় id বসানো হয়েছে -->
+                                <a href="{% url 'products:product_detail' item.product.id %}">
+                                    {{ item.product.name }}
+                                </a>
+                            </h3>
+                            <p class="wishlist-description">
+                                {{ item.product.short_description|default:item.product.description|truncatewords:15 }}
+                            </p>
+                            <div class="wishlist-price">
+                                <span class="price">
+                                    ৳{{ item.product.price }}
+                                </span>
+                                {% if item.product.old_price %}
+                                    <span class="old-price">
+                                        ৳{{ item.product.old_price }}
+                                    </span>
+                                {% endif %}
+                            </div>
+                            <div class="wishlist-buttons">
+                                <a href="{% url 'cart:add_to_cart' item.product.id %}" class="cart-btn">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    Add To Cart
+                                </a>
+                                <a href="{% url 'wishlist:remove' item.product.id %}" class="remove-btn">
+                                    Remove
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="wishlist-empty">
+                <div class="wishlist-empty-icon">
+                    ❤️
+                </div>
+                <h2>
+                    Your Wishlist Is Empty
+                </h2>
+                <p>
+                    You haven't added any favorite products yet.
+                    Browse our delicious banana chips and save your favorites.
+                </p>
+                <a href="{% url 'home' %}#all-products" class="shop-now-btn">
+                    Continue Shopping
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}

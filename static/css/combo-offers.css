@@ -1,0 +1,911 @@
+/* ===========================
+   COMBO SECTION
+=========================== */
+
+.combo-section{
+    padding:100px 0;
+    background:#fffdf8;
+}
+
+.combo-header{
+    text-align:center;
+    max-width:750px;
+    margin:0 auto 70px;
+}
+
+.combo-subtitle{
+
+    display:inline-block;
+
+    padding:10px 24px;
+
+    background:#fff3d6;
+
+    color:#ff9800;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    border-radius:50px;
+
+    margin-bottom:20px;
+
+    text-transform:uppercase;
+}
+
+.combo-header h2{
+
+    font-size:46px;
+
+    line-height:1.2;
+
+    font-weight:800;
+
+    color:#222;
+
+    margin-bottom:18px;
+}
+
+.combo-header p{
+
+    font-size:18px;
+
+    color:#666;
+
+    line-height:1.8;
+}
+
+/* ===========================
+   GRID
+=========================== */
+
+.combo-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(340px,1fr));
+
+    gap:40px;
+
+    align-items:stretch;
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.combo-card{
+
+    position:relative;
+
+    background:#fff;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 15px 45px rgba(0,0,0,.08);
+
+    transition:.45s;
+
+    display:flex;
+
+    flex-direction:column;
+
+    height:100%;
+
+    border:1px solid #f1f1f1;
+}
+
+.combo-card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:
+
+    0 25px 70px rgba(0,0,0,.15);
+}
+
+/* ===========================
+   BADGE
+=========================== */
+
+.combo-badge{
+
+    position:absolute;
+
+    top:20px;
+
+    left:20px;
+
+    background:linear-gradient(
+    135deg,
+    #ff9800,
+    #ff6b00);
+
+    color:#fff;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    padding:10px 20px;
+
+    border-radius:50px;
+
+    z-index:50;
+
+    box-shadow:
+
+    0 12px 25px rgba(255,152,0,.35);
+}
+
+/* ===========================
+   IMAGE
+=========================== */
+
+.combo-image{
+
+    height:320px;
+
+    overflow:hidden;
+
+    background:#fff7ea;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+.combo-image img{
+
+    width:88%;
+
+    transition:.6s;
+
+    object-fit:contain;
+}
+
+.combo-card:hover .combo-image img{
+
+    transform:scale(1.12) rotate(-2deg);
+}
+
+/* ===========================
+   CONTENT
+=========================== */
+
+.combo-content{
+
+    padding:35px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    flex:1;
+}
+
+.combo-title{
+
+    font-size:30px;
+
+    font-weight:800;
+
+    color:#222;
+
+    margin-bottom:12px;
+}
+
+.combo-description{
+
+    font-size:16px;
+
+    color:#777;
+
+    line-height:1.7;
+
+    margin-bottom:25px;
+}
+/* ===========================
+   WEIGHT BOX
+=========================== */
+
+.combo-weight-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    background:linear-gradient(135deg,#fff7e6,#fffdf8);
+
+    border:1px solid #ffe2a8;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    margin-bottom:28px;
+
+    transition:.35s;
+
+}
+
+.combo-card:hover .combo-weight-box{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 12px 30px rgba(255,152,0,.18);
+
+}
+
+.weight-icon{
+
+    width:62px;
+
+    height:62px;
+
+    background:linear-gradient(135deg,#ff9800,#ff6b00);
+
+    color:#fff;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:24px;
+
+    flex-shrink:0;
+
+}
+
+.weight-content span{
+
+    display:block;
+
+    font-size:13px;
+
+    color:#888;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+}
+
+.weight-content h4{
+
+    margin-top:4px;
+
+    font-size:24px;
+
+    font-weight:800;
+
+    color:#222;
+
+}
+
+
+/* ===========================
+   FEATURES
+=========================== */
+.combo-features{
+    list-style:none;
+    padding:0;
+    margin:28px 0;
+}
+
+.combo-features li{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:14px 0;
+    border-bottom:1px solid #f2f2f2;
+    font-size:16px;
+    color:#444;
+    font-weight:600;
+}
+
+.combo-features li:last-child{
+    border-bottom:none;
+}
+
+.combo-features i{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:#22c55e;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:13px;
+    flex-shrink:0;
+    box-shadow:0 6px 15px rgba(34,197,94,.35);
+}
+
+.combo-features span{
+    line-height:1.6;
+}
+/* ===========================
+   PRICE
+=========================== */
+
+.combo-price{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:auto;
+
+    margin-bottom:20px;
+
+}
+
+.new-price{
+
+    display:block;
+
+    font-size:36px;
+
+    font-weight:800;
+
+    color:#ff6b00;
+
+    line-height:1;
+
+}
+
+.old-price{
+
+    display:block;
+
+    margin-top:8px;
+
+    color:#9b9b9b;
+
+    font-size:18px;
+
+    text-decoration:line-through;
+
+}
+
+.discount-badge{
+
+    background:linear-gradient(135deg,#22c55e,#16a34a);
+
+    color:#fff;
+
+    padding:10px 18px;
+
+    border-radius:50px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    white-space:nowrap;
+
+}
+
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.combo-btn{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    width:100%;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    background:linear-gradient(135deg,#ff9800,#ff6b00);
+
+    color:#fff;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    text-decoration:none;
+
+    transition:.35s;
+
+    box-shadow:0 12px 30px rgba(255,107,0,.30);
+
+}
+
+.combo-btn:hover{
+
+    transform:translateY(-4px);
+
+    color:#fff;
+
+    box-shadow:0 18px 40px rgba(255,107,0,.45);
+
+}
+
+.combo-btn i{
+
+    transition:.35s;
+
+}
+
+.combo-btn:hover i{
+
+    transform:translateX(6px);
+
+}
+
+
+/* ===========================
+   HOVER GLOW
+=========================== */
+
+.combo-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:30px;
+
+    padding:2px;
+
+    background:linear-gradient(135deg,#ff9800,#ffd54f,#ff6b00);
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+
+    mask-composite:exclude;
+
+    opacity:0;
+
+    transition:.4s;
+
+}
+
+.combo-card:hover::before{
+
+    opacity:1;
+
+}
+
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:991px){
+
+    .combo-header h2{
+
+        font-size:36px;
+
+    }
+
+    .combo-image{
+
+        height:270px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .combo-section{
+
+        padding:70px 0;
+
+    }
+
+    .combo-grid{
+
+        gap:28px;
+
+    }
+
+    .combo-content{
+
+        padding:25px;
+
+    }
+
+    .combo-title{
+
+        font-size:24px;
+
+    }
+
+    .new-price{
+
+        font-size:30px;
+
+    }
+
+    .combo-image{
+
+        height:240px;
+
+    }
+
+}
+/* ==========================================
+   PREMIUM ANIMATIONS
+========================================== */
+
+.combo-card{
+
+    animation:comboFade .8s ease forwards;
+
+}
+
+@keyframes comboFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(60px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/* ==========================================
+   IMAGE SHINE EFFECT
+========================================== */
+
+.combo-image{
+
+    position:relative;
+
+}
+
+.combo-image::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:60%;
+
+    height:100%;
+
+    background:linear-gradient(
+
+        120deg,
+
+        transparent,
+
+        rgba(255,255,255,.55),
+
+        transparent
+
+    );
+
+    transition:1s;
+
+}
+
+.combo-card:hover .combo-image::before{
+
+    left:130%;
+
+}
+
+
+/* ==========================================
+   FLOATING EFFECT
+========================================== */
+
+.combo-card:hover{
+
+    transform:
+
+        translateY(-12px)
+
+        scale(1.02);
+
+}
+
+
+/* ==========================================
+   ICON ANIMATION
+========================================== */
+
+.combo-features li{
+
+    transition:.35s;
+
+}
+
+.combo-features li:hover{
+
+    transform:translateX(8px);
+
+}
+
+.combo-features li:hover i{
+
+    transform:scale(1.25);
+
+}
+
+
+/* ==========================================
+   PRICE GLOW
+========================================== */
+
+.new-price{
+
+    text-shadow:
+
+        0 0 15px rgba(255,152,0,.25);
+
+}
+
+
+/* ==========================================
+   BUTTON SHINE
+========================================== */
+
+.combo-btn{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.combo-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-100%;
+
+    width:100%;
+
+    height:100%;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.35),
+
+        transparent
+
+    );
+
+    transition:.8s;
+
+}
+
+.combo-btn:hover::before{
+
+    left:120%;
+
+}
+
+
+/* ==========================================
+   BADGE PULSE
+========================================== */
+
+.combo-badge{
+
+    animation:badgePulse 2.5s infinite;
+
+}
+
+@keyframes badgePulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.06);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+.combo-features::-webkit-scrollbar{
+
+    width:5px;
+
+}
+
+.combo-features::-webkit-scrollbar-thumb{
+
+    background:#ff9800;
+
+    border-radius:50px;
+
+}
+
+
+/* ==========================================
+   PREMIUM CONTAINER
+========================================== */
+
+.combo-section .container{
+
+    max-width:1350px;
+
+}
+
+
+/* ==========================================
+   LARGE DESKTOP
+========================================== */
+
+@media(min-width:1400px){
+
+    .combo-grid{
+
+        grid-template-columns:
+
+            repeat(3,1fr);
+
+    }
+
+}
+
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media(max-width:992px){
+
+    .combo-grid{
+
+        grid-template-columns:
+
+            repeat(2,1fr);
+
+    }
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:768px){
+
+    .combo-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .combo-header h2{
+
+        font-size:32px;
+
+    }
+
+    .combo-header p{
+
+        font-size:16px;
+
+    }
+
+    .combo-image{
+
+        height:220px;
+
+    }
+
+    .combo-title{
+
+        font-size:24px;
+
+    }
+
+    .new-price{
+
+        font-size:30px;
+
+    }
+
+}
+
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media(max-width:480px){
+
+    .combo-content{
+
+        padding:22px;
+
+    }
+
+    .combo-image{
+
+        height:190px;
+
+    }
+
+    .combo-btn{
+
+        font-size:15px;
+
+        padding:15px;
+
+    }
+
+}

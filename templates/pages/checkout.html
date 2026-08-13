@@ -1,0 +1,854 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}
+Checkout
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet"href="{% static 'css/checkout.css' %}?v=35">
+<link rel="stylesheet" href="{% static 'css/checkout.css' %}?v=30">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+
+<section class="checkout-section">
+
+<div class="container">
+
+<div class="checkout-header">
+
+<h1>Checkout</h1>
+
+<p>Complete your order safely and securely.</p>
+
+</div>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<div class="checkout-wrapper">
+
+<!-- ========================= -->
+<!-- LEFT SIDE -->
+<!-- ========================= -->
+
+<div class="checkout-left">
+
+<!-- ========================= -->
+<!-- BILLING DETAILS -->
+<!-- ========================= -->
+
+<div class="checkout-card">
+
+<div class="card-title">
+
+<i class="fa-solid fa-location-dot"></i>
+
+Billing Details
+
+</div>
+
+<div class="form-grid">
+
+<!-- Full Name -->
+
+<div class="form-group full-width">
+
+<label>
+
+Full Name <span>*</span>
+
+</label>
+
+<div class="input-box">
+
+<i class="fa-regular fa-user"></i>
+
+<input
+type="text"
+name="full_name"
+placeholder="Enter your full name"
+required>
+
+</div>
+
+</div>
+
+<!-- Phone -->
+
+<div class="form-group full-width">
+
+<label>
+
+Phone Number <span>*</span>
+
+</label>
+
+<div class="input-box">
+
+<i class="fa-solid fa-phone"></i>
+
+<input
+type="tel"
+name="phone"
+placeholder="01XXXXXXXXX"
+required>
+
+</div>
+
+</div>
+
+<!-- Region -->
+
+<div class="form-group full-width">
+
+<label>
+
+Region / City / District <span>*</span>
+
+</label>
+
+<div class="input-box">
+
+<i class="fa-solid fa-city"></i>
+
+<input
+type="text"
+name="city"
+placeholder="Dhaka"
+required>
+
+</div>
+
+</div>
+
+<!-- Address -->
+
+<div class="form-group full-width">
+
+<label>
+
+Full Address <span>*</span>
+
+</label>
+
+<div class="textarea-box">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<textarea
+rows="4"
+name="address"
+placeholder="House No / Building / Road / Area"
+required></textarea>
+
+</div>
+
+</div>
+
+<!-- Landmark -->
+
+<div class="form-group full-width">
+
+<label>
+
+Landmark (Optional)
+
+</label>
+
+<div class="input-box">
+
+<i class="fa-solid fa-map-location-dot"></i>
+
+<input
+type="text"
+name="landmark"
+placeholder="Nearby Mosque / School / Market">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- SHIPPING -->
+<!-- ========================= -->
+
+<div class="checkout-card">
+
+<div class="card-title">
+
+<i class="fa-solid fa-truck-fast"></i>
+
+Shipping Method
+
+</div>
+
+<div class="shipping-options">
+
+<label class="shipping-item">
+
+<input
+type="radio"
+name="shipping"
+value="65"
+checked>
+
+<div class="shipping-info">
+
+<strong>Inside Dhaka</strong>
+
+<small>Delivery within 1–2 days</small>
+
+</div>
+
+<div class="shipping-price">
+
+৳65
+
+</div>
+
+</label>
+
+<label class="shipping-item">
+
+<input
+type="radio"
+name="shipping"
+value="115">
+
+<div class="shipping-info">
+
+<strong>Outside Dhaka</strong>
+
+<small>Delivery within 2–4 days</small>
+
+</div>
+
+<div class="shipping-price">
+
+৳115
+
+</div>
+
+</label>
+
+</div>
+
+</div>
+<!-- ========================= -->
+<!-- Payment Method -->
+<!-- ========================= -->
+
+<div class="checkout-card">
+
+    <div class="card-title">
+
+        <i class="fa-solid fa-credit-card"></i>
+
+        Payment Method
+
+    </div>
+
+    <div class="payment-options">
+
+        <!-- Cash On Delivery -->
+
+        <label class="payment-item">
+
+            <input
+                type="radio"
+                name="payment_method"
+                value="cod"
+                checked>
+
+            <div class="payment-content">
+
+                <div class="payment-icon cod">
+
+                    <i class="fa-solid fa-money-bill-wave"></i>
+
+                </div>
+
+                <div>
+
+                    <h4>Cash On Delivery</h4>
+
+                    <small>Pay after receiving your order.</small>
+
+                </div>
+
+            </div>
+
+        </label>
+
+        <!-- bKash -->
+
+        <label class="payment-item">
+
+            <input
+                type="radio"
+                name="payment_method"
+                value="bkash">
+
+            <div class="payment-content">
+
+                <div class="payment-icon bkash">
+
+                    B
+
+                </div>
+
+                <div>
+
+                    <h4>bKash</h4>
+
+                    <small>Secure Mobile Banking</small>
+
+                </div>
+
+            </div>
+
+        </label>
+
+        <!-- Nagad -->
+
+        <label class="payment-item">
+
+            <input
+                type="radio"
+                name="payment_method"
+                value="nagad">
+
+            <div class="payment-content">
+
+                <div class="payment-icon nagad">
+
+                    N
+
+                </div>
+
+                <div>
+
+                    <h4>Nagad</h4>
+
+                    <small>Instant Mobile Payment</small>
+
+                </div>
+
+            </div>
+
+        </label>
+
+    </div>
+
+</div>
+<!-- ========================= -->
+<!-- bKash Payment Box -->
+<!-- ========================= -->
+
+<div
+class="checkout-card"
+id="bkashBox"
+style="display:none;">
+
+    <div class="card-title">
+
+        <i class="fa-solid fa-mobile-screen"></i>
+
+        bKash Payment
+
+    </div>
+
+    <div class="bkash-payment-box">
+
+        <div class="bkash-logo">
+
+            <h2 style="color:#e2136e;">
+                bKash
+            </h2>
+
+        </div>
+
+        <p>
+
+            Please send money to the following
+            bKash number.
+
+        </p>
+
+        <h2
+        style="
+        color:#e2136e;
+        margin:15px 0;
+        ">
+
+            017XXXXXXXX
+
+        </h2>
+
+        <div class="payment-amount">
+
+            Amount
+
+            <strong>
+
+                ৳{{ grand_total }}
+
+            </strong>
+
+        </div>
+
+        <br>
+
+        <div class="form-group">
+
+            <label>
+
+                Sender bKash Number
+
+            </label>
+
+            <input
+
+                type="text"
+
+                name="bkash_number"
+
+                class="checkout-input"
+
+                placeholder="01XXXXXXXXX"
+
+            >
+
+        </div>
+
+        <br>
+
+        <div class="form-group">
+
+            <label>
+
+                Transaction ID
+
+            </label>
+
+            <input
+
+                type="text"
+
+                name="transaction_id"
+
+                class="checkout-input"
+
+                placeholder="8A7B9CD123"
+
+            >
+
+        </div>
+
+        <br>
+
+        <div class="payment-note">
+
+            ⚠️
+            টাকা Send Money করার পরে
+            Transaction ID লিখে Order Complete করুন।
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ========================= -->
+<!-- Order Note -->
+<!-- ========================= -->
+
+<div class="checkout-card">
+
+    <div class="card-title">
+
+        <i class="fa-solid fa-note-sticky"></i>
+
+        Order Notes
+
+    </div>
+
+    <textarea
+        name="order_note"
+        rows="5"
+        class="checkout-textarea"
+        placeholder="Special delivery instructions (Optional)"></textarea>
+
+</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- RIGHT SIDE -->
+<!-- ========================= -->
+
+<div class="checkout-right">
+
+<div class="order-summary">
+
+<h2>Your Order</h2>
+
+{% if cart %}
+
+{% for item in cart.items.all %}
+
+<div class="order-product">
+
+<div class="order-image">
+
+<img
+src="{{ item.product.image.url }}"
+alt="{{ item.product.name }}">
+
+</div>
+
+<div class="order-info">
+
+<h4>{{ item.product.name }}</h4>
+
+<p>
+
+Quantity :
+<strong>{{ item.quantity }}</strong>
+
+</p>
+
+</div>
+
+<div class="order-price">
+
+৳{{ item.total_price }}
+
+</div>
+
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+<hr>
+
+<!-- Coupon -->
+
+<div class="coupon-box">
+
+<input
+type="text"
+placeholder="Coupon Code">
+
+<button
+type="button">
+
+Apply
+
+</button>
+
+</div>
+
+<!-- Summary -->
+
+<div class="summary-row">
+
+<span>Subtotal</span>
+
+<strong>
+
+৳{{ cart_total }}
+
+</strong>
+
+</div>
+
+<div class="summary-row">
+
+<span>Shipping</span>
+
+<strong id="shippingPrice">
+
+৳65
+
+</strong>
+
+</div>
+
+<div class="summary-row">
+
+<span>VAT</span>
+
+<strong>
+
+৳0
+
+</strong>
+
+</div>
+
+<hr>
+
+<div class="summary-total">
+
+<span>Grand Total</span>
+
+<strong id="grandTotal">
+
+৳{{ grand_total }}
+
+</strong>
+
+</div>
+<!-- ========================= -->
+<!-- Terms & Conditions -->
+<!-- ========================= -->
+
+<div class="terms-box">
+
+<label class="terms-check">
+
+<input
+type="checkbox"
+name="agree_terms"
+required>
+
+<span>
+
+I agree to the
+
+<a href="#">
+
+Terms & Conditions
+
+</a>
+
+and
+
+<a href="#">
+
+Privacy Policy
+
+</a>
+
+</span>
+
+</label>
+
+</div>
+
+<!-- ========================= -->
+<!-- Secure Checkout -->
+<!-- ========================= -->
+
+<div class="secure-checkout">
+
+<div class="secure-item">
+
+<i class="fa-solid fa-lock"></i>
+
+<span>
+
+100% Secure Checkout
+
+</span>
+
+</div>
+
+<div class="secure-item">
+
+<i class="fa-solid fa-truck-fast"></i>
+
+<span>
+
+Fast Delivery
+
+</span>
+
+</div>
+
+<div class="secure-item">
+
+<i class="fa-solid fa-money-bill-wave"></i>
+
+<span>
+
+Cash On Delivery
+
+</span>
+
+</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- Place Order -->
+<!-- ========================= -->
+
+<button
+type="submit"
+class="place-order-btn">
+
+<i class="fa-solid fa-bag-shopping"></i>
+
+Place Order
+
+</button>
+
+<p class="secure-note">
+
+🔒 Your personal information is encrypted and securely processed.
+
+</p>
+
+</div>
+
+<!-- order-summary -->
+
+</div>
+
+<!-- checkout-right -->
+
+</div>
+
+<!-- checkout-wrapper -->
+
+</form>
+
+</div>
+
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    // ===========================
+    // Shipping
+    // ===========================
+
+    const shippingRadios =
+    document.querySelectorAll(
+        "input[name='shipping']"
+    );
+
+    const shippingPrice =
+    document.getElementById("shippingPrice");
+
+    const grandTotal =
+    document.getElementById("grandTotal");
+
+    let subtotal =
+    parseFloat("{{ cart_total|default:0 }}");
+
+    function updateTotal(){
+
+        let shipping = 65;
+
+        shippingRadios.forEach(function(item){
+
+            if(item.checked){
+
+                shipping =
+                parseFloat(item.value);
+
+            }
+
+        });
+
+        shippingPrice.innerHTML =
+        "৳" + shipping;
+
+        grandTotal.innerHTML =
+        "৳" + (subtotal + shipping);
+
+    }
+
+    shippingRadios.forEach(function(item){
+
+        item.addEventListener(
+            "change",
+            updateTotal
+        );
+
+    });
+
+    updateTotal();
+
+    // ===========================
+    // Payment Method
+    // ===========================
+
+    const paymentMethods =
+    document.querySelectorAll(
+        "input[name='payment_method']"
+    );
+
+    const bkashBox =
+    document.getElementById("bkashBox");
+
+    const bkashNumber =
+    document.querySelector(
+        "input[name='bkash_number']"
+    );
+
+    const transactionId =
+    document.querySelector(
+        "input[name='transaction_id']"
+    );
+
+    paymentMethods.forEach(function(item){
+
+        item.addEventListener(
+            "change",
+            function(){
+
+                if(this.value=="bkash"){
+
+                    bkashBox.style.display="block";
+
+                    bkashNumber.required=true;
+
+                    transactionId.required=true;
+
+                }
+
+                else{
+
+                    bkashBox.style.display="none";
+
+                    bkashNumber.required=false;
+
+                    transactionId.required=false;
+
+                    bkashNumber.value="";
+
+                    transactionId.value="";
+
+                }
+
+            }
+        );
+
+    });
+
+});
+
+</script>
+
+{% endblock %}

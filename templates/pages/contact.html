@@ -1,0 +1,257 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+{% block title %}
+Contact | HUNKORA Premium Banana Chips
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================
+CONTACT HERO
+========================= -->
+
+<section class="contact-hero">
+    <div class="container">
+        <span>CONTACT HUNKORA</span>
+        <h1>
+            We'd Love To
+            <span>Hear From You</span>
+        </h1>
+        <p>
+            Have questions about our premium banana chips?
+            Need wholesale pricing or business partnership?
+            Our team is always ready to help.
+        </p>
+    </div>
+</section>
+
+<!-- =========================
+CONTACT INFO
+========================= -->
+
+<section class="contact-info">
+    <div class="container">
+        <div class="info-card">
+            <i class="fa-solid fa-location-dot"></i>
+            <h3>Our Address</h3>
+            <p>Dhaka, Bangladesh</p>
+        </div>
+
+        <div class="info-card">
+            <i class="fa-solid fa-phone"></i>
+            <h3>Phone</h3>
+            <p>+880 1820232682</p>
+        </div>
+
+        <div class="info-card">
+            <i class="fa-solid fa-envelope"></i>
+            <h3>Email</h3>
+            <p>support@hunkora.com</p>
+        </div>
+
+        <div class="info-card">
+            <i class="fa-solid fa-clock"></i>
+            <h3>Working Hours</h3>
+            <p>
+                Sat - Thu
+                <br>
+                9 AM - 8 PM
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- =========================
+CONTACT FORM
+========================= -->
+
+<section class="contact-form-section">
+    <div class="container contact-wrapper">
+        <div class="contact-left">
+            <span>GET IN TOUCH</span>
+            <h2>Send Us A Message</h2>
+            <p>
+                Fill out the form and our team will contact you as soon as possible.
+            </p>
+        </div>
+
+        <div class="contact-right">
+            <!-- Django Form with POST method and CSRF token -->
+            <form action="{% url 'contact' %}" method="POST">
+                {% csrf_token %}
+
+                <!-- Success / Alert Messages Display -->
+                {% if messages %}
+                    <div class="form-messages" style="margin-bottom: 20px;">
+                        {% for message in messages %}
+                            <div style="padding: 12px 15px; border-radius: 8px; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; font-size: 14px; font-weight: 600;">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <div class="input-group">
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Your Name"
+                        required
+                    >
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email Address"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <input
+                        type="text"
+                        name="phone"
+                        placeholder="Phone Number"
+                    >
+                    <input
+                        type="text"
+                        name="subject"
+                        placeholder="Subject"
+                        required
+                    >
+                </div>
+
+                <textarea
+                    name="message"
+                    rows="7"
+                    placeholder="Write your message..."
+                    required
+                ></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- =========================
+GOOGLE MAP WITH LOCATION OVERLAY
+========================= -->
+<section class="contact-map-section">
+    <div class="container map-wrapper">
+        <!-- Floating Overlay Card -->
+        <div class="map-card">
+            <div class="card-badge">
+                <span class="pulse-dot"></span> Official Location
+            </div>
+            <h3>Hunkora Banana Chips</h3>
+            <p><i class="fa-solid fa-location-dot"></i> Khilkhet, Dhaka 1229, Bangladesh</p>
+            <p><i class="fa-solid fa-clock"></i> Sat - Thu: 9:00 AM - 8:00 PM</p>
+            <a href="https://maps.google.com/maps?q=Hunkora+Banana+Chips+Khilkhet+Dhaka" target="_blank" class="map-direction-btn">
+                Get Directions <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- Google Map Embedded with Exact Coordinates -->
+        <div class="iframe-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.318258288599!2d90.3883819!3d23.8215868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7040b8c6177%3A0x5ca3656c765d7f79!2sHunkora%20Banana%20Chips!5e0!3m2!1sen!2sbd!4v1710000000000!5m2!1sen!2sbd"
+                width="100%"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+</section>
+<!-- =========================================
+FAQ SECTION
+========================================= -->
+
+<section class="contact-faq">
+    <div class="container">
+        <div class="section-title">
+            <span>FAQ</span>
+            <h2>Frequently Asked Questions</h2>
+            <p>
+                Find answers to the most common questions about HUNKORA Premium Banana Chips.
+            </p>
+        </div>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do you deliver all over Bangladesh?</span>
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes. We deliver premium banana chips across Bangladesh through trusted courier partners.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How long does delivery take?</span>
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    Inside Dhaka delivery usually takes 1–2 days. Outside Dhaka it normally takes 2–4 business days.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I become a distributor?</span>
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes. We welcome distributors and wholesale partners from all over Bangladesh.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Are your banana chips freshly made?</span>
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    Absolutely. Every pack is prepared using premium bananas and hygienic production methods.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================
+NEWSLETTER
+========================================= -->
+
+<section class="contact-newsletter">
+    <div class="container">
+        <h2>Stay Updated With HUNKORA</h2>
+        <p>
+            Subscribe to receive our latest products, offers and exclusive discounts.
+        </p>
+
+        <form class="newsletter-form">
+            <input
+                type="email"
+                placeholder="Enter your email address"
+                required
+            >
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/contact.js' %}"></script>
+{% endblock %}

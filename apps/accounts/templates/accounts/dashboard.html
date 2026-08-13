@@ -1,0 +1,237 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container my-5">
+    <!-- Notifications Alert -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success d-flex align-items-center mb-4">
+                <i class="fa-solid fa-circle-check me-2"></i> {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Top Profile Banner -->
+    <div class="dashboard-banner d-flex align-items-center p-4 bg-dark text-white rounded-4 mb-4">
+        <div class="profile-avatar-container position-relative me-4">
+            {% if request.user.profile.image %}
+                <img src="{{ request.user.profile.image.url }}" alt="Profile Picture" class="rounded-circle object-fit-cover" width="90" height="90">
+            {% else %}
+                <div class="avatar-circle rounded-circle bg-warning text-white d-flex align-items-center justify-content-center fw-bold fs-2" style="width: 90px; height: 90px;">
+                    {{ request.user.first_name|first|default:request.user.username|first|upper }}
+                </div>
+            {% endif %}
+            <a href="#edit-profile" class="camera-badge position-absolute bottom-0 end-0 bg-warning text-white rounded-circle p-1 fs-6">
+                <i class="fa-solid fa-camera"></i>
+            </a>
+        </div>
+        <div>
+            <h2 class="mb-1 fw-bold">Welcome back, {{ request.user.get_full_name|default:request.user.username }}!</h2>
+            <div class="d-flex align-items-center gap-3">
+                <span class="text-light fs-6"><i class="fa-regular fa-envelope me-1"></i> {{ request.user.email }}</span>
+                <span class="badge bg-warning text-dark"><i class="fa-solid fa-crown me-1"></i> HUNKORA VIP</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Sidebar Navigation -->
+        <div class="col-md-3 mb-4">
+            <div class="list-group sidebar-nav rounded-4 shadow-sm border-0">
+                <a href="#dashboard-overview" class="list-group-item list-group-item-action active" data-bs-toggle="tab">
+                    <i class="fa-solid fa-gauge me-2"></i> Dashboard
+                </a>
+                <a href="#order-history" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                    <i class="fa-solid fa-box me-2"></i> Order History
+                </a>
+                <a href="#wishlist" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                    <i class="fa-solid fa-heart me-2"></i> Wishlist
+                </a>
+                <a href="#saved-address" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                    <i class="fa-solid fa-map-location-dot me-2"></i> Saved Address
+                </a>
+                <a href="#edit-profile" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                    <i class="fa-solid fa-user-pen me-2"></i> Edit Profile
+                </a>
+                <a href="#notifications" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                    <i class="fa-solid fa-bell me-2"></i> Notifications
+                </a>
+                <a href="#reward-points" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                    <i class="fa-solid fa-coins me-2"></i> Reward Points
+                </a>
+                <a href="{% url 'accounts:logout' %}" class="list-group-item list-group-item-action text-danger fw-bold">
+                    <i class="fa-solid fa-right-from-bracket me-2"></i> Logout
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Tab Contents -->
+        <div class="col-md-9">
+            <div class="tab-content">
+                
+                <!-- 1. Dashboard Overview Tab -->
+                <div class="tab-pane fade show active" id="dashboard-overview">
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-4">
+                            <div class="card border-0 shadow-sm rounded-4 p-3 d-flex flex-row align-items-center">
+                                <div class="bg-warning-subtle text-warning p-3 rounded-3 me-3 fs-3"><i class="fa-solid fa-bag-shopping"></i></div>
+                                <div>
+                                    <h3 class="mb-0 fw-bold">{{ orders_count }}</h3>
+                                    <small class="text-muted">Total Orders</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card border-0 shadow-sm rounded-4 p-3 d-flex flex-row align-items-center">
+                                <div class="bg-success-subtle text-success p-3 rounded-3 me-3 fs-3"><i class="fa-solid fa-coins"></i></div>
+                                <div>
+                                    <h3 class="mb-0 fw-bold">{{ profile.reward_points }}</h3>
+                                    <small class="text-muted">Reward Points</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card border-0 shadow-sm rounded-4 p-3 d-flex flex-row align-items-center">
+                                <div class="bg-danger-subtle text-danger p-3 rounded-3 me-3 fs-3"><i class="fa-solid fa-heart"></i></div>
+                                <div>
+                                    <h3 class="mb-0 fw-bold">{{ wishlist_count }}</h3>
+                                    <small class="text-muted">Wishlist Items</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card border-0 shadow-sm rounded-4 p-4">
+                        <h5 class="fw-bold mb-3"><i class="fa-solid fa-address-card me-2"></i> Personal Information Overview</h5>
+                        <div class="row g-3">
+                            <div class="col-6"><small class="text-muted d-block">USERNAME</small><strong>{{ request.user.username }}</strong></div>
+                            <div class="col-6"><small class="text-muted d-block">EMAIL ADDRESS</small><strong>{{ request.user.email }}</strong></div>
+                            <div class="col-6"><small class="text-muted d-block">PHONE NUMBER</small><strong>{{ profile.phone_number|default:"Not specified" }}</strong></div>
+                            <div class="col-6"><small class="text-muted d-block">MEMBER SINCE</small><strong>{{ request.user.date_joined|date:"M d, Y" }}</strong></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Order History Tab -->
+                <div class="tab-pane fade" id="order-history">
+                    <div class="card border-0 shadow-sm rounded-4 p-4">
+                        <h5 class="fw-bold mb-3"><i class="fa-solid fa-box me-2"></i> Recent Orders</h5>
+                        {% if orders %}
+                            <div class="table-responsive">
+                                <table class="table align-middle">
+                                    <thead>
+                                        <tr>
+                                            <th>ORDER ID</th>
+                                            <th>DATE</th>
+                                            <th>TOTAL</th>
+                                            <th>PAYMENT</th>
+                                            <th>STATUS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for order in orders %}
+                                            <tr>
+                                                <td><strong>#{{ order.id }}</strong></td>
+                                                <td>{{ order.created_at|date:"M d, Y" }}</td>
+                                                <td>৳{{ order.total_price }}</td>
+                                                <td>{{ order.payment_method }}</td>
+                                                <td><span class="badge bg-warning text-dark">{{ order.status }}</span></td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% else %}
+                            <p class="text-muted">No order history found.</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- 3. Edit Profile Tab (Image Upload Support) -->
+                <div class="tab-pane fade" id="edit-profile">
+                    <div class="card border-0 shadow-sm rounded-4 p-4">
+                        <h5 class="fw-bold mb-4"><i class="fa-solid fa-user-pen me-2"></i> Update Profile Details</h5>
+                        
+                        <form method="POST" enctype="multipart/form-data" action="{% url 'accounts:dashboard' %}">
+                            {% csrf_token %}
+                            
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Change Profile Picture</label>
+                                <input type="file" name="image" class="form-control" accept="image/*">
+                            </div>
+
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">First Name</label>
+                                    <input type="text" name="first_name" value="{{ request.user.first_name }}" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Last Name</label>
+                                    <input type="text" name="last_name" value="{{ request.user.last_name }}" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Username</label>
+                                    <input type="text" value="{{ request.user.username }}" class="form-control" disabled>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Email Address</label>
+                                    <input type="email" name="email" value="{{ request.user.email }}" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Phone Number</label>
+                                <input type="text" name="phone_number" value="{{ profile.phone_number|default:'' }}" class="form-control" placeholder="017XXXXXXXX">
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label fw-semibold">Full Shipping Address</label>
+                                <textarea name="address" class="form-control" rows="3">{{ profile.address|default:'' }}</textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-warning fw-bold px-4">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 4. Saved Address Tab -->
+                <div class="tab-pane fade" id="saved-address">
+                    <div class="card border-0 shadow-sm rounded-4 p-4">
+                        <h5 class="fw-bold mb-3"><i class="fa-solid fa-map-location-dot me-2"></i> Saved Address</h5>
+                        <p class="text-secondary">{{ profile.address|default:"No saved address provided yet. Update from Edit Profile." }}</p>
+                    </div>
+                </div>
+
+                <!-- 5. Notifications Tab -->
+                <div class="tab-pane fade" id="notifications">
+                    <div class="card border-0 shadow-sm rounded-4 p-4">
+                        <h5 class="fw-bold mb-3"><i class="fa-solid fa-bell me-2"></i> Realtime Notifications</h5>
+                        <div class="alert alert-success mb-0">
+                            <strong>Account Active & Verified</strong><br>
+                            Welcome to HUNKORA! You have unlocked VIP rewards on registration.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Reward Points Tab -->
+                <div class="tab-pane fade" id="reward-points">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 text-center">
+                        <h5 class="fw-bold mb-3 text-start"><i class="fa-solid fa-coins me-2"></i> Reward Balance</h5>
+                        <div class="bg-warning text-white rounded-4 p-4 my-2">
+                            <h1 class="display-4 fw-bold mb-0">{{ profile.reward_points }} <span class="fs-4">HUNKORA Points</span></h1>
+                            <p class="mb-0 mt-2">Redeem your points during checkout for instant discounts!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

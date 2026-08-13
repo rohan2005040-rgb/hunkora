@@ -1,0 +1,51 @@
+:root {
+
+    /* Brand Colors */
+    --primary: #F4B400;
+    --primary-dark: #D89B00;
+
+    --secondary: #1F7A3D;
+
+    --background: #FFFDF8;
+
+    --surface: #FFFFFF;
+
+    --text-dark: #1F1F1F;
+
+    --text-light: #6B7280;
+
+    --border: #E5E7EB;
+
+    --success: #16A34A;
+
+    --danger: #DC2626;
+
+    /* Border Radius */
+
+    --radius-sm:8px;
+    --radius-md:12px;
+    --radius-lg:20px;
+
+    /* Shadow */
+
+    --shadow:
+    0 10px 30px rgba(0,0,0,.08);
+
+}
+/* ==========================================
+   WEBSITE THEME COLORS
+========================================== */
+
+:root{
+
+    --section-white:#ffffff;
+
+    --section-cream:#FFFDF8;
+
+    --section-light:#FFF8EC;
+
+    --section-gold:#FFF4D2;
+
+    --section-dark:#111111;
+
+}

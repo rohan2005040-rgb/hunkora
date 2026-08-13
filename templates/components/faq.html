@@ -1,0 +1,159 @@
+{% load static %}
+
+<section class="faq section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-subtitle">
+                FAQ
+            </span>
+            <h2 class="section-title">
+                Frequently Asked Questions
+            </h2>
+            <p class="section-description">
+                Everything you need to know about Hunkora Banana Chips.
+            </p>
+        </div>
+
+        <div class="faq-wrapper">
+            <div class="faq-item">
+                <button class="faq-question" type="button">
+                    Are your banana chips natural?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Yes. Our banana chips are made from carefully selected bananas with premium ingredients.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" type="button">
+                    How long does delivery take?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Inside Dhaka: 1–2 days. Outside Dhaka: 2–4 days.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" type="button">
+                    Which flavors are available?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Original, Spicy Masala and Magic Masala.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" type="button">
+                    Do you offer Cash on Delivery?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Yes. Cash on Delivery is available all over Bangladesh.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Accordion Styling Fix -->
+<style>
+.faq-wrapper {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: #ffffff;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    border: 1px solid #f1f5f9;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 18px 24px;
+    background: transparent;
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a !important;
+    cursor: pointer;
+    text-align: left;
+}
+
+.faq-question span {
+    font-size: 20px;
+    font-weight: bold;
+    color: #f59e0b;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question span {
+    transform: rotate(45deg);
+}
+
+/* 🟢 Answer Visual Fixes */
+.faq-answer {
+    display: none;
+    padding: 0 24px 20px 24px;
+    background: #ffffff;
+}
+
+.faq-item.active .faq-answer {
+    display: block !important;
+}
+
+.faq-answer p {
+    margin: 0;
+    padding-top: 12px;
+    border-top: 1px solid #f1f5f9;
+    color: #334155 !important; /* গাঢ় দৃশ্যমান টেক্সট কালার */
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+</style>
+
+<!-- Accordion Toggle Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const questionBtn = item.querySelector('.faq-question');
+
+        questionBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            const isActive = item.classList.contains('active');
+
+            // অন্য সব ওপেন থাকা FAQ বন্ধ করে দেবে
+            faqItems.forEach(otherItem => {
+                otherItem.classList.remove('active');
+            });
+
+            // বর্তমানটিতে টগল হবে
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+});
+</script>

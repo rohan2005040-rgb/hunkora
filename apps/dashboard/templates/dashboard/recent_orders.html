@@ -1,0 +1,205 @@
+{% load static %}
+
+<div class="dashboard-box">
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>
+                <i class="fa-solid fa-cart-shopping"></i>
+                Recent Orders
+            </h2>
+
+            <p>
+                Latest customer orders
+            </p>
+
+        </div>
+
+        <a href="#" class="view-btn">
+            View All
+        </a>
+
+    </div>
+
+    <div class="table-wrapper">
+
+        <table class="orders-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Product</th>
+                    <th>Amount</th>
+                    <th>Payment</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for order in recent_orders %}
+
+                <tr>
+
+                    <!-- Order ID -->
+                    <td class="order-id">
+                        #{{ order.id }}
+                    </td>
+
+                    <!-- Customer -->
+                    <td>
+
+                        <div class="customer">
+
+                            {% if order.user.profile_image %}
+
+                                <img src="{{ order.user.profile_image.url }}" alt="{{ order.customer_name }}">
+
+                            {% else %}
+
+                                <img src="https://ui-avatars.com/api/?name={{ order.customer_name|default:order.user.get_full_name|default:'Customer'|urlencode }}&background=2563eb&color=ffffff" alt="Customer">
+
+                            {% endif %}
+
+                            <div>
+
+                                <strong>
+
+                                    {{ order.customer_name|default:order.user.get_full_name|default:"Guest" }}
+
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <!-- Product -->
+
+                    <td>
+
+                        {{ order.product_summary|default:order.items.first.product.name|default:"Hunkora Chips" }}
+
+                    </td>
+
+                    <!-- Amount -->
+
+                    <td class="price">
+
+                        ৳{{ order.total_amount }}
+
+                    </td>
+
+                    <!-- Payment -->
+
+                    <td>
+
+                        <span class="payment-badge">
+
+                            {{ order.payment_method|default:"bKash" }}
+
+                        </span>
+
+                    </td>
+
+                    <!-- Status -->
+
+                    <td>
+
+                        {% if order.status|lower == "completed" or order.status|lower == "delivered" %}
+
+                            <span class="badge completed">
+
+                                Completed
+
+                            </span>
+
+                        {% elif order.status|lower == "processing" or order.status|lower == "shipped" %}
+
+                            <span class="badge processing">
+
+                                Processing
+
+                            </span>
+
+                        {% elif order.status|lower == "cancelled" %}
+
+                            <span class="badge cancelled">
+
+                                Cancelled
+
+                            </span>
+
+                        {% else %}
+
+                            <span class="badge pending">
+
+                                Pending
+
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <!-- Date -->
+
+                    <td>
+
+                        {{ order.created_at|date:"d M Y" }}
+
+                    </td>
+
+                    <!-- Action -->
+
+                    <td>
+
+                        <a href="#" class="action-btn">
+
+                            View
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="8">
+
+                        <div class="empty-state">
+
+                            <i class="fa-solid fa-box-open"></i>
+
+                            <h4>No Recent Orders</h4>
+
+                            <p>No orders found.</p>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

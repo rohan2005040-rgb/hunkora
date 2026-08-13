@@ -1,0 +1,174 @@
+{% load static %}
+
+<section class="flavors-section" id="flavors">
+
+
+    <!-- Background Leaves -->
+    <img src="{% static 'images/flavors/leaf-left.png' %}" class="leaf leaf-left" alt="">
+    <img src="{% static 'images/flavors/leaf-right.png' %}" class="leaf leaf-right" alt="">
+
+    <div class="container">
+
+        <!-- ================= HEADING ================= -->
+
+        <div class="section-title">
+
+
+
+        
+            <span class="subtitle">
+                OUR FLAVORS
+            </span>
+
+            <h2>
+                Explore Our Delicious Flavors
+            </h2>
+
+            <p>
+                Crafted with premium bananas and authentic seasonings.
+            </p>
+
+        </div>
+
+        <!-- ================= CONTENT ================= -->
+
+        <div class="flavors-wrapper">
+
+            <!-- LEFT CONTENT -->
+
+            <div class="flavors-content">
+
+                <h3>
+                    Made from the
+                    finest bananas
+                    and blended with
+                    <span>authentic
+                    flavors.</span>
+                </h3>
+
+                <div class="flavors-line"></div>
+
+                <!-- Feature -->
+
+                <div class="flavor-feature">
+
+                    <div class="flavor-icon">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+
+                    <div>
+
+                        <h4>Natural</h4>
+
+                        <span>No artificial ingredients</span>
+
+                    </div>
+
+                </div>
+
+                <div class="flavor-feature">
+
+                    <div class="flavor-icon">
+                        <i class="fa-solid fa-droplet"></i>
+                    </div>
+
+                    <div>
+
+                        <h4>No Preservatives</h4>
+
+                        <span>Pure & Fresh Snack</span>
+
+                    </div>
+
+                </div>
+
+                <div class="flavor-feature">
+
+                    <div class="flavor-icon">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+
+                    <div>
+
+                        <h4>Made with Care</h4>
+
+                        <span>Premium Quality Snack</span>
+
+                    </div>
+
+                </div>
+
+                <a href="{% url 'products:product_list' %}"class="view-products-btn">
+
+                    View All Products
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+            <!-- ================= PRODUCT CARDS ================= -->
+
+            <!-- ================= PRODUCT CARDS ================= -->
+
+<div class="flavor-cards">
+
+    {% for product in flavor_products %}
+
+    <div class="flavor-card
+        {% if forloop.first %}
+            original
+        {% elif forloop.counter == 2 %}
+            spicy
+        {% else %}
+            magic
+        {% endif %}">
+
+        <div class="card-image">
+
+        {% if product.custom_image %}
+            <img src="{{ product.custom_image.url }}" alt="{{ product.name }}">
+
+        {% elif product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+
+        {% else %}
+            <img src="{% static 'images/default-product.png' %}" alt="{{ product.name }}">
+
+        {% endif %}
+
+        </div>
+
+        <h3>{{ product.name }}</h3>
+
+        <p>{{ product.short_description }}</p>
+
+        <div class="order-btn">
+
+            <a href="{% url 'products:product_detail' id=product.id %}" class="order-btn">
+
+                ORDER NOW
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+                
+                
+
+    </div>
+
+        </div>
+
+    </div>
+    
+
+</section>

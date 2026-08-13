@@ -1,0 +1,214 @@
+{% load static %}
+
+<header class="header">
+
+    <div class="container nav-container">
+
+        <!-- Logo -->
+
+        <a href="/" class="logo">
+            HUNKORA
+        </a>
+
+        <!-- Navigation -->
+
+        <nav class="nav-menu">
+
+            <a href="/" class="active">Home</a>
+
+            <!-- Mega Menu -->
+
+            <div class="mega-menu">
+
+                <a href="#" class="mega-btn">Shop Now</a>
+
+                <div class="mega-dropdown">
+
+                    <!-- Left -->
+
+                    <div class="mega-left">
+
+                        <h4>Shop Categories</h4>
+
+                        <a href="{% url 'home' %}#flavors">Flavors</a>
+                        
+
+                        <hr>
+
+                        <a href="{% url 'home' %}#best-selling">🔥 Best Seller</a>
+                        
+
+                        <a href="{% url 'home' %}#new-arrival">🆕 New Arrival</a>
+
+                        <a href="{% url 'home' %}#combo-offers">🎉 Offers</a>
+
+                        <a href="{% url 'home' %}#all-products">
+                            📦 All Products
+                        </a>
+
+                    </div>
+
+                    <!-- Right -->
+
+                    <div class="mega-right">
+
+                        <div class="mega-banner">
+
+                            <div class="banner-image">
+
+                                Product Image
+
+                            </div>
+
+                            <h3>
+
+                                Premium Banana Chips
+
+                            </h3>
+
+                            <p>
+
+                                Fresh • Crunchy • Healthy
+
+                            </p>
+
+                            <a href="#" class="nav-link">
+
+                                Shop Now
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <a href="{% url 'home' %}#all-products">Products</a>
+
+            <a href="{% url 'about' %}">About</a>
+
+            <a href="{% url 'reviews' %}">Reviews</a>
+
+            <a href="{% url 'blogs' %}">Blogs</a>
+
+            <a href="{% url 'contact' %}">Contact</a>
+
+        </nav>
+
+        <!-- Right Side -->
+
+        <div class="nav-icons">
+
+            <!-- Search -->
+<div class="search-wrapper">
+
+    <button id="searchToggle" class="search-btn">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+    </button>
+
+    <form
+        action="{% url 'products:search_products' %}"
+        method="GET"
+        id="searchBox"
+        class="search-box">
+
+        <input
+            type="text"
+            name="q"
+            placeholder="Search products...">
+
+        <button type="submit">
+
+            <i class="fa-solid fa-search"></i>
+
+        </button>
+
+    </form>
+
+</div>
+            <!-- Login/Register OR Profile -->
+
+            {% if user.is_authenticated %}
+
+            <div class="user-menu">
+
+                <a href="{% url 'accounts:profile' %}" class="user-profile">
+
+                    {% if user.profile.profile_image %}
+
+                        <img src="{{ user.profile.profile_image.url }}"
+                             class="profile-img"
+                             alt="Profile">
+
+                    {% else %}
+
+                        <i class="fa-solid fa-user"></i>
+
+                    {% endif %}
+
+                    <span>{{ user.username }}</span>
+
+                </a>
+
+                <a href="{% url 'accounts:logout' %}" class="logout-btn">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    Logout
+
+                </a>
+
+            </div>
+
+            {% else %}
+
+            <div class="auth-buttons">
+
+                <a href="{% url 'accounts:login' %}"
+                   class="login-btn">
+
+                    Login
+
+                </a>
+
+                <a href="{% url 'accounts:register' %}"
+                   class="register-btn">
+
+                    Register
+
+                </a>
+
+            </div>
+
+            {% endif %}
+
+            <!-- Wishlist -->
+
+            <!-- Wishlist -->
+<a href="{% url 'wishlist:wishlist' %}" class="icon-btn" style="position: relative;">
+    <i class="fa-regular fa-heart"></i>
+    {% if wishlist_count > 0 %}
+        <span class="badge" id="wishlist-badge">{{ wishlist_count }}</span>
+    {% else %}
+        <span class="badge" id="wishlist-badge">0</span>
+    {% endif %}
+</a>
+
+            <!-- Cart -->
+
+            <a href="{% url 'cart:cart' %}" class="icon-btn">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</header>

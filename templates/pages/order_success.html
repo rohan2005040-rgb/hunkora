@@ -1,0 +1,61 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}
+Order Success
+{% endblock %}
+
+{% block content %}
+
+<section class="order-success">
+
+    <div class="success-card">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h1>
+            Order Placed Successfully
+        </h1>
+
+        <p>
+            Thank you for shopping with
+            <strong>HUNKORA</strong>.
+            <br>
+            We have received your order successfully.
+        </p>
+
+        <div class="success-info">
+
+            <div class="item">
+                🚚 Fast Delivery
+            </div>
+
+            <div class="item">
+                📦 Order Confirmed
+            </div>
+
+            <div class="item">
+                💳 Cash On Delivery
+            </div>
+
+        </div>
+
+        <div class="buttons">
+
+            <a href="{% url 'products:product_list' %}" class="btn btn-primary">
+                Continue Shopping
+            </a>
+
+            <a href="{% url 'home' %}" class="btn btn-outline">
+                Back To Home
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

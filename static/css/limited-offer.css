@@ -1,0 +1,218 @@
+/* =========================================
+   LIMITED OFFER SECTION
+========================================= */
+
+.limited-offer{
+    padding:120px 0;
+    background:linear-gradient(135deg,#fffdf7,#fff6df);
+    overflow:hidden;
+}
+
+.limited-offer .container{
+    max-width:1200px;
+    margin:auto;
+    padding:0 20px;
+}
+
+.offer-wrapper{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:70px;
+    background:#ffffff;
+    border-radius:35px;
+    padding:70px;
+    box-shadow:0 20px 60px rgba(0,0,0,.08);
+    position:relative;
+}
+
+.offer-wrapper::before{
+    content:"";
+    position:absolute;
+    width:250px;
+    height:250px;
+    background:#ffd54f;
+    opacity:.15;
+    border-radius:50%;
+    top:-100px;
+    right:-80px;
+}
+
+.offer-wrapper::after{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    background:#4CAF50;
+    opacity:.08;
+    border-radius:50%;
+    bottom:-80px;
+    left:-60px;
+}
+
+.offer-image{
+    flex:1;
+    text-align:center;
+}
+
+.offer-image img{
+    width:100%;
+    max-width:430px;
+    transition:.4s;
+    filter:drop-shadow(0 20px 35px rgba(0,0,0,.18));
+}
+
+.offer-image img:hover{
+    transform:translateY(-10px) scale(1.05);
+}
+
+.offer-content{
+    flex:1;
+    position:relative;
+    z-index:2;
+}
+
+.offer-tag{
+    display:inline-block;
+    background:#ffb300;
+    color:#fff;
+    padding:10px 22px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:20px;
+}
+
+.offer-content h2{
+    font-size:50px;
+    line-height:1.2;
+    color:#1b1b1b;
+    margin-bottom:20px;
+    font-weight:800;
+}
+
+.offer-content p{
+    color:#666;
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+.offer-discount{
+    display:inline-block;
+    background:#fff4d6;
+    color:#ff9800;
+    font-size:20px;
+    font-weight:700;
+    padding:14px 28px;
+    border-radius:50px;
+    margin-bottom:35px;
+}
+
+.offer-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    padding:18px 42px;
+    background:linear-gradient(135deg,#ffb300,#ff9800);
+    color:#fff;
+    text-decoration:none;
+    font-size:17px;
+    font-weight:700;
+    border-radius:50px;
+    transition:.35s;
+    box-shadow:0 10px 25px rgba(255,170,0,.35);
+}
+
+.offer-btn:hover{
+    transform:translateY(-5px);
+    background:linear-gradient(135deg,#ff9800,#ff6f00);
+    box-shadow:0 15px 35px rgba(255,170,0,.45);
+}
+
+.offer-btn i{
+    transition:.3s;
+}
+
+.offer-btn:hover i{
+    transform:translateX(6px);
+}
+
+/* =========================================
+   Responsive
+========================================= */
+
+@media(max-width:992px){
+
+.offer-wrapper{
+    flex-direction:column;
+    text-align:center;
+    padding:50px 35px;
+}
+
+.offer-content h2{
+    font-size:38px;
+}
+
+.offer-image img{
+    max-width:320px;
+}
+
+}
+
+@media(max-width:576px){
+
+.limited-offer{
+    padding:80px 0;
+}
+
+.offer-wrapper{
+    padding:35px 25px;
+}
+
+.offer-content h2{
+    font-size:30px;
+}
+
+.offer-content p{
+    font-size:16px;
+}
+
+.offer-btn{
+    width:100%;
+}
+
+.offer-discount{
+    font-size:18px;
+}
+
+}
+.offer-price{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin:25px 0;
+}
+
+.offer-price .new-price{
+    font-size:38px;
+    font-weight:700;
+    color:#f59e0b;
+}
+
+.offer-price .old-price{
+    font-size:22px;
+    color:#999;
+    text-decoration:line-through;
+}
+
+.offer-image img{
+    width:100%;
+    max-width:420px;
+    display:block;
+    margin:auto;
+    object-fit:contain;
+}

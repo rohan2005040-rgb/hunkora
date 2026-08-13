@@ -1,0 +1,132 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block title %}Products Management | HUNKORA Admin{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<div class="page-header">
+    <div>
+        <h1>Products</h1>
+        <p>Manage all your products</p>
+    </div>
+    <a href="{% url 'dashboard:product_create' %}" class="add-btn">
+        <i class="fa-solid fa-plus"></i>
+        Add Product
+    </a>
+</div>
+
+<!-- Filter & Search Form -->
+<form method="GET" action="{% url 'dashboard:product_list' %}" class="filter-box">
+    <input 
+        type="text" 
+        name="q" 
+        placeholder="Search Product..." 
+        value="{{ request.GET.q|default:'' }}"
+    >
+
+    <select name="category">
+        <option value="">All Categories</option>
+        <option value="banana-chips" {% if request.GET.category == 'banana-chips' %}selected{% endif %}>Banana Chips</option>
+        <option value="combo" {% if request.GET.category == 'combo' %}selected{% endif %}>Combo</option>
+    </select>
+
+    <select name="status">
+        <option value="">All Status</option>
+        <option value="active" {% if request.GET.status == 'active' %}selected{% endif %}>Active</option>
+        <option value="draft" {% if request.GET.status == 'draft' %}selected{% endif %}>Draft</option>
+        <option value="out_of_stock" {% if request.GET.status == 'out_of_stock' %}selected{% endif %}>Out Of Stock</option>
+    </select>
+
+    <button type="submit">
+        <i class="fa-solid fa-filter"></i> Filter
+    </button>
+</form>
+
+<!-- Table Box -->
+<div class="table-box">
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 45px; height: 45px; object-fit: cover; border-radius: 6px;">
+                    {% else %}
+                        <img src="{% static 'images/default-product.png' %}" alt="Default Image" style="width: 45px; height: 45px; object-fit: cover; border-radius: 6px;">
+                    {% endif %}
+                </td>
+                <td>
+                    <strong>{{ product.name }}</strong>
+                </td>
+                <td>
+                    {{ product.category|default:"Uncategorized" }}
+                </td>
+                <td>
+                    ৳{{ product.price }}
+                </td>
+                <td>
+                    {{ product.stock|default:"0" }}
+                </td>
+                <td>
+                    <span class="status {{ product.status|default:'active'|lower }}">
+                        {{ product.get_status_display|default:product.status|title }}
+                    </span>
+                </td>
+                <td>
+                    <div class="action-buttons">
+                        <a href="{% url 'dashboard:product_detail' product.id %}" title="View Details">
+                            <i class="fa-solid fa-eye"></i>
+                        </a>
+                        <a href="{% url 'dashboard:product_update' product.id %}" title="Edit Product">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                        <a href="{% url 'dashboard:product_delete' product.id %}" title="Delete Product" class="delete-btn">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="7" style="text-align: center; padding: 25px; color: #666;">
+                    No Products Found.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Pagination Section -->
+{% if products.has_other_pages %}
+<div class="pagination">
+    {% if products.has_previous %}
+        <a href="?page={{ products.previous_page_number }}&q={{ request.GET.q }}&category={{ request.GET.category }}&status={{ request.GET.status }}" class="btn">Previous</a>
+    {% else %}
+        <button disabled>Previous</button>
+    {% endif %}
+
+    <span>Page {{ products.number }} of {{ products.paginator.num_pages }}</span>
+
+    {% if products.has_next %}
+        <a href="?page={{ products.next_page_number }}&q={{ request.GET.q }}&category={{ request.GET.category }}&status={{ request.GET.status }}" class="btn">Next</a>
+    {% else %}
+        <button disabled>Next</button>
+    {% endif %}
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block title %}Dashboard Overview | HUNKORA Admin{% endblock %}
+
+{% block content %}
+
+<!-- 1. Top Summary Cards -->
+{% include "dashboard/cards.html" %}
+
+<!-- 2. Charts Section & Top Selling Products -->
+<div class="dashboard-grid-main">
+    <div class="chart-section">
+        {% include "dashboard/charts.html" %}
+    </div>
+
+    <div class="top-products-section">
+        {% include "dashboard/top_products.html" %}
+    </div>
+</div>
+
+<!-- 3. Recent Orders & Low Stock -->
+<div class="dashboard-grid-2">
+    <div class="recent-orders-section">
+        {% include "dashboard/recent_orders.html" %}
+    </div>
+
+    <div class="low-stock-section">
+        {% include "dashboard/low_stock.html" %}
+    </div>
+</div>
+
+<!-- 4. Reviews & Customers -->
+<div class="dashboard-grid-2">
+    <div class="reviews-section">
+        {% include "dashboard/latest_reviews.html" %}
+    </div>
+
+    <div class="customers-section">
+        {% include "dashboard/recent_customers.html" %}
+    </div>
+</div>
+
+{% endblock %}

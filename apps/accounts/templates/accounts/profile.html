@@ -1,0 +1,338 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block title %}My Account | HUNKORA Premium Banana Chips{% endblock %}
+
+{% block content %}
+<div class="profile-page-wrapper">
+    <div class="profile-container">
+
+        <!-- Django Notification Message -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="profile-alert success">
+                    <i class="fa-solid fa-circle-check"></i> {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <!-- Top Profile Banner -->
+        <div class="profile-hero-card">
+            <div class="avatar-area">
+                {% if user.profile.avatar and user.profile.avatar.url %}
+                    <img src="{{ user.profile.avatar.url }}" alt="Profile Avatar" class="profile-avatar-img">
+                {% else %}
+                    <div class="profile-avatar-fallback">
+                        {{ user.username|slice:":1"|upper }}
+                    </div>
+                {% endif %}
+
+                <!-- Quick Avatar Upload Form -->
+                <form id="profile-avatar-form" action="{% url 'accounts:profile' %}" method="POST" enctype="multipart/form-data" style="display: none;">
+                    {% csrf_token %}
+                    <input type="file" id="avatar-quick-input" name="avatar" accept="image/*" onchange="submitAvatarForm()">
+                </form>
+
+                <label for="avatar-quick-input" class="avatar-edit-badge" title="Change Avatar">
+                    <i class="fa-solid fa-camera"></i>
+                </label>
+            </div>
+
+            <div class="user-meta-info">
+                <h2>Welcome back, {{ user.get_full_name|default:user.username }}!</h2>
+                <div class="user-badges">
+                    <span><i class="fa-regular fa-envelope"></i> {{ user.email|default:"No email added" }}</span>
+                    <span class="badge-vip"><i class="fa-solid fa-crown"></i> HUNKORA VIP</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Main Layout -->
+        <div class="dashboard-body-grid">
+            
+            <!-- Left Sidebar Navigation -->
+            <aside class="dashboard-sidebar">
+                <nav class="sidebar-menu">
+                    <button class="nav-tab-btn active" onclick="switchTab(event, 'tab-dashboard')">
+                        <i class="fa-solid fa-gauge-high"></i> Dashboard
+                    </button>
+                    <button class="nav-tab-btn" onclick="switchTab(event, 'tab-orders')">
+                        <i class="fa-solid fa-box-archive"></i> Order History
+                    </button>
+                    <button class="nav-tab-btn" onclick="switchTab(event, 'tab-wishlist')">
+                        <i class="fa-solid fa-heart"></i> Wishlist
+                    </button>
+                    <button class="nav-tab-btn" onclick="switchTab(event, 'tab-address')">
+                        <i class="fa-solid fa-map-location-dot"></i> Saved Address
+                    </button>
+                    <button class="nav-tab-btn" onclick="switchTab(event, 'tab-edit-profile')">
+                        <i class="fa-solid fa-user-pen"></i> Edit Profile
+                    </button>
+                    <button class="nav-tab-btn" onclick="switchTab(event, 'tab-notifications')">
+                        <i class="fa-solid fa-bell"></i> Notifications
+                    </button>
+                    <button class="nav-tab-btn" onclick="switchTab(event, 'tab-rewards')">
+                        <i class="fa-solid fa-coins"></i> Reward Points
+                    </button>
+                    
+                    <a href="{% url 'accounts:logout' %}" class="nav-tab-btn btn-logout-link">
+                        <i class="fa-solid fa-right-from-bracket"></i> Logout
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Right Content View Area -->
+            <main class="dashboard-content-area">
+                
+                <!-- TAB 1: DASHBOARD OVERVIEW -->
+                <div id="tab-dashboard" class="tab-pane active">
+                    <div class="dash-stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-icon icon-amber"><i class="fa-solid fa-bag-shopping"></i></div>
+                            <div>
+                                <h3>{{ orders|length|default:"0" }}</h3>
+                                <p>Total Orders</p>
+                            </div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon icon-emerald"><i class="fa-solid fa-coins"></i></div>
+                            <div>
+                                <h3>150</h3>
+                                <p>Reward Points</p>
+                            </div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon icon-rose"><i class="fa-solid fa-heart"></i></div>
+                            <div>
+                                <h3>0</h3>
+                                <p>Wishlist Items</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dash-card-box">
+                        <div class="box-title">
+                            <h3><i class="fa-solid fa-address-card"></i> Personal Information Overview</h3>
+                            <button class="btn-inline" onclick="triggerEditTab()"><i class="fa-solid fa-pen"></i> Edit</button>
+                        </div>
+                        <div class="info-details-grid">
+                            <div class="detail-item">
+                                <label>Username</label>
+                                <p>{{ user.username }}</p>
+                            </div>
+                            <div class="detail-item">
+                                <label>Email Address</label>
+                                <p>{{ user.email|default:"Not specified" }}</p>
+                            </div>
+                            <div class="detail-item">
+                                <label>Phone Number</label>
+                                <p>{{ user.profile.phone_number|default:"Not specified" }}</p>
+                            </div>
+                            <div class="detail-item">
+                                <label>Member Since</label>
+                                <p>{{ user.date_joined|date:"M d, Y" }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: ORDERS -->
+                <div id="tab-orders" class="tab-pane">
+                    <div class="dash-card-box">
+                        <div class="box-title"><h3><i class="fa-solid fa-box-archive"></i> Recent Orders</h3></div>
+                        
+                        {% if orders %}
+                            <div class="orders-table-wrapper" style="overflow-x: auto;">
+                                <table class="orders-table" style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                                    <thead>
+                                        <tr style="background: #f8f9fa; border-bottom: 2px solid #eee; text-align: left;">
+                                            <th style="padding: 12px;">Order ID</th>
+                                            <th style="padding: 12px;">Date</th>
+                                            <th style="padding: 12px;">Total</th>
+                                            <th style="padding: 12px;">Payment Method</th>
+                                            <th style="padding: 12px;">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for order in orders %}
+                                            <tr style="border-bottom: 1px solid #eee;">
+                                                <td style="padding: 12px; font-weight: 600;">#{{ order.order_id }}</td>
+                                                <td style="padding: 12px;">{{ order.created_at|date:"M d, Y" }}</td>
+                                                <td style="padding: 12px; font-weight: 600;">৳{{ order.grand_total }}</td>
+                                                <td style="padding: 12px;">{{ order.payment_method }}</td>
+                                                <td style="padding: 12px;">
+                                                    <span class="status-badge" style="padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; background: {% if order.payment_status == 'Completed' %}#e6f4ea; color: #1e7e34;{% else %}#fff3cd; color: #856404;{% endif %}">
+                                                        {{ order.payment_status }}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% else %}
+                            <div class="empty-state-view">
+                                <i class="fa-solid fa-box-open"></i>
+                                <h4>No Orders Placed Yet</h4>
+                                <p>Explore HUNKORA premium banana chips and order your favorite snacks today!</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- TAB 3: WISHLIST -->
+                <div id="tab-wishlist" class="tab-pane">
+                    <div class="dash-card-box">
+                        <div class="box-title"><h3><i class="fa-solid fa-heart"></i> Saved Wishlist Items</h3></div>
+                        <div class="empty-state-view">
+                            <i class="fa-regular fa-heart"></i>
+                            <h4>Your Wishlist is Empty</h4>
+                            <p>Save items you love to buy them later.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: SAVED ADDRESS -->
+                <div id="tab-address" class="tab-pane">
+                    <div class="dash-card-box">
+                        <div class="box-title">
+                            <h3><i class="fa-solid fa-map-location-dot"></i> Default Shipping Address</h3>
+                        </div>
+                        <div class="address-preview-box">
+                            <p>{{ user.profile.address|default:"No shipping address added yet. You can update it in the Edit Profile tab." }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 5: EDIT PROFILE -->
+                <div id="tab-edit-profile" class="tab-pane">
+                    <div class="dash-card-box">
+                        <div class="box-title">
+                            <h3><i class="fa-solid fa-user-pen"></i> Update Profile Details</h3>
+                        </div>
+                        
+                        <form method="POST" action="{% url 'accounts:profile' %}" enctype="multipart/form-data" class="modern-profile-form">
+                            {% csrf_token %}
+                            
+                            <div class="form-field-group full-width">
+                                <label>Change Profile Picture</label>
+                                <input type="file" name="avatar" accept="image/*" class="modern-file-input">
+                            </div>
+
+                            <div class="form-two-col">
+                                <div class="form-field-group">
+                                    <label>Username</label>
+                                    <input type="text" name="username" value="{{ user.username }}" required>
+                                </div>
+                                <div class="form-field-group">
+                                    <label>Email Address</label>
+                                    <input type="email" name="email" value="{{ user.email }}">
+                                </div>
+                            </div>
+
+                            <div class="form-two-col">
+                                <div class="form-field-group">
+                                    <label>First Name</label>
+                                    <input type="text" name="first_name" value="{{ user.first_name }}">
+                                </div>
+                                <div class="form-field-group">
+                                    <label>Last Name</label>
+                                    <input type="text" name="last_name" value="{{ user.last_name }}">
+                                </div>
+                            </div>
+
+                            <div class="form-field-group full-width">
+                                <label>Phone Number</label>
+                                <input type="text" name="phone_number" value="{{ user.profile.phone_number|default:'' }}">
+                            </div>
+
+                            <div class="form-field-group full-width">
+                                <label>Full Shipping Address</label>
+                                <textarea name="address" rows="3">{{ user.profile.address|default:'' }}</textarea>
+                            </div>
+
+                            <button type="submit" class="btn-save-profile">
+                                <i class="fa-solid fa-floppy-disk"></i> Save Profile Changes
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- TAB 6: NOTIFICATIONS -->
+                <div id="tab-notifications" class="tab-pane">
+                    <div class="dash-card-box">
+                        <div class="box-title"><h3><i class="fa-solid fa-bell"></i> Realtime Notifications</h3></div>
+                        <div class="notification-card">
+                            <div class="notif-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                            <div class="notif-details">
+                                <h4>Account Active & Verified</h4>
+                                <p>Welcome to HUNKORA! You have unlocked VIP rewards on registration.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 7: REWARD POINTS -->
+                <div id="tab-rewards" class="tab-pane">
+                    <div class="dash-card-box">
+                        <div class="box-title"><h3><i class="fa-solid fa-coins"></i> Reward Balance</h3></div>
+                        <div class="rewards-banner-card">
+                            <h2>150 <span>HUNKORA Points</span></h2>
+                            <p>Redeem your points during checkout for instant discounts!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Tab Switching Functionality
+function switchTab(evt, tabId) {
+    let i, tabPanes, tabBtns;
+    
+    tabPanes = document.getElementsByClassName("tab-pane");
+    for (i = 0; i < tabPanes.length; i++) {
+        tabPanes[i].classList.remove("active");
+    }
+    
+    tabBtns = document.getElementsByClassName("nav-tab-btn");
+    for (i = 0; i < tabBtns.length; i++) {
+        tabBtns[i].classList.remove("active");
+    }
+    
+    const activePane = document.getElementById(tabId);
+    if (activePane) {
+        activePane.classList.add("active");
+    }
+    
+    if (evt && evt.currentTarget) {
+        evt.currentTarget.classList.add("active");
+    }
+}
+
+// Trigger Edit Tab from Overview Section
+function triggerEditTab() {
+    let editBtn = document.querySelector("button[onclick*='tab-edit-profile']");
+    if (editBtn) {
+        editBtn.click();
+    }
+}
+
+// Quick Avatar Submission
+function submitAvatarForm() {
+    const input = document.getElementById('avatar-quick-input');
+    if (input && input.files && input.files[0]) {
+        document.getElementById('profile-avatar-form').submit();
+    }
+}
+</script>
+{% endblock %}

@@ -1,0 +1,306 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}
+bKash Payment
+{% endblock %}
+
+{% block content %}
+
+<style>
+
+.payment-page{
+    background:#f5f7fb;
+    min-height:100vh;
+    padding:70px 20px;
+}
+
+.payment-card{
+    max-width:850px;
+    margin:auto;
+    background:#fff;
+    border-radius:20px;
+    padding:45px;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.payment-title{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:35px;
+}
+
+.payment-title .icon{
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:#ffe9f2;
+    color:#e2136e;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+}
+
+.payment-title h2{
+    margin:0;
+    font-size:30px;
+}
+
+.payment-title p{
+    color:#666;
+    margin-top:5px;
+}
+
+.bkash-box{
+    background:#fff2f7;
+    border:2px dashed #e2136e;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.bkash-logo{
+    font-size:35px;
+    color:#e2136e;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.bkash-number{
+    font-size:34px;
+    font-weight:bold;
+    color:#e2136e;
+    margin:15px 0;
+}
+
+.copy-btn{
+    background:#e2136e;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.copy-btn:hover{
+    background:#be0f5a;
+}
+
+.amount-box{
+    margin-top:20px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.amount-box span{
+    color:#ff6b00;
+}
+
+.qr-box{
+    text-align:center;
+    margin:40px 0;
+}
+
+.qr-box img{
+    width:220px;
+    border-radius:15px;
+}
+
+.form-group{
+    margin-bottom:25px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:10px;
+    font-weight:bold;
+}
+
+.form-control{
+    width:100%;
+    height:55px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:15px;
+    font-size:16px;
+}
+
+.notice{
+    background:#fff8e7;
+    border-left:5px solid orange;
+    padding:18px;
+    border-radius:10px;
+    margin-bottom:25px;
+    color:#555;
+}
+
+.submit-btn{
+    width:100%;
+    height:58px;
+    border:none;
+    border-radius:12px;
+    background:#e2136e;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.submit-btn:hover{
+    background:#be0f5a;
+}
+
+</style>
+
+<div class="payment-page">
+
+<div class="payment-card">
+
+<div class="payment-title">
+
+<div class="icon">
+📱
+</div>
+
+<div>
+
+<h2>bKash Payment</h2>
+
+<p>Complete your payment securely.</p>
+
+</div>
+
+</div>
+
+<div class="bkash-box">
+
+<div class="bkash-logo">
+
+bKash
+
+</div>
+
+<p>
+
+Please send money to this Personal bKash Number
+
+</p>
+
+<div class="bkash-number" id="bkashNumber">
+
+017XXXXXXXX
+
+</div>
+
+<button
+type="button"
+class="copy-btn"
+onclick="copyNumber()">
+
+📋 Copy Number
+
+</button>
+
+<div class="amount-box">
+
+Amount :
+<span>
+
+৳{{ amount }}
+
+</span>
+
+</div>
+
+</div>
+
+<!-- QR CODE -->
+
+<div class="qr-box">
+
+<img src="{% static 'images/bkash-qr.png' %}">
+
+<p style="margin-top:10px">
+
+Scan QR to Pay
+
+</p>
+
+</div>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<div class="form-group">
+
+<label>
+
+Sender bKash Number
+
+</label>
+
+<input
+type="text"
+name="sender_number"
+class="form-control"
+placeholder="01XXXXXXXXX"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Transaction ID
+
+</label>
+
+<input
+type="text"
+name="transaction_id"
+class="form-control"
+placeholder="Example : 8A7B9CD123"
+required>
+
+</div>
+
+<div class="notice">
+
+⚠ টাকা Send Money করার পরে Transaction ID দিয়ে Confirm করুন।
+
+</div>
+
+<button
+class="submit-btn">
+
+Confirm Payment
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<script>
+
+function copyNumber(){
+
+let number=document.getElementById("bkashNumber").innerText;
+
+navigator.clipboard.writeText(number);
+
+alert("bKash Number Copied");
+
+}
+
+</script>
+
+{% endblock %}
