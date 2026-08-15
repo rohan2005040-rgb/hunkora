@@ -41,7 +41,8 @@ CSRF_TRUSTED_ORIGINS = [
     "https://hunkora.com",
     "https://www.hunkora.com",
 ]
-
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 # Application definition
 
 INSTALLED_APPS = [
