@@ -31,10 +31,16 @@ DEBUG = False
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
+    "hunkora.onrender.com",
     "hunkora.com",
     "www.hunkora.com",
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://hunkora.onrender.com",
+    "https://hunkora.com",
+    "https://www.hunkora.com",
+]
 
 # Application definition
 
@@ -150,13 +156,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-CSRF_TRUSTED_ORIGINS = [
-    "http://127.0.0.1:8000",
-    "http://localhost:8000",
-    "https://hunkora.onrender.com",
-    "https://hunkora.com",
-    "https://www.hunkora.com",
-]
+# CSRF_TRUSTED_ORIGINS = [
+#     "http://127.0.0.1:8000",
+#     "http://localhost:8000",
+#     "https://hunkora.onrender.com",
+#     "https://hunkora.com",
+#     "https://www.hunkora.com",
+# ]
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
