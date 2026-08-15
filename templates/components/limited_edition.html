@@ -57,7 +57,9 @@
                 <br>
 
                 <!-- Button -->
-                <a href="{% url 'cart:add_to_cart' offer_product.id %}"
+                {% if offer_product and offer_product.id %}
+<a href="{% url 'cart:add_to_cart' product_id=offer_product.id %}"
+    class="offer-btn">
                    class="offer-btn">
 
                     Shop Now
