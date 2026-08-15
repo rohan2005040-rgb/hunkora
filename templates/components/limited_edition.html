@@ -9,13 +9,16 @@
             <!-- Product Image -->
             <div class="offer-image">
 
-                {% if offer_product.image %}
-                    <img src="{{ offer_product.image.url }}" alt="{{ offer_product.name }}">
+                {% if offer_product and offer_product.image %}
+                    <img src="{{ offer_product.image.url }}"
+                         alt="{{ offer_product.name }}">
                 {% else %}
-                    <img src="{% static 'images/Picsart_26-05-15_11-12-58-929.png' %}" alt="Limited Offer">
+                    <img src="{% static 'images/Picsart_26-05-15_11-12-58-929.png' %}"
+                         alt="Limited Offer">
                 {% endif %}
 
             </div>
+
 
             <!-- Product Content -->
             <div class="offer-content">
@@ -24,48 +27,72 @@
                     LIMITED EDITION
                 </span>
 
-                <h2>
-                    {{ offer_product.name }}
-                </h2>
 
-                <p>
-                    {{ offer_product.short_description }}
-                </p>
+                <!-- Product Name -->
+                {% if offer_product %}
+                    <h2>
+                        {{ offer_product.name }}
+                    </h2>
+                {% else %}
+                    <h2>
+                        Limited Edition
+                    </h2>
+                {% endif %}
+
+
+                <!-- Product Description -->
+                {% if offer_product %}
+                    <p>
+                        {{ offer_product.short_description }}
+                    </p>
+                {% else %}
+                    <p>
+                        Discover our limited edition product.
+                    </p>
+                {% endif %}
+
 
                 <!-- Price -->
-                <div class="offer-price">
+                {% if offer_product %}
+                    <div class="offer-price">
 
-                    <span class="new-price">
-                        ৳{{ offer_product.price }}
-                    </span>
+                        <span class="new-price">
+                            ৳{{ offer_product.price }}
+                        </span>
 
-                    {% if offer_product.old_price %}
-                    <span class="old-price">
-                        ৳{{ offer_product.old_price }}
-                    </span>
-                    {% endif %}
+                        {% if offer_product.old_price %}
+                            <span class="old-price">
+                                ৳{{ offer_product.old_price }}
+                            </span>
+                        {% endif %}
 
-                </div>
+                    </div>
+                {% endif %}
+
 
                 <!-- Discount -->
                 <div class="offer-discount">
-
                     20% OFF On Your First Order
-
                 </div>
+
 
                 <br>
 
+
                 <!-- Button -->
                 {% if offer_product and offer_product.id %}
-<a href="{% url 'cart:add_to_cart' product_id=offer_product.id %}"
-    class="offer-btn">
-                   class="offer-btn">
 
-                    Shop Now
-                    <i class="fa-solid fa-arrow-right"></i>
+                    <a href="{% url 'cart:add_to_cart' product_id=offer_product.id %}"
+                       class="offer-btn">
 
-                </a>
+                        Shop Now
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                {% endif %}
+
 
             </div>
 
