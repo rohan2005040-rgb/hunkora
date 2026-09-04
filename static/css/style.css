@@ -1824,3 +1824,25 @@ font-size:32px;
     }
 
 }
+.mega-shop-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #000000;
+    color: #ffffff !important;
+    padding: 10px 22px;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.mega-shop-btn:hover {
+    background: #ffb703;
+    color: #000000 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(255, 183, 3, 0.4);
+}

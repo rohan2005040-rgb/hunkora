@@ -4,7 +4,7 @@ from apps.wishlist.models import Wishlist
 from apps.products.models import Product
 from apps.blogs.models import BlogPost
 from apps.cart.models import Combo
-
+from .models import MegaMenuBanner
 from apps.products.models import Product
 # ======================================
 # HOME PAGE
@@ -12,7 +12,7 @@ from apps.products.models import Product
 
 def home(request):
 
-    mega_banner_product = Product.objects.filter(is_active=True).first()
+    mega_banner = MegaMenuBanner.objects.filter(is_active=True).first()
 
     # ===========================
     # Best Selling Products
@@ -80,7 +80,7 @@ def home(request):
 
         "combos": combos,
         "wishlist_product_ids": wishlist_product_ids,
-        'mega_banner_product': mega_banner_product,
+        'mega_banner': mega_banner,
 
 
     }

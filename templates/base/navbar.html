@@ -53,34 +53,23 @@
                     <div class="mega-right">
 
                         <div class="mega-banner">
+    <div class="banner-image">
+        {% if mega_banner and mega_banner.image %}
+            <img src="{{ mega_banner.image.url }}" alt="{{ mega_banner.title }}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+        {% else %}
+            <p>Banner Image</p>
+        {% endif %}
+    </div>
 
-                            <div class="banner-image">
-                                {% if mega_banner_product and mega_banner_product.image %}
-                                    <img src="{{ mega_banner_product.image.url }}" alt="{{ mega_banner_product.title }}" style="width: 100%; height: 100%; object-fit: cover;">
-                                {% else %}
-                                    <p>Product Image</p>
-                                {% endif %}
-                            </div>
+    <h3>{{ mega_banner.title|default:"Premium Banana Chips" }}</h3>
+    <p>{{ mega_banner.subtitle|default:"Fresh • Crunchy • Healthy" }}</p>
 
-                            <h3>
-
-                                Premium Banana Chips
-
-                            </h3>
-
-                            <p>
-
-                                Fresh • Crunchy • Healthy
-
-                            </p>
-
-                            <a href="#" class="nav-link">
-
-                                Shop Now
-
-                            </a>
-
-                        </div>
+    <!-- সুন্দর আইকনসহ গ্লসি বাটন design -->
+    <a href="{{ mega_banner.button_link|default:'/products/' }}" class="mega-shop-btn">
+        <span>{{ mega_banner.button_text|default:"Shop Now" }}</span>
+        <i class="fas fa-arrow-right"></i>
+    </a>
+</div>
 
                     </div>
 
