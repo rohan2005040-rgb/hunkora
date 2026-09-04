@@ -1,5 +1,9 @@
 import os
+import sys
 import django
+
+# প্রজেক্টের রুট ডিরেক্টরিকে Python পাথে যুক্ত করা
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 django.setup()
