@@ -5,16 +5,19 @@ from apps.products.models import Product
 from apps.blogs.models import BlogPost
 from apps.cart.models import Combo
 
-
+from apps.products.models import Product
 # ======================================
 # HOME PAGE
 # ======================================
 
 def home(request):
 
+    mega_banner_product = Product.objects.filter(is_active=True).first()
+
     # ===========================
     # Best Selling Products
     # ===========================
+
     products = Product.objects.filter(
         is_active=True
     ).exclude(
@@ -77,6 +80,7 @@ def home(request):
 
         "combos": combos,
         "wishlist_product_ids": wishlist_product_ids,
+        'mega_banner_product': mega_banner_product,
 
 
     }

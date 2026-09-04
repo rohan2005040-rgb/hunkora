@@ -55,9 +55,11 @@
                         <div class="mega-banner">
 
                             <div class="banner-image">
-
-                                Product Image
-
+                                {% if mega_banner_product and mega_banner_product.image %}
+                                    <img src="{{ mega_banner_product.image.url }}" alt="{{ mega_banner_product.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                                {% else %}
+                                    <p>Product Image</p>
+                                {% endif %}
                             </div>
 
                             <h3>
