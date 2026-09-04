@@ -77,7 +77,6 @@ INSTALLED_APPS = [
     "apps.wishlist",
     "apps.dashboard",
     'cloudinary_storage',
-    'django.contrib.staticfiles',
     'cloudinary',
 
 ]
