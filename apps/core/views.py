@@ -184,25 +184,22 @@ def contact(request):
 # ======================================
 # SHOP PAGE
 # ======================================
-# ============================================
-# SHOP PAGE
-# ============================================
-
 def shop(request):
     category = request.GET.get('category')
     
-    # ক্যাটাগরি ফিল্টারিং
+    # সকল সক্রিয় প্রোডাক্ট আগে নেওয়া হলো
+    products = Product.objects.filter(is_active=True)
+    
+    # ক্যাটাগরি ফিল্টারিং (সহজ ও ফ্লেক্সিবল লজিক)
     if category and category != 'all':
         if category == 'original':
-            products = Product.objects.filter(is_active=True, name__icontains='Original')
+            products = products.filter(name__icontains='Original')
         elif category == 'magic-masala':
-            products = Product.objects.filter(is_active=True, name__icontains='Magic Masala')
+            products = products.filter(Q(name__icontains='Magic') | Q(name__icontains='Masala'))
         elif category == 'spicy':
-            products = Product.objects.filter(is_active=True, name__icontains='Spicy')
-        else:
-            products = Product.objects.filter(is_active=True)
-    else:
-        products = Product.objects.filter(is_active=True)
+            products = products.filter(name__icontains='Spicy')
+        elif category == 'combo':
+            products = products.filter(name__icontains='Combo')
 
     context = {
         'products': products
