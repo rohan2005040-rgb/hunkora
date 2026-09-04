@@ -6,7 +6,7 @@ from apps.blogs.models import BlogPost
 from apps.cart.models import Combo
 from .models import MegaMenuBanner
 from apps.products.models import Product
-from products.models import Product
+
 # ======================================
 # HOME PAGE
 # ======================================
@@ -184,6 +184,10 @@ def contact(request):
 # ======================================
 # SHOP PAGE
 # ======================================
+# ============================================
+# SHOP PAGE
+# ============================================
+
 def shop(request):
     category = request.GET.get('category')
     
