@@ -87,9 +87,9 @@ Best Value
 
     @property
     def save_amount(self):
-        if self.original_price is not None and self.combo_price is not None:
+        if hasattr(self, 'old_price') and self.old_price is not None and self.price is not None:
             try:
-                return float(self.original_price) - float(self.combo_price)
+                return float(self.old_price) - float(self.price)
             except (ValueError, TypeError):
                 return 0
         return 0
