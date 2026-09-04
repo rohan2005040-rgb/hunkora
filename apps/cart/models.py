@@ -87,8 +87,11 @@ Best Value
 
     @property
     def save_amount(self):
+        if self.original_price is not None and self.combo_price is not None:
+            return self.original_price - self.combo_price
+        return 0
 
-        return self.old_price - self.price
+        # return self.old_price - self.price
 
     @property
     def feature_list(self):
