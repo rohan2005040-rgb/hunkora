@@ -1,0 +1,1049 @@
+[
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$1PQXihRILmbqcT9vhRrPHQ$z/He61PD3vbWswa0QgEyfhw2pN7UGsYDm0O3KXeWbAM=",
+    "last_login": "2026-09-03T17:39:01.926Z",
+    "is_superuser": true,
+    "username": "hunkora16",
+    "first_name": "Biplob",
+    "last_name": "Hossain",
+    "email": "rohan2005040@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-07-16T07:45:16.718Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$OW6xTV2zflWvibt4A5yWqg$oddxmR4dSJh0bPN+aQpGQcg21+IWi6juJF2VO3oUx1k=",
+    "last_login": "2026-07-30T11:13:07.716Z",
+    "is_superuser": false,
+    "username": "hunkora169",
+    "first_name": "",
+    "last_name": "",
+    "email": "rohan2005040@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-07-30T11:13:07.218Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$dIzrL6hRrkhLC8B2NZOoH4$5zU3fXGXW/C1QB4vpJLVAIyyo9vAg4w6RSQ0yOF8g1U=",
+    "last_login": "2026-07-31T17:33:18.027Z",
+    "is_superuser": false,
+    "username": "hunkora",
+    "first_name": "biplob54",
+    "last_name": "",
+    "email": "biplob100570480@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-07-31T17:33:17.492Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.userprofile",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "hunkora16"
+    ],
+    "avatar": "profile_pics/ChatGPT_Image_Jul_29_2026_05_57_14_PM_2HkoXqZ.png",
+    "phone_number": "",
+    "address": "",
+    "reward_points": 150
+  }
+},
+{
+  "model": "accounts.userprofile",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "hunkora"
+    ],
+    "avatar": "profile_pics/default.png",
+    "phone_number": null,
+    "address": null,
+    "reward_points": 150
+  }
+},
+{
+  "model": "blogs.blogpost",
+  "pk": 1,
+  "fields": {
+    "title": "Why HUNKORA Banana Chips Are Healthy",
+    "category": "Food",
+    "image": "blog/590037137_122117032653011320_8997502954874018063_n.jpg",
+    "author": "Admin",
+    "content": "Finding a snack that is both delicious and good for your health can be a challenge. Most market snacks are loaded with artificial preservatives and excess oil. That is where HUNKORA Premium Banana Chips come in—offering the perfect blend of natural taste, crispiness, and nutrition.\r\n\r\n### 1. Made from Fresh, Quality Bananas\r\nAt HUNKORA, we select only the finest raw bananas harvested at peak freshness. Raw bananas are a rich source of dietary fiber, essential vitamins, and minerals like potassium, which supports heart health and maintains energy levels throughout the day.\r\n\r\n### 2. Light, Crisp, and Less Oily\r\nUnlike ordinary packaged chips, HUNKORA banana chips are crafted with care to ensure maximum crunch without being greasy. Every bite gives you that perfectly seasoned taste without compromising your health goals.\r\n\r\n### 3. The Perfect Everyday Snack\r\nWhether you are working late at night, enjoying tea with family, or searching for a quick bite during your busy daily commute, HUNKORA Banana Chips are your go-to partner for healthy crunching.\r\n\r\n### Why Choose HUNKORA?\r\n- 100% Premium Quality Ingredients\r\n- Perfectly Seasoned Flavors\r\n- Crispy Texture in Every Pack\r\n- Clean & Hygienic Processing\r\n\r\nExperience the ultimate snacking joy with HUNKORA Premium Banana Chips today!",
+    "created_at": "2026-07-30T19:03:17.693Z"
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 2,
+  "fields": {
+    "session_key": "3zveazro6xoogpzt8muxnrdbe4lsdza5",
+    "created_at": "2026-07-16T19:37:20.289Z"
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 8,
+  "fields": {
+    "session_key": "ebgv6wrynmsp1312pudrckw01l23pp8b",
+    "created_at": "2026-07-22T14:29:39.455Z"
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 10,
+  "fields": {
+    "session_key": "rp3uhxizwm57t6jxko3asr1rxczdxaxo",
+    "created_at": "2026-07-27T10:57:00.209Z"
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 11,
+  "fields": {
+    "session_key": "ym68a2j6hcmiqwurbv601u5wkapr30mk",
+    "created_at": "2026-07-28T14:19:07.999Z"
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 12,
+  "fields": {
+    "session_key": "6wqlbv5w48ianfdplclwqmttd66fbav8",
+    "created_at": "2026-07-30T11:48:15.513Z"
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 19,
+  "fields": {
+    "session_key": "78r14yxawg5ha727xwb61l36o7sseoa3",
+    "created_at": "2026-08-02T12:03:16.874Z"
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 21,
+  "fields": {
+    "session_key": "zgn5o5ccwnaytzbumsuyoqmyfbdev7eb",
+    "created_at": "2026-08-06T04:38:03.773Z"
+  }
+},
+{
+  "model": "cart.combo",
+  "pk": 1,
+  "fields": {
+    "name": "Delight Combo",
+    "image": "combos/ChatGPT_Image_Aug_3_2026_06_50_51_PM.png",
+    "description": "🍌 Hunkora Delight Combo — 3 Packs\r\nতিন প্যাকেট Hunkora Banana Chips-এর মজাদার কম্বো—নিজের জন্য উপভোগ করুন অথবা প্রিয়জনের সঙ্গে শেয়ার করুন। আপনার পছন্দের ফ্লেভার বেছে নিয়ে উপভোগ করুন প্রতিটি ক্রাঞ্চে দারুণ স্বাদ ও আনন্দ।",
+    "badge": "NORMAL",
+    "packets": 3,
+    "weight": 300,
+    "price": "299.00",
+    "old_price": "345.00",
+    "button_text": "Shop Now",
+    "features": "৩টি প্যাকেটের Perfect Starter\r\nমজাদার ও ক্রিসপি Banana Chips\r\nপছন্দের ফ্লেভার বেছে নেওয়ার সুযোগ\r\nনিজের জন্য বা প্রিয়জনকে দেওয়ার জন্য আদর্শ\r\nছোট বাজেটে দারুণ Value",
+    "is_active": true
+  }
+},
+{
+  "model": "cart.combo",
+  "pk": 2,
+  "fields": {
+    "name": "Signature Combo",
+    "image": "combos/ChatGPT_Image_Aug_3_2026_07_12_02_PM.png",
+    "description": "⭐ Hunkora Signature Combo — 5 Packs\r\n\r\nআরও বেশি স্বাদ, আরও বেশি আনন্দ! Hunkora Signature Combo-তে থাকছে ৫ প্যাকেট মজাদার Banana Chips—ফ্যামিলি, বন্ধুদের সঙ্গে শেয়ারিং কিংবা নিজের snack time-এর জন্য একদম পারফেক্ট। একসাথে বেশি নিলে উপভোগ করুন আরও বেশি ভ্যালু।",
+    "badge": "BEST VALUE",
+    "packets": 5,
+    "weight": 500,
+    "price": "499.00",
+    "old_price": "575.00",
+    "button_text": "Shop Now",
+    "features": "🔥 ৫টি প্যাকেটের Premium Combo\r\n😋 আরও বেশি Crunch, আরও বেশি Enjoyment\r\n🌶️ বিভিন্ন ফ্লেভার মিক্স & ম্যাচ করার সুযোগ\r\n👨‍👩‍👧‍👦 Family & Friends Sharing-এর জন্য Perfect\r\n💰 একসাথে কিনলে আরও ভালো Value",
+    "is_active": true
+  }
+},
+{
+  "model": "cart.combo",
+  "pk": 3,
+  "fields": {
+    "name": "Grand Combo",
+    "image": "combos/ChatGPT_Image_Aug_3_2026_07_16_25_PM.png",
+    "description": "স্বাদের বড় আয়োজনের জন্য Hunkora Grand Combo! একসাথে ১০ প্যাকেট Hunkora Banana Chips—ফ্যামিলি গেট-টুগেদার, পার্টি, অতিথি আপ্যায়ন কিংবা দীর্ঘদিনের snack stock-এর জন্য দারুণ একটি পছন্দ। বেশি প্যাক, বেশি আনন্দ, আরও বেশি Hunkora Crunch!",
+    "badge": "FAMILY",
+    "packets": 10,
+    "weight": 1000,
+    "price": "999.00",
+    "old_price": "1150.00",
+    "button_text": "Shop Now",
+    "features": "🏆 ১০টি প্যাকেটের Ultimate Combo\r\n🍌 বড় পরিমাণে Hunkora Banana Chips\r\n🎉 Party, Family Gathering & Sharing-এর জন্য Ideal\r\n📦 দীর্ঘ সময়ের জন্য Snack Stock\r\n💎 সবচেয়ে বেশি Value & Maximum Enjoyment",
+    "is_active": true
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 8,
+  "fields": {
+    "cart": 2,
+    "product": 3,
+    "combo": null,
+    "price": "0.00",
+    "quantity": 1,
+    "weight": 100
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 41,
+  "fields": {
+    "cart": 8,
+    "product": 3,
+    "combo": null,
+    "price": "115.00",
+    "quantity": 3,
+    "weight": 100
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 51,
+  "fields": {
+    "cart": 11,
+    "product": 2,
+    "combo": null,
+    "price": "115.00",
+    "quantity": 1,
+    "weight": 100
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 54,
+  "fields": {
+    "cart": 12,
+    "product": 2,
+    "combo": null,
+    "price": "115.00",
+    "quantity": 1,
+    "weight": 100
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 64,
+  "fields": {
+    "cart": 19,
+    "product": 1,
+    "combo": null,
+    "price": "100.00",
+    "quantity": 1,
+    "weight": 100
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 115,
+  "fields": {
+    "cart": 21,
+    "product": 1,
+    "combo": null,
+    "price": "115.00",
+    "quantity": 1,
+    "weight": 100
+  }
+},
+{
+  "model": "contact.contactmessage",
+  "pk": 1,
+  "fields": {
+    "name": "Biplob Hossain",
+    "email": "rohan2005040@gmail.com",
+    "phone": "01893452385",
+    "subject": "bangla",
+    "message": "dsfsdhgfvxbzjfvd",
+    "created_at": "2026-07-30T19:40:29.084Z"
+  }
+},
+{
+  "model": "contact.contactmessage",
+  "pk": 2,
+  "fields": {
+    "name": "Biplob Hossain",
+    "email": "rohan2005040@gmail.com",
+    "phone": "01893452385",
+    "subject": "bangla",
+    "message": "jk",
+    "created_at": "2026-07-30T20:21:48.883Z"
+  }
+},
+{
+  "model": "contact.contactmessage",
+  "pk": 3,
+  "fields": {
+    "name": "Biplob Hossain",
+    "email": "rohan2005040@gmail.com",
+    "phone": "01893452385",
+    "subject": "banana chips",
+    "message": "htufhvnbv",
+    "created_at": "2026-08-02T11:59:16.341Z"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 1,
+  "fields": {
+    "user": null,
+    "order_id": "HKR20260722123559",
+    "full_name": "0",
+    "phone": "01893452385",
+    "city": "Dhaka",
+    "address": "Dhaka,Khilkhet,Namapara",
+    "landmark": "",
+    "payment_method": "cod",
+    "shipping_charge": "0.00",
+    "subtotal": "57.50",
+    "grand_total": "0.00",
+    "status": "Pending",
+    "created_at": "2026-07-22T12:35:59.678Z",
+    "bkash_number": null,
+    "transaction_id": null,
+    "payment_status": "Pending"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 2,
+  "fields": {
+    "user": null,
+    "order_id": "HKR20260722124219",
+    "full_name": "0",
+    "phone": "01893452385",
+    "city": "Dhaka",
+    "address": "Dhaka,Khilkhet,Namapara",
+    "landmark": "",
+    "payment_method": "cod",
+    "shipping_charge": "0.00",
+    "subtotal": "57.50",
+    "grand_total": "0.00",
+    "status": "Pending",
+    "created_at": "2026-07-22T12:42:19.625Z",
+    "bkash_number": null,
+    "transaction_id": null,
+    "payment_status": "Pending"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 3,
+  "fields": {
+    "user": null,
+    "order_id": "HKR20260722124310",
+    "full_name": "0",
+    "phone": "01893452385",
+    "city": "Dhaka",
+    "address": "Dhaka,Khilkhet,Namapara",
+    "landmark": "",
+    "payment_method": "cod",
+    "shipping_charge": "0.00",
+    "subtotal": "115.00",
+    "grand_total": "0.00",
+    "status": "Pending",
+    "created_at": "2026-07-22T12:43:10.492Z",
+    "bkash_number": null,
+    "transaction_id": null,
+    "payment_status": "Pending"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 4,
+  "fields": {
+    "user": null,
+    "order_id": "HKR20260722124651",
+    "full_name": "0",
+    "phone": "01893452385",
+    "city": "Dhaka",
+    "address": "Dhaka,Khilkhet,Namapara",
+    "landmark": "",
+    "payment_method": "cod",
+    "shipping_charge": "0.00",
+    "subtotal": "115.00",
+    "grand_total": "0.00",
+    "status": "Pending",
+    "created_at": "2026-07-22T12:46:51.498Z",
+    "bkash_number": null,
+    "transaction_id": null,
+    "payment_status": "Pending"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 5,
+  "fields": {
+    "user": null,
+    "order_id": "HKR20260722131000",
+    "full_name": "Biplob Hossain",
+    "phone": "01893452385",
+    "city": "Dhaka",
+    "address": "Dhaka,Khilkhet,Namapara",
+    "landmark": "",
+    "payment_method": "cod",
+    "shipping_charge": "65.00",
+    "subtotal": "115.00",
+    "grand_total": "180.00",
+    "status": "Pending",
+    "created_at": "2026-07-22T13:10:00.309Z",
+    "bkash_number": null,
+    "transaction_id": null,
+    "payment_status": "Pending"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 6,
+  "fields": {
+    "user": null,
+    "order_id": "HKR20260722132034",
+    "full_name": "Biplob Hossain",
+    "phone": "01893452385",
+    "city": "Dhaka",
+    "address": "Dhaka,Khilkhet,Namapara",
+    "landmark": "",
+    "payment_method": "bkash",
+    "shipping_charge": "65.00",
+    "subtotal": "115.00",
+    "grand_total": "180.00",
+    "status": "Pending",
+    "created_at": "2026-07-22T13:20:34.291Z",
+    "bkash_number": null,
+    "transaction_id": null,
+    "payment_status": "Pending"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 7,
+  "fields": {
+    "user": null,
+    "order_id": "HKR20260726121412",
+    "full_name": "Biplob Hossain",
+    "phone": "01893452385",
+    "city": "Dhaka",
+    "address": "Dhaka,Khilkhet,Namapara",
+    "landmark": "",
+    "payment_method": "cod",
+    "shipping_charge": "65.00",
+    "subtotal": "115.00",
+    "grand_total": "180.00",
+    "status": "Pending",
+    "created_at": "2026-07-26T12:14:12.317Z",
+    "bkash_number": "",
+    "transaction_id": "",
+    "payment_status": "Pending"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 8,
+  "fields": {
+    "user": null,
+    "order_id": "HKR20260731150522",
+    "full_name": "Biplob Hossain",
+    "phone": "01893452385",
+    "city": "Dhaka",
+    "address": "Dhaka,Khilkhet,Namapara",
+    "landmark": "",
+    "payment_method": "cod",
+    "shipping_charge": "65.00",
+    "subtotal": "115.00",
+    "grand_total": "180.00",
+    "status": "Pending",
+    "created_at": "2026-07-31T15:05:22.044Z",
+    "bkash_number": "",
+    "transaction_id": "",
+    "payment_status": "Pending"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 9,
+  "fields": {
+    "user": null,
+    "order_id": "HKR20260731154024",
+    "full_name": "Biplob Hossain",
+    "phone": "01893452385",
+    "city": "Dhaka",
+    "address": "Dhaka,Khilkhet,Namapara",
+    "landmark": "",
+    "payment_method": "cod",
+    "shipping_charge": "65.00",
+    "subtotal": "57.50",
+    "grand_total": "122.50",
+    "status": "Pending",
+    "created_at": "2026-07-31T15:40:24.710Z",
+    "bkash_number": "",
+    "transaction_id": "",
+    "payment_status": "Pending"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 10,
+  "fields": {
+    "user": [
+      "hunkora16"
+    ],
+    "order_id": "HKR20260731161433",
+    "full_name": "Biplob Hossain",
+    "phone": "01893452385",
+    "city": "Dhaka",
+    "address": "Dhaka,Khilkhet,Namapara",
+    "landmark": "",
+    "payment_method": "COD",
+    "shipping_charge": "65.00",
+    "subtotal": "115.00",
+    "grand_total": "180.00",
+    "status": "Confirmed",
+    "created_at": "2026-07-31T16:14:33.308Z",
+    "bkash_number": null,
+    "transaction_id": null,
+    "payment_status": "Pending"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 11,
+  "fields": {
+    "user": [
+      "hunkora16"
+    ],
+    "order_id": "HKR20260731161735",
+    "full_name": "Khalid hassan",
+    "phone": "01735452187",
+    "city": "Faridpur",
+    "address": "Faridpur ,Nagarkanda",
+    "landmark": "",
+    "payment_method": "cod",
+    "shipping_charge": "65.00",
+    "subtotal": "115.00",
+    "grand_total": "180.00",
+    "status": "Pending",
+    "created_at": "2026-07-31T16:17:35.039Z",
+    "bkash_number": "",
+    "transaction_id": "",
+    "payment_status": "Pending"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 12,
+  "fields": {
+    "user": [
+      "hunkora16"
+    ],
+    "order_id": "HKR20260731161949",
+    "full_name": "Esha shikder Hossain",
+    "phone": "01751860376",
+    "city": "Gopalgonj",
+    "address": "Gopalgonj sodor,miap",
+    "landmark": "",
+    "payment_method": "cod",
+    "shipping_charge": "65.00",
+    "subtotal": "57.50",
+    "grand_total": "122.50",
+    "status": "Pending",
+    "created_at": "2026-07-31T16:19:49.441Z",
+    "bkash_number": "",
+    "transaction_id": "",
+    "payment_status": "Pending"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 13,
+  "fields": {
+    "user": [
+      "hunkora16"
+    ],
+    "order_id": "HKR20260731163957",
+    "full_name": "md. Zahid hassan",
+    "phone": "01616665191",
+    "city": "Dhaka",
+    "address": "shop-279,mirpur-1",
+    "landmark": "",
+    "payment_method": "cod",
+    "shipping_charge": "65.00",
+    "subtotal": "230.00",
+    "grand_total": "295.00",
+    "status": "Pending",
+    "created_at": "2026-07-31T16:39:57.233Z",
+    "bkash_number": "",
+    "transaction_id": "",
+    "payment_status": "Pending"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 14,
+  "fields": {
+    "user": [
+      "hunkora16"
+    ],
+    "order_id": "HKR20260805191859",
+    "full_name": "Biplob Hossain",
+    "phone": "01893452385",
+    "city": "Dhaka",
+    "address": "Dhaka,Khilkhet,Namapara",
+    "landmark": "",
+    "payment_method": "bkash",
+    "shipping_charge": "65.00",
+    "subtotal": "100.00",
+    "grand_total": "165.00",
+    "status": "Pending",
+    "created_at": "2026-08-05T19:18:59.778Z",
+    "bkash_number": "01893452385",
+    "transaction_id": "fdsarfws5446tevte",
+    "payment_status": "Pending"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 1,
+  "fields": {
+    "order": 1,
+    "product": 3,
+    "quantity": 1,
+    "price": "115.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 2,
+  "fields": {
+    "order": 2,
+    "product": 3,
+    "quantity": 1,
+    "price": "115.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 3,
+  "fields": {
+    "order": 3,
+    "product": 3,
+    "quantity": 1,
+    "price": "115.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 4,
+  "fields": {
+    "order": 4,
+    "product": 3,
+    "quantity": 1,
+    "price": "115.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 5,
+  "fields": {
+    "order": 5,
+    "product": 3,
+    "quantity": 1,
+    "price": "115.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 6,
+  "fields": {
+    "order": 6,
+    "product": 3,
+    "quantity": 1,
+    "price": "115.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 7,
+  "fields": {
+    "order": 7,
+    "product": 3,
+    "quantity": 1,
+    "price": "115.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 8,
+  "fields": {
+    "order": 8,
+    "product": 2,
+    "quantity": 1,
+    "price": "115.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 9,
+  "fields": {
+    "order": 9,
+    "product": 1,
+    "quantity": 1,
+    "price": "115.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 10,
+  "fields": {
+    "order": 10,
+    "product": 2,
+    "quantity": 1,
+    "price": "115.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 11,
+  "fields": {
+    "order": 11,
+    "product": 3,
+    "quantity": 1,
+    "price": "115.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 12,
+  "fields": {
+    "order": 12,
+    "product": 1,
+    "quantity": 1,
+    "price": "115.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 13,
+  "fields": {
+    "order": 13,
+    "product": 3,
+    "quantity": 2,
+    "price": "115.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 14,
+  "fields": {
+    "order": 14,
+    "product": 1,
+    "quantity": 1,
+    "price": "100.00"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 1,
+  "fields": {
+    "name": "original-banana-chips",
+    "slug": "original-banana-chips",
+    "category": "original",
+    "is_best_seller": false,
+    "image": "products/ChatGPT_Image_Aug_3_2026_11_56_36_AM.png",
+    "custom_image": "",
+    "image2": "",
+    "image3": "",
+    "image4": "",
+    "video": "",
+    "short_description": "Pure, crispy, and naturally delicious. Hunkora Original Banana Chips are made from carefully selected premium bananas, perfectly sliced and cooked to a golden crisp for a light, fresh, and satisfying snack in every bite.",
+    "description": "Enjoy the authentic taste of bananas with Hunkora Banana Chips – Original Flavor. Made from carefully selected premium-quality bananas, each slice is perfectly crisped to deliver a naturally delicious crunch without overpowering spices.\r\n\r\nSimple, fresh, and irresistibly crispy, our Original Flavor is the perfect choice for those who appreciate the true taste of premium banana chips. Whether you're enjoying a quick snack at home, at work, while traveling, or sharing with family and friends, Hunkora brings freshness, quality, and satisfaction in every pack.\r\n\r\nEvery pack is prepared with care to ensure consistent quality, crispy texture, and a delicious snacking experience from the first bite to the last.\r\n\r\nWhy You'll Love It\r\n\r\n• Made from carefully selected premium bananas\r\n• Naturally delicious original flavor\r\n• Light, crispy, and perfectly golden in every bite\r\n• Freshly packed to preserve crunch and freshness\r\n• Perfect for tea-time, travel, office, school, or everyday snacking\r\n• A simple and classic taste loved by all ages\r\n\r\nFlavor: Original\r\nCategory: Banana Chips\r\nBrand: Hunkora",
+    "price": "115.00",
+    "old_price": null,
+    "stock": 50,
+    "is_active": true,
+    "created_at": "2026-07-16T07:47:20.624Z",
+    "updated_at": "2026-08-11T10:46:50.271Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 2,
+  "fields": {
+    "name": "Magic Masala Banana Chips",
+    "slug": "magic-masala-banana-chips",
+    "category": "original",
+    "is_best_seller": false,
+    "image": "products/ChatGPT_Image_Aug_2_2026_07_18_12_PM_9xJaqHU.png",
+    "custom_image": "",
+    "image2": "",
+    "image3": "",
+    "image4": "",
+    "video": "",
+    "short_description": "Bold, crispy, and irresistibly flavorful. Hunkora Banana Chips Magic Masala is made from carefully selected bananas, perfectly sliced and crisped, then coated with our signature Magic Masala seasoning for a rich, savory, and satisfying crunch in every bit",
+    "description": "Experience the perfect fusion of crunch and flavor with Hunkora Banana Chips – Magic Masala Flavor. Crafted from premium-quality bananas and seasoned with our special Magic Masala blend, these chips deliver a delicious balance of savory spices that keeps you reaching for more.\r\n\r\nWhether you're enjoying a quick snack at home, sharing with friends, or satisfying your cravings on the go, Hunkora brings you freshness, quality, and unforgettable taste in every pack.\r\n\r\nWhy You'll Love It\r\n\r\n• Made from carefully selected premium bananas\r\n• Crispy texture with rich Magic Masala seasoning\r\n• Freshly packed for maximum crunch and flavor\r\n• Perfect for tea-time, travel, work, or everyday snacking\r\n• Delicious taste that everyone in the family can enjoy\r\n\r\nFlavor: Magic Masala\r\nCategory: Banana Chips\r\nBrand: Hunkora",
+    "price": "115.00",
+    "old_price": null,
+    "stock": 100,
+    "is_active": true,
+    "created_at": "2026-07-16T07:50:38.229Z",
+    "updated_at": "2026-08-11T10:46:28.832Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 3,
+  "fields": {
+    "name": "Spicy Masala Banana Chips",
+    "slug": "spicy-masala-banana-chips",
+    "category": "original",
+    "is_best_seller": false,
+    "image": "products/ChatGPT_Image_Aug_2_2026_07_18_12_PM.png",
+    "custom_image": "",
+    "image2": "",
+    "image3": "",
+    "image4": "",
+    "video": "",
+    "short_description": "Turn up the heat with Hunkora Banana Chips Spicy Masala. Made from carefully selected bananas and coated with a bold blend of premium spices, every bite delivers a perfectly crispy texture and an exciting spicy kick that's impossible to resist.",
+    "description": "Experience the bold side of snacking with Hunkora Banana Chips – Spicy Masala Flavor. Crafted from premium-quality bananas, thinly sliced and perfectly crisped, each chip is coated with our signature Spicy Masala seasoning to deliver the ideal balance of heat, aroma, and crunch.\r\n\r\nWhether you're craving a flavorful evening snack, sharing with friends, or enjoying it on the go, Hunkora brings you a fresh, crispy, and satisfying experience in every pack. Every bite is packed with bold flavor, premium quality, and the perfect level of spice for true snack lovers.\r\n\r\nWhy You'll Love It\r\n\r\n• Made from carefully selected premium bananas\r\n• Bold Spicy Masala seasoning with a rich taste\r\n• Perfectly crispy in every bite\r\n• Freshly packed to preserve crunch and freshness\r\n• Great for tea-time, travel, parties, work, or everyday snacking\r\n\r\nFlavor: Spicy Masala\r\nCategory: Banana Chips\r\nBrand: Hunkora",
+    "price": "115.00",
+    "old_price": null,
+    "stock": 150,
+    "is_active": true,
+    "created_at": "2026-07-16T11:18:39.463Z",
+    "updated_at": "2026-08-11T10:49:19.576Z"
+  }
+},
+{
+  "model": "products.wishlist",
+  "pk": 13,
+  "fields": {
+    "user": [
+      "hunkora16"
+    ],
+    "product": 3,
+    "created_at": "2026-08-06T11:52:53.320Z"
+  }
+},
+{
+  "model": "products.wishlist",
+  "pk": 14,
+  "fields": {
+    "user": [
+      "hunkora16"
+    ],
+    "product": 2,
+    "created_at": "2026-08-06T11:52:55.523Z"
+  }
+},
+{
+  "model": "products.wishlist",
+  "pk": 15,
+  "fields": {
+    "user": [
+      "hunkora16"
+    ],
+    "product": 1,
+    "created_at": "2026-08-06T11:52:57.468Z"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 1,
+  "fields": {
+    "name": "Sakib",
+    "email": "rohan2005040@gmail.com",
+    "rating": 5,
+    "review": "আমি ৫ প্যাকেটের Signature Combo নিয়েছিলাম। একসাথে কয়েকটা প্যাকেট নেওয়ায় family এবং friends সবার সাথে share করতে পেরেছি। Taste-এর দিক থেকে আমার কাছে Magic Masala সবচেয়ে ভালো লেগেছে। Quantity আর overall quality মিলিয়ে comboটা বেশ ভালো value দিয়েছে।",
+    "is_approved": true,
+    "created_at": "2026-07-30T16:39:49.186Z"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 2,
+  "fields": {
+    "name": "Jannat",
+    "email": "rohan2005040@gmail.com",
+    "rating": 5,
+    "review": "আমি Original Banana flavourটা নিয়েছিলাম। যারা খুব বেশি মসলাযুক্ত snacks পছন্দ করেন না তাদের জন্য এটা বেশ ভালো option মনে হয়েছে। Banana-এর natural taste-এর সাথে crispy textureটা সুন্দর লেগেছে। সকালে বা বিকেলে হালকা snack হিসেবে খেতে বেশ ভালো।",
+    "is_approved": true,
+    "created_at": "2026-07-30T16:55:37.121Z"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 3,
+  "fields": {
+    "name": "Arif",
+    "email": "rohan2005040@gmail.com",
+    "rating": 5,
+    "review": "Product হাতে পাওয়ার পর packaging দেখে বেশ ভালো impression হয়েছিল। সবচেয়ে গুরুত্বপূর্ণ বিষয় হলো প্যাকেট খোলার পর chips গুলো crispy পেয়েছি। Taste-ও বেশ balanced। খুব বেশি oily বা অতিরিক্ত spicy মনে হয়নি। Overall প্রথম order হিসেবে experience অনেক ভালো হয়েছে।",
+    "is_approved": true,
+    "created_at": "2026-07-30T16:55:48.820Z"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 4,
+  "fields": {
+    "name": "Mim",
+    "email": "rohan2005040@gmail.com",
+    "rating": 5,
+    "review": "৫ প্যাকেটের combo নিয়েছিলাম কারণ বাসায় সবাই snacks খেতে পছন্দ করে। প্রতিটা প্যাকেটই ভালো ছিল এবং সবচেয়ে ভালো লেগেছে chips-এর crunchiness। ছোট-বড় সবাই পছন্দ করেছে। একসাথে কয়েকটা flavour নেওয়ার কারণে সবাই নিজের পছন্দেরটা বেছে নিতে পেরেছে।",
+    "is_approved": true,
+    "created_at": "2026-07-30T16:56:49.292Z"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 5,
+  "fields": {
+    "name": "Fahim",
+    "email": "rohan2005040@gmail.com",
+    "rating": 5,
+    "review": "Magic Masala flavourটা সত্যিই অনেক ভালো লেগেছে। মসলার flavourটা বেশ সুন্দর এবং chips-এর সাথে ভালোভাবে যায়। Movie দেখার সময় snack হিসেবে খেয়েছিলাম, এক প্যাকেট কখন শেষ হয়ে গেছে বুঝতেই পারিনি। যারা একটু spicy ও flavourful snacks পছন্দ করেন তারা try করতে পারেন।",
+    "is_approved": true,
+    "created_at": "2026-07-30T16:57:05.456Z"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 6,
+  "fields": {
+    "name": "Sadia",
+    "email": "rohan2005040@gmail.com",
+    "rating": 4,
+    "review": "আমি সাধারণত banana chips খুব একটা পছন্দ করি না। তারপরও Hunkora একবার try করেছিলাম। Surprisingly অনেক ভালো লেগেছে। Chips গুলো crunchy, আর tasteটা একঘেয়ে লাগে না। বাসার অন্যরাও খেয়ে প্রশংসা করেছে। সামনে আবার order করব।",
+    "is_approved": true,
+    "created_at": "2026-07-30T16:57:18.847Z"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 7,
+  "fields": {
+    "name": "Tanvir",
+    "email": "rohan2005040@gmail.com",
+    "rating": 5,
+    "review": "অনলাইনে অনেক snacks order করেছি, কিন্তু Hunkora-এর packaging আর presentation প্রথম দেখাতেই ভালো লেগেছে। প্যাকেট খুলে chips খাওয়ার পর আরও ভালো লেগেছে। বেশ crispy এবং fresh মনে হয়েছে। Friends-দেরও খাওয়ানোর পর সবাই পছন্দ করেছে।",
+    "is_approved": true,
+    "created_at": "2026-07-30T16:57:35.552Z"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 8,
+  "fields": {
+    "name": "Nusrat",
+    "email": "rohan2005040@gmail.com",
+    "rating": 5,
+    "review": "আমি Spicy Masala flavour টা নিয়েছিলাম এবং flavourটা আমার কাছে সবচেয়ে ভালো লেগেছে। ঝাল আছে কিন্তু অতিরিক্ত না, আর banana-এর taste-টাও সুন্দরভাবে পাওয়া যায়। বিকেলে চায়ের সাথে খেতে দারুণ লাগে। Packaging-টাও বেশ সুন্দর এবং clean ছিল।",
+    "is_approved": true,
+    "created_at": "2026-08-02T12:01:21.127Z"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 9,
+  "fields": {
+    "name": "Rafi",
+    "email": "rohan2005040@gmail.com",
+    "rating": 5,
+    "review": "প্রথমে শুধু ট্রাই করার জন্য ৩ প্যাকেট নিয়েছিলাম। সত্যি বলতে taste এত ভালো হবে আশা করিনি। Chips গুলো বেশ crispy ছিল এবং মসলাটাও সুন্দরভাবে balanced। প্যাকেট খোলার পর কখন যে শেষ হয়ে গেছে বুঝতেই পারিনি। এখন আবার order করার চিন্তা করছি।",
+    "is_approved": true,
+    "created_at": "2026-08-04T09:36:36.675Z"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 10,
+  "fields": {
+    "name": "Tania",
+    "email": "rohan2005040@gmail.com",
+    "rating": 5,
+    "review": "প্রথমে packaging দেখে মনে হয়েছিল productটা premium হবে, আর খাওয়ার পরও সেই feelingটা পেয়েছি। Chips গুলো সুন্দর crispy এবং flavour-গুলো বেশ enjoyable। বাসায় সবাই খেয়েছে এবং কেউই খারাপ বলেনি। নিজের জন্য যেমন ভালো, তেমনি কাউকে snack হিসেবে দেওয়ার জন্যও সুন্দর।",
+    "is_approved": true,
+    "created_at": "2026-08-11T11:03:09.633Z"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 11,
+  "fields": {
+    "name": "Imran",
+    "email": "rohan2005040@gmail.com",
+    "rating": 5,
+    "review": "Evening snack হিসেবে Hunkora Banana Chips আমার বেশ ভালো লেগেছে। চায়ের সাথে খাওয়ার জন্য perfect একটা combination। Chips-এর crunchiness অনেকক্ষণ ভালো ছিল এবং flavourটাও সুন্দর। যারা regular chips-এর বাইরে একটু different কিছু try করতে চান তারা একবার নিতে পারেন।",
+    "is_approved": true,
+    "created_at": "2026-08-11T11:03:29.670Z"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 12,
+  "fields": {
+    "name": "Priya",
+    "email": "rohan2005040@gmail.com",
+    "rating": 5,
+    "review": "Spicy Masala flavourটা আমার personal favourite। ঝালটা noticeable কিন্তু এমন না যে খাওয়া কঠিন হয়ে যায়। প্রতিটা chips-এ flavourটা ভালোভাবে পাওয়া গেছে। প্যাকেট খুলে family-এর সাথে share করার পর সবাই পছন্দ করেছে। Definitely আবার order করার ইচ্ছা আছে।",
+    "is_approved": true,
+    "created_at": "2026-08-11T11:03:54.415Z"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 13,
+  "fields": {
+    "name": "Sumaiya",
+    "email": "rohan2005040@gmail.com",
+    "rating": 5,
+    "review": "আমি snacks-এর ক্ষেত্রে crispy texture অনেক বেশি পছন্দ করি, তাই Hunkora আমার ভালো লেগেছে। Chips গুলো পাতলা, crunchy এবং মসলাটাও সুন্দরভাবে distributed ছিল। Taste খুব overpowering না, তাই একসাথে অনেকটা খেয়েও বিরক্ত লাগে না। Overall খুব satisfying একটা snack।",
+    "is_approved": true,
+    "created_at": "2026-08-11T11:04:30.852Z"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 14,
+  "fields": {
+    "name": "Nayeem",
+    "email": "rohan2005040@gmail.com",
+    "rating": 5,
+    "review": "৩ প্যাকেটের combo নিয়ে friends-দের সাথে বসে খেয়েছিলাম। ভাবছিলাম সবাই হয়তো আলাদা opinion দেবে, কিন্তু সবাই বেশ পছন্দ করেছে। বিশেষ করে Spicy Masala আর Magic Masala flavour নিয়ে সবাই প্রশংসা করেছে। এখন বন্ধুরা বলছে পরেরবার ১০ প্যাকেটের combo নিতে হবে!",
+    "is_approved": true,
+    "created_at": "2026-08-11T11:05:29.938Z"
+  }
+},
+{
+  "model": "reviews.review",
+  "pk": 15,
+  "fields": {
+    "name": "Rima",
+    "email": "rohan2005040@gmail.com",
+    "rating": 5,
+    "review": "Magic Masala flavourটা আমার কাছে সবচেয়ে interesting লেগেছে। সাধারণ chips-এর মতো একদম same taste না, বরং আলাদা একটা flavour পাওয়া যায়। Crunchiness-ও ভালো ছিল। বিকেলে coffee-এর সাথে খেয়েছি এবং combinationটা বেশ enjoyable হয়েছে। আবার নেওয়ার মতো product।",
+    "is_approved": true,
+    "created_at": "2026-08-11T11:07:16.751Z"
+  }
+}
+]

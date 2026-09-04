@@ -76,11 +76,15 @@ INSTALLED_APPS = [
     "apps.reviews",
     "apps.wishlist",
     "apps.dashboard",
+    'cloudinary_storage',
+    'django.contrib.staticfiles',
+    'cloudinary',
 
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 
     "whitenoise.middleware.WhiteNoiseMiddleware",
 
@@ -98,6 +102,7 @@ MIDDLEWARE = [
 
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 ROOT_URLCONF = "config.urls"
 
 TEMPLATES = [
@@ -230,3 +235,11 @@ LOGGING = {
         },
     },
 }
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'your_cloud_name',
+    'API_KEY': 'your_api_key',
+    'API_SECRET': 'your_api_secret'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
