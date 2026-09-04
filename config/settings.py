@@ -46,14 +46,17 @@ CSRF_COOKIE_SECURE = True
 # Application definition
 
 INSTALLED_APPS = [
-
     # Django Apps
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    
+    # Cloudinary Apps (এখানে staticfiles এর ঠিক উপরে থাকতে হবে)
+    'cloudinary_storage',
     "django.contrib.staticfiles",
+    'cloudinary',
 
     # Third Party
     "rest_framework",
@@ -76,9 +79,6 @@ INSTALLED_APPS = [
     "apps.reviews",
     "apps.wishlist",
     "apps.dashboard",
-    'cloudinary_storage',
-    'cloudinary',
-
 ]
 
 MIDDLEWARE = [
@@ -236,9 +236,9 @@ LOGGING = {
 }
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'your_cloud_name',
-    'API_KEY': 'your_api_key',
-    'API_SECRET': 'your_api_secret'
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
