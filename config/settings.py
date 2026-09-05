@@ -105,7 +105,7 @@ MIDDLEWARE = [
 
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 ROOT_URLCONF = "config.urls"
 
 TEMPLATES = [
@@ -262,3 +262,5 @@ STORAGES = {
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
