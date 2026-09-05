@@ -23,6 +23,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
 
     path("", include("apps.core.urls")),
+    path("seller-admin/", include("seller_panel.urls")),
     path("accounts/", include("apps.accounts.urls")),
     path("products/", include("apps.products.urls")),
     path("categories/", include("apps.categories.urls")),
@@ -38,7 +39,7 @@ urlpatterns = [
     path("analytics/", include("apps.analytics.urls")),
     path("coupons/", include("apps.coupons.urls")),
     path("dashboard/",include("apps.dashboard.urls")),
-    path('seller-admin/', include('seller_panel.urls')),
+    
 ]
 
 if settings.DEBUG:
