@@ -193,16 +193,17 @@ cloudinary.config(
     secure=True
 )
 
+# Cloudinary only for Media, WhiteNoise for Static
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.StaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
 
-STATICFILES_STORAGE = "whitenoise.storage.StaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
