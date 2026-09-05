@@ -204,6 +204,10 @@ STORAGES = {
 }
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+WHITENOISE_USE_FINDERS = True
+WHITENOISE_MANIFEST_STRICT = False
+
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
