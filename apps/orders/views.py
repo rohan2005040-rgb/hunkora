@@ -19,14 +19,24 @@ def checkout_view(request):
     if not cart:
         return redirect("cart:cart")
 
-    cart_items = CartItem.objects.filter(cart=cart)
+    # শুধু যেসব কার্ট আইটেমে ভ্যালিড প্রোডাক্ট আছে সেগুলো নেওয়া
+    cart_items = CartItem.objects.filter(cart=cart, product__isnull=False)
 
-    subtotal = sum(item.total_price() for item in cart_items)
+    if not cart_items.exists():
+        # যদি কার্টের সব প্রোডাক্ট ডিলেট হয়ে থাকে
+        cart.delete()
+        return redirect("cart:cart")
+
+    # প্রোডাক্টের ডিসকাউন্ট প্রাইস থাকলে সেটা, নাহলে রেগুলার প্রাইস হিসাব
+    subtotal = sum(
+        (item.product.discount_price if getattr(item.product, 'discount_price', None) else item.product.price) * item.quantity 
+        for item in cart_items if item.product
+    )
     shipping = 65
     vat = 0
     grand_total = subtotal + shipping
 
-    # ইউজারের সেভ থাকা প্রোফাইল ডেটা অথবা নতুন প্রোফাইল গেট/ক্রিয়েট করা
+    # ইউজারের সেভ থাকা প্রোফাইল ডেটা অথবা নতুন প্রোফাইল গেট/ক্রিয়েট করা
     profile, created = UserProfile.objects.get_or_create(user=request.user)
 
     if request.method == "POST":
@@ -55,7 +65,7 @@ def checkout_view(request):
             payment_status="Pending",
         )
 
-        # ২. ইউজারের বিলিং এড্রেস ও ফোন নম্বর প্রোফাইলে সেভ/আপডেট করে দেওয়া
+        # ২. ইউজারের বিলিং এড্রেস ও ফোন নম্বর প্রোফাইলে সেভ/আপডেট করা
         full_address_text = f"{address}, {city}" if city else address
         if landmark:
             full_address_text += f" (Landmark: {landmark})"
@@ -65,7 +75,7 @@ def checkout_view(request):
             profile.phone_number = phone
         profile.save()
 
-        # ফার্স্ট নেম/লাস্ট নেম খালি থাকলে আপডেট করে দেওয়া
+        # ফার্স্ট নেম/লাস্ট নেম খালি থাকলে আপডেট করা
         if full_name and not request.user.first_name:
             names = full_name.strip().split(' ', 1)
             request.user.first_name = names[0]
@@ -73,17 +83,23 @@ def checkout_view(request):
                 request.user.last_name = names[1]
             request.user.save()
 
-        # ৩. কার্টের আইটেমগুলো অর্ডার আইটেমে ট্রান্সফার করা
+        # ৩. কার্টের আইটেমগুলো অর্ডার আইটেমে নিরাপদভাবে ট্রান্সফার করা
         for item in cart_items:
+            if not item.product:
+                continue
+            
+            # ডিসকাউন্টেড প্রাইস প্রাধান্য দেওয়া
+            unit_price = item.product.discount_price if getattr(item.product, 'discount_price', None) else item.product.price
+
             OrderItem.objects.create(
                 order=order,
                 product=item.product,
                 quantity=item.quantity,
-                price=item.product.price,
+                price=unit_price,
             )
 
         # ৪. কার্ট ক্লিয়ার করা
-        cart_items.delete()
+        CartItem.objects.filter(cart=cart).delete()
         cart.delete()
 
         return redirect("orders:order_success")
