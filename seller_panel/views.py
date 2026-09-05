@@ -1,15 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.db.models import Sum, Count
+from django.db.models import Sum
 from apps.orders.models import Order
 
-@login_required(login_url='account:login')
+@login_required
 def seller_dashboard(request):
     # ইউজার স্টাফ কি না চেক করা
     if not request.user.is_staff:
         messages.error(request, "আপনার সেলার ড্যাশবোর্ডে প্রবেশের অনুমতি নেই।")
-        return redirect('account:profile')
+        return redirect('/') # নেমস্পেস এরর এড়াতে সরাসরি হোমপেজে রিডাইরেক্ট
 
     # ওভারভিউ ও অ্যানালিটিক্স
     total_orders = Order.objects.count()
@@ -28,11 +28,11 @@ def seller_dashboard(request):
     }
     return render(request, 'seller_panel/dashboard.html', context)
 
-@login_required(login_url='account:login')
+@login_required
 def update_order_status(request, pk):
     if not request.user.is_staff:
         messages.error(request, "আপনার এই অ্যাকশনটি সম্পন্ন করার অনুমতি নেই।")
-        return redirect('account:profile')
+        return redirect('/')
 
     order = get_object_or_404(Order, pk=pk)
     if request.method == 'POST':
