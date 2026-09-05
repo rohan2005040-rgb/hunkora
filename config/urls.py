@@ -38,6 +38,7 @@ urlpatterns = [
     path("analytics/", include("apps.analytics.urls")),
     path("coupons/", include("apps.coupons.urls")),
     path("dashboard/",include("apps.dashboard.urls")),
+    path('seller-admin/', include('apps.seller_panel.urls')),
 ]
 
 if settings.DEBUG:

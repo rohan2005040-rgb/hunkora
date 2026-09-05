@@ -80,6 +80,7 @@ INSTALLED_APPS = [
     "apps.reviews",
     "apps.wishlist",
     "apps.dashboard",
+    'apps.seller_panel',
 ]
 
 MIDDLEWARE = [
