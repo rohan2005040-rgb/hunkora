@@ -202,6 +202,9 @@ STORAGES = {
     },
 }
 
+# Cloudinary collectstatic compatibility-এর জন্য এই লাইনটি দরকার:
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
